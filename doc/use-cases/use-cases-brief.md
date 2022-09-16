@@ -1,41 +1,31 @@
 # Use Case List
 
-- [ ] Profile
-  - Log in and out
-  - Shows followers and people you are following
-  - Shows  public playlists
-  - Can tag social media accounts through profile description
-  - Shows history of recent songs played
-  - Log-in through vassar email
+- [ ] Search
+  - Under Search Pane
+  - User Goal
+  - User
+  - User wants to look up a song in order to perform any number of operations on it
+  - Nothing noteworthy at the start (maybe "has cell service")
+  - List of songs, playlists, and/or profiles must show up under search bar 
+  - User looks up song/playlist/profile and the correct output is shown under search box
+  - User looks up song/playlist/profile and the closest output is shown under search box
+    - Closest output being a song/playlist/profile that closely resembles the search query
+  - List of songs shows up artist name and song name, as well a button on the side that allows you to perform more operations
+    - Other operations might include add to playlist, add to queue of currently playing songs, share song, like song, and block song
+  - Should always be the same output list
+  - If nothing is typed into the search bar, the list of songs should be recent songs searched, or recommended songs if former is empty as well
 
-    
-- [ ] Play song/playlist
-    - Plays the selected song through the requested output
-        - Bluetooth capability
-        - Change volume
-    - Liked songs will be a playlist labeled "Liked Songs"
-
-- [ ] Make a playlist
-  - Recommends songs based on music taste
-  - List of songs in one place
-  - Has a name and description
-  - Can add songs after creation
-  - Can remove songs from list
-
-- [ ] Search Capability
-    - Search for songs
-    - Search for playlists
-    - Search Profiles 
-      - Profile specific playlists and songs
-    - Search songs using spotify codes through spotify API
-
-- [ ] Sharing
-    - Send link to external sources
-
-- [ ] Podcast section
-    - Lots of people on campus want to share there opinion
-    - Gives them a platform to do so
-
-- [ ] Vassar Tinder
-    - Matches you up with other people with similar music tastes
-    - Has a text chat or links you up using social media links
+- [ ] Play
+  - The play button can be located in a lot of places
+    - Click on a song after the search query returns the list 
+    - Click play button while viewing the song pane
+    - When the play button in a playlist is pressed it will take in given parameters and play the song that suits the parameters
+  - User Goal
+  - User
+  - The user wants to play a song
+  - A song/playlist has to be selected to play
+  - Song is played and song shows up in song pane
+  - Shouldn't have an error
+  - Song needs to be selected
+  - Output a song
+  - Play button will be in a lot of places
