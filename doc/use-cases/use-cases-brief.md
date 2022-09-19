@@ -1,31 +1,19 @@
 # Use Case List
 
-- [ ] Search
-  - Under Search Pane
-  - User Goal
-  - User
-  - User wants to look up a song in order to perform any number of operations on it
-  - Nothing noteworthy at the start (maybe "has cell service")
-  - List of songs, playlists, and/or profiles must show up under search bar 
-  - User looks up song/playlist/profile and the correct output is shown under search box
-  - User looks up song/playlist/profile and the closest output is shown under search box
-    - Closest output being a song/playlist/profile that closely resembles the search query
-  - List of songs shows up artist name and song name, as well a button on the side that allows you to perform more operations
-    - Other operations might include add to playlist, add to queue of currently playing songs, share song, like song, and block song
-  - Should always be the same output list
-  - If nothing is typed into the search bar, the list of songs should be recent songs searched, or recommended songs if former is empty as well
-
-- [ ] Play
-  - The play button can be located in a lot of places
-    - Click on a song after the search query returns the list 
-    - Click play button while viewing the song pane
-    - When the play button in a playlist is pressed it will take in given parameters and play the song that suits the parameters
-  - User Goal
-  - User
-  - The user wants to play a song
-  - A song/playlist has to be selected to play
-  - Song is played and song shows up in song pane
-  - Shouldn't have an error
-  - Song needs to be selected
-  - Output a song
-  - Play button will be in a lot of places
+- Search
+- Play/Pause
+- Like/unlike song/playlist
+- Add song/playlist to queue
+- Skip/replay song
+- Add/remove song to playlist
+- Share song
+- Upload song
+- View Profile 
+- Follow/unfollow profile
+- Create/destroy playlist
+- Shuffle playlist
+- View Artist
+- Sort playlist
+- Tinder specific 
+  - Swipe right/left on profile 
+  - View bio of profile
