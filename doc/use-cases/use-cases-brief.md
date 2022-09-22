@@ -1,19 +1,37 @@
 # Use Case List
 
 - Search
+  - Search for a song, playlist, or profile using the search input box
 - Play/Pause
+  - Play or pause the song in the play tab/pane
 - Like/unlike song/playlist
+  - Add/unadd song to "Liked Songs" playlist
 - Add song/playlist to queue
-- Skip/replay song
+  - Adds a song/playlist to the queue of songs to be played
+- Skip song
+  - Play the next song in the queue
+- Replay song
+  - Restart song (if song has been playing for longer than 1 second) or play previously played song
 - Add/remove song to playlist
+  - Add/removes a song in a playlist
 - Share song
+  - Makes a link to a song that can be shared with others
 - Upload song
+  - Upload your personal song to your profile
 - View Profile 
+  - Open up your profile in the viewing pane
 - Follow/unfollow profile
-- Create/destroy playlist
+  - Adds/unadds friend from following list
+- Create playlist
+  - Creates a new empty list
+- Remove playlist
+  - Deletes list of songs associated with this playlist
 - Shuffle playlist
+  - Puts order of songs in playlist into a random order
 - View Artist
+  - Artist profile is shown in the viewing pane
 - Sort playlist
+  - Sorts playlist by artist
 - Tinder specific 
   - Swipe right/left on profile 
   - View bio of profile
