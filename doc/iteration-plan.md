@@ -21,7 +21,7 @@
   - Figure out how we are going to store song data
 
 
-##Note on limitations
+##Note on limitations for iteration one
 Being as it is a song playing application, the first iteration of playing the song will just be a text output of "Song playing"
 
 The first iteration will focus more on communicating with the database. Being able to search a song id and songs close the search query will be our main focus.
