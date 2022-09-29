@@ -3,36 +3,49 @@
 - Search
   - Search for an SPP using the search input box
   - Happy Path: User searches for SPP, a list of options shows up on screen with options next to each new item
-- Play/Pause
-  - Play or pause the song in the play tab/pane
-- Like/unlike song/playlist
-  - Add/unadd song to "Liked Songs" playlist
+- Manage playback
+  - Play/Pause
+    - Play or pause the song in the play tab/pane
+    - Happy Path: User can press a button that pauses a song if its playing or plays a song if no song is playing
+  - Like/unlike song/playlist
+    - Add/unadd song to "Liked Songs" playlist
+    - Happy path: User can press the like button which adds the song to a playlist that consists of other liked songs
+  - Replay song
+    - Restart song (if song has been playing for longer than 1 second) or play previously played song
+    - Happy path: User presses the replay button and if the song is already playing for a second it goes back to the beginning, if not it goes to the previous song that the user was listening to if possible 
+  - Skip song
+    - Play the next song in the queue
+    - Happy path: User presses the skip button and it plays the next song in the playlist/queue
 - Add song/playlist to queue
   - Adds a song/playlist to the queue of songs to be played
-- Skip song
-  - Play the next song in the queue
-- Replay song
-  - Restart song (if song has been playing for longer than 1 second) or play previously played song
+  - Happy path: User presses a button which adds the song/playlist to the queue of songs to be played
 - Add/remove song to playlist
   - Add/removes a song in a playlist
+  - Happy path: When user searches a song they are allowed to add the song to a playlist of their choice and also allowed to go into the playlist and removes the songs that they do not want part of it anymore 
 - Share song
   - Makes a link to a song that can be shared with others
+  - Happy path: User is allowed to click the share button and an option screen pops up which allows them to click which way they want to share and shares with whoever they want to
 - Upload song
   - Upload your personal song to your profile
+  - Happy path: User presses the upload button which allows them to choose which file they want to upload from multiple applications and after it uploads it appears in their profile
 - View Profile 
   - Open up your profile in the viewing pane
+  - Happy path: User can scroll through their profile and see their account
 - Follow/unfollow profile
   - Adds/unadds friend from following list
+  - Happy path: When viewing other users accounts a button that the user can click to follow/unfollow other users
 - Create playlist
   - Creates a new empty list
+  - Happy path: When user creates a playlist, a screen pops up with zero songs originally added to it
 - Remove playlist
   - Deletes list of songs associated with this playlist
+  - Happy path: When user deletes a playlist, the playlist can no longer be visible
 - Shuffle playlist
   - Puts order of songs in playlist into a random order
+  - Happy path: The playlist appears in a complete random order
 - View Artist
   - Artist profile is shown in the viewing pane
+  - Happy path: User can see the profile of the artist that they searched for
 - Sort playlist
   - Sorts playlist by artist
-- Tinder specific 
-  - Swipe right/left on profile 
-  - View bio of profile
+  - Happy path: The playlist is sorted alphabetically by the artists of the songs 
