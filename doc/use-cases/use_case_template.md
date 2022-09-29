@@ -1,6 +1,6 @@
-#Use Case Templates
+# Use Case Templates
 
-####This template is to show how we formatted the fully dressed use cases
+#### This template is to show how we formatted the fully dressed use cases
 
 - Use Case Name => Start with a verb
 - Scope => The system under design
