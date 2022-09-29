@@ -26,4 +26,7 @@ Team D - Vassar "Spotify" - Sam & Connor M
 
     - Overall more effort should have been put into this submission. Please revise, particularly your use cases, according to the feedback provided. I know you can do great things, and want to see you fulfill your potential. I am also concerned you didn't come to lab, where you could have received guidance on how to improve your submission.
     
-    - Minor markdown comment: for headings to display correctly everywhere, a space is needed after the hashmarks, e.g, # title vs #title. Although the later will render correctly in IntelliJ, it will not render correctly everywhere.
+
+domain model: classes (look at the use cases and look for nouns)
+uploading song and searching for song
+conversation between system and user
