@@ -1,7 +1,8 @@
 # Use Case List
 
 - Search
-  - Search for a song, playlist, or profile using the search input box
+  - Search for an SPP using the search input box
+  - Happy Path: User searches for SPP, a list of options shows up on screen with options next to each new item
 - Play/Pause
   - Play or pause the song in the play tab/pane
 - Like/unlike song/playlist
