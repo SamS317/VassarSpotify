@@ -2,40 +2,40 @@
 
 - Search
   - Search for an SPP using the search input box
-  - Happy Path: User searches for SPP, a list of options shows up on screen with options next to each new item
+  - Happy Path: 
     - User types in song name, artist, or playlist
     - System filters the results to have the most optimal result at the top
 - Manage playback
   - Play/Pause
     - Play or pause the song in the play tab/pane
-    - Happy Path: User can press a button that pauses a song if its playing or plays a song if no song is playing
+    - Happy Path: 
       - User presses the button
       - System stops playing music if music was playing or plays music if no music has been playing
   - Like/unlike song/playlist
     - Add/unadd song to "Liked Songs" playlist
-    - Happy path: User can press the like button which adds the song to a playlist that consists of other liked songs
+    - Happy path: 
       - User presses the like button
       - System adds the song/playlist to a list of liked songs/playlists if song/playlist is not already liked and removes if it is already in the list
   - Replay song
     - Restart song (if song has been playing for longer than 1 second) or play previously played song
-    - Happy path: User presses the replay button and if the song is already playing for a second it goes back to the beginning, if not it goes to the previous song that the user was listening to if possible 
+    - Happy path:  
       - User presses the replay button
       - System replays the same song from the beginning if song was playing or plays the previous song played if applicable
   - Skip song
     - Play the next song in the queue
-    - Happy path: User presses the skip button and it plays the next song in the playlist/queue
+    - Happy path:
       - User presses the skip song
       - System goes to the next song in the queue if applicable if not replays the current song played
 - Add song/playlist to queue
   - Adds a song/playlist to the queue of songs to be played
-  - Happy path: User presses a button which adds the song/playlist to the queue of songs to be played
+  - Happy path: 
     - User searches for song/playlist
     - System populates most optimal song based on search
     - User clicks on button to add song/playlist to queue
     - System adds the song/playlist to next songs to be played
 - Add/remove song to playlist
   - Add/removes a song in a playlist
-  - Happy path: When user searches a song they are allowed to add the song to a playlist of their choice and also allowed to go into the playlist and removes the songs that they do not want part of it anymore 
+  - Happy path:  
     - User clicks on a playlist
     - System opens the playlist
     - User presses edit button
@@ -44,7 +44,7 @@
     - System gets rid of the song from playlist list or adds the new song to the playlist
 - Share song
   - Makes a link to a song that can be shared with others
-  - Happy path: User is allowed to click the share button and an option screen pops up which allows them to click which way they want to share and shares with whoever they want to
+  - Happy path: 
     - User searches up a song either using search option or in playlist
     - System opens up the song
     - User clicks the share button
@@ -53,25 +53,48 @@
     - System shares the song with the preferred method
 - Upload song
   - Upload your personal song to your profile
-  - Happy path: User presses the upload button which allows them to choose which file they want to upload from multiple applications and after it uploads it appears in their profile
+  - Happy path: 
+    - User goes to profile and presses upload button
+    - System opens page which gives options of which method of upload the user wants to use
+    - User chooses option and chooses file
+    - System uploads song to database and displays it in users profile under updated songs
 - View Profile 
   - Open up your profile in the viewing pane
-  - Happy path: User can scroll through their profile and see their account
+  - Happy path: 
+    - User presses profile icon
+    - System gets profile data from database
+    - User can scroll and change their profile
+    - System updates data in database if any changes
 - Follow/unfollow profile
   - Adds/unadds friend from following list
-  - Happy path: When viewing other users accounts a button that the user can click to follow/unfollow other users
+  - Happy path: 
+    - User searches for a user
+    - System displays the searched user profile
+    - User presses the heart to follow/unfollow
+    - System updates the info in database
 - Create playlist
   - Creates a new empty list
-  - Happy path: When user creates a playlist, a screen pops up with zero songs originally added to it
+  - Happy path: 
+    - User presses new playlist button
+    - System creates a new list in database
 - Remove playlist
   - Deletes list of songs associated with this playlist
-  - Happy path: When user deletes a playlist, the playlist can no longer be visible
+  - Happy path: 
+    - User presses the delete button in a playlist
+    - System gets rid of the list in the database
 - Shuffle playlist
   - Puts order of songs in playlist into a random order
-  - Happy path: The playlist appears in a complete random order
+  - Happy path: 
+    - User presses the shuffle button
+    - System randomly shuffles the list and displays the songs in the random order in the playlist 
 - View Artist
   - Artist profile is shown in the viewing pane
-  - Happy path: User can see the profile of the artist that they searched for
+  - Happy path: 
+    - User searches for artist
+    - System displays searched artist
+    - User can look through artists songs and info
 - Sort playlist
   - Sorts playlist by artist
-  - Happy path: The playlist is sorted alphabetically by the artists of the songs 
+  - Happy path:  
+    - User presses sort button
+    - System sorts the list alphabetically and displays the songs alphabetically
