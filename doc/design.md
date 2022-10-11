@@ -1,8 +1,12 @@
+'''plantuml
+
 @startuml
+
 hide circle
 hide empty methods
 hide empty attributes
 
+' classes
 class User{
 name
 bio
@@ -33,6 +37,7 @@ duration
 name
 }
 
+' associations
 User "1" -down- "*" Playlist : \t created \t
 User "1" -left- "*" Song : \t uploads \t\t
 User "1" - "*" User : follows \t
@@ -43,37 +48,27 @@ ProfileDatabase "1" -left- "*" Profile : \t stores \t
 Playlist "1" -up- "*" Song : contains \t
 
 SongDatabase "1" - "*" Song : \t contains \t\t
+
 @enduml
 
 
 @startuml
-'''Play
+
+actor User
+participant loginPageView
+control profileDatabase
 
 @enduml
 
 @startuml
-'''Search
 
-@enduml
-
-@startuml
-'''Class diagram
-'''All the classes that were going to have
-'''View, Controller, ProfileDatabase, Profile, SongDatabase (should have search method), Song (play song method should be here)
-
-'''Test crap, replace later on
-class Car {
-  {field} A field (despite parentheses)
-  {method} Some method
+class test{
 }
 
-class Driver {
-  {field} A field (despite parentheses)
-  {method} Some method
+class tester{
 }
 
-Driver - Car : drives >
-Car *- Wheel : have 4 >
-Car -- Person : < owns
+test "1" - "*" tester : \t contains \t\t
+
 
 @enduml
