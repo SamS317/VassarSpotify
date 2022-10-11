@@ -50,23 +50,34 @@ SongDatabase "1" - "*" Song : \t contains \t\t
 
 
 @startuml
-
-actor User
-participant loginPageView
-control profileDatabase
+'''Play
 
 @enduml
 
 @startuml
+'''Search
 
-class test{
+@enduml
+
+@startuml
+'''Class diagram
+'''All the classes that were going to have
+'''View, Controller, ProfileDatabase, Profile, SongDatabase (should have search method), Song (play song method should be here)
+
+'''Test crap, replace later on
+class Car {
+  {field} A field (despite parentheses)
+  {method} Some method
 }
 
-class tester{
+class Driver {
+  {field} A field (despite parentheses)
+  {method} Some method
 }
 
-test "1" - "*" tester : \t contains \t\t
-
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
 
 @enduml
 
