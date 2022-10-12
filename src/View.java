@@ -34,7 +34,6 @@ public class View {
                     List l = new ArrayList();
                     while(true){
 
-
                         System.out.print("Search (s) or play (p) or logout (l)");
                         String action = scanner.nextLine();
                         if (action.equalsIgnoreCase("l")){
@@ -76,13 +75,13 @@ public class View {
                             }
                             else {
                                 System.out.print("Which song do you want (Number of song from top)");
-                                int songNum = scanner.nextInt();
+                                int songNum = scanner.nextInt() - 1;
                                 Boolean b = c.playSong((Song)l.get(songNum));
                                 if (b){
                                     System.out.println("Playing...");
                                     System.out.println(l.get(songNum));
                                 }
-                                l = new ArrayList();
+                                l.clear();
                             }
                         }
                     }
