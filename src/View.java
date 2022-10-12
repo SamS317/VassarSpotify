@@ -31,8 +31,9 @@ public class View {
 
                 if (c.login(name, password) ){
                     System.out.print("Welcome " + name + "!");
+                    List l = new ArrayList();
                     while(true){
-                        List l = new ArrayList();
+
 
                         System.out.print("Search (s) or play (p) or logout (l)");
                         String action = scanner.nextLine();
@@ -76,7 +77,12 @@ public class View {
                             else {
                                 System.out.print("Which song do you want (Number of song from top)");
                                 int songNum = scanner.nextInt();
-                                c.playSong((Song)l.get(songNum));
+                                Boolean b = c.playSong((Song)l.get(songNum));
+                                if (b){
+                                    System.out.println("Playing...");
+                                    System.out.println(l.get(songNum));
+                                }
+                                l = new ArrayList();
                             }
                         }
                     }
