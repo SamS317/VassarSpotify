@@ -36,7 +36,7 @@ public class View {
 
                         System.out.print("Search (s) or play (p) or logout (l)");
                         String action = scanner.nextLine();
-                        if (action.equalsIgnoreCase("l")){
+                        if (action.equalsIgnoreCase("l") || action.equalsIgnoreCase("lower")){
                             System.out.print("Do you want to sign in to different account (y) or (n)");
                             String signInAgain = scanner.nextLine();
                             if (signInAgain.equalsIgnoreCase("y")){
@@ -49,7 +49,7 @@ public class View {
                         else if (action.equalsIgnoreCase("s")) {
                             System.out.print("Do you want to search for song (s) or artist (a): ");
                             String songOrArtist = scanner.nextLine();
-                            if (songOrArtist.equalsIgnoreCase("s")){
+                            if (songOrArtist.equalsIgnoreCase("s") || songOrArtist.equalsIgnoreCase("song")){
                                 System.out.print("Song name: ");
                                 String song = scanner.nextLine();
                                 l = c.searchSongName(song);
@@ -57,7 +57,7 @@ public class View {
                                     System.out.println((Song) s);
                                 }
                             }
-                            else if (songOrArtist.equalsIgnoreCase("a")){
+                            else if (songOrArtist.equalsIgnoreCase("a") ||songOrArtist.equalsIgnoreCase("artist")){
 
                                 System.out.print("Artist name: ");
                                 String artist = scanner.nextLine();
