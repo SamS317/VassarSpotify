@@ -12,7 +12,7 @@ public class View {
 
         while(true){
             System.out.print("VASSAR SPOTIFY\n\n\n");
-            System.out.print("Login (l) or create a new profile (c)");
+            System.out.print("Login (l) or create a new profile (c): ");
 
             String choice = scanner.nextLine();
 
@@ -22,31 +22,32 @@ public class View {
             }
 
             //Logging in
-            if( choice.equalsIgnoreCase("l") ){
+            if( choice.equalsIgnoreCase("l") || choice.equalsIgnoreCase("login")){
                 System.out.print("Name: ");
-                String name = scanner.nextLine();
+                String name = scanner.nextLine().toLowerCase();
 
                 System.out.print("Password: ");
                 String password = scanner.nextLine();
 
                 if (c.login(name, password) ){
-                    System.out.print("Welcome " + name + "!");
+                    System.out.println("Welcome " + name + "!");
                     List l = new ArrayList();
                     while(true){
 
                         System.out.print("Search (s) or play (p) or logout (l)");
                         String action = scanner.nextLine();
+                        System.out.println(action);
                         if (action.equalsIgnoreCase("l") || action.equalsIgnoreCase("lower")){
                             System.out.print("Do you want to sign in to different account (y) or (n)");
                             String signInAgain = scanner.nextLine();
-                            if (signInAgain.equalsIgnoreCase("y")){
+                            if (signInAgain.equalsIgnoreCase("y")||signInAgain.equalsIgnoreCase("yes")){
                                 break;
                             }
                             else {
                                 System.exit(0);
                             }
                         }
-                        else if (action.equalsIgnoreCase("s")) {
+                        else if (action.equalsIgnoreCase("s") || action.equalsIgnoreCase("song")) {
                             System.out.print("Do you want to search for song (s) or artist (a): ");
                             String songOrArtist = scanner.nextLine();
                             if (songOrArtist.equalsIgnoreCase("s") || songOrArtist.equalsIgnoreCase("song")){
@@ -69,13 +70,14 @@ public class View {
                             }
 
                         }
-                        else if (action.equalsIgnoreCase("p")){
+                        else if (action.equalsIgnoreCase("p") || action.equalsIgnoreCase("play")){
                             if (l.size() == 0){
                                 System.out.println("You got to search for a song first");
                             }
                             else {
                                 System.out.print("Which song do you want (Number of song from top)");
                                 int songNum = scanner.nextInt() - 1;
+                                scanner.nextLine();
                                 Boolean b = c.playSong((Song)l.get(songNum));
                                 if (b){
                                     System.out.println("Playing...");
@@ -85,6 +87,9 @@ public class View {
                             }
                         }
                     }
+                }
+                else{
+                    System.out.println("Log in incorrect, try again");
                 }
             }
 
@@ -102,7 +107,7 @@ public class View {
 
                 if ( passwordOne.equals(passwordTwo) ){
                     if (c.createUser(username, passwordOne) ){
-                        System.out.print("Congrats! " + username + " Your account has been created!");
+                        System.out.print("Congrats! " + username + " Your account has been created!\n");
                     }
                 } else{
                     System.out.print("Oops, looks like you already have a profile");
@@ -112,7 +117,4 @@ public class View {
     }
 }
 
-//All print and scanner (input) statements should live here
-//view asks for username and passwords
-//ONLY THING ASKING FOR SCANNER INPUT
-//
+
