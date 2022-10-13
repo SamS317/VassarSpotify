@@ -9,38 +9,53 @@ public class View {
 
         Scanner scanner = new Scanner(System.in);
         Controller c = new Controller();
-
+        boolean hold = true;
+        String choice;
+        String username = "";
+        String passwordOne = "";
+        String name = "";
+        String password = "";
         while(true){
-            System.out.print("VASSAR SPOTIFY\n\n\n");
-            System.out.print("Login (l) or create a new profile (c): ");
+            if (!hold){
+                choice = "l";
+            }
+            else {
+                System.out.print("VASSAR SPOTIFY\n\n\n");
+                System.out.print("Login (l) or create a new profile (c): ");
 
-            String choice = scanner.nextLine();
-
+                choice = scanner.nextLine();
+            }
             //Quitting the program
             if( choice.equalsIgnoreCase("quit") || choice.equalsIgnoreCase("q")){
                 break;
             }
 
             //Logging in
+
             if( choice.equalsIgnoreCase("l") || choice.equalsIgnoreCase("login")){
-                System.out.print("Name: ");
-                String name = scanner.nextLine().toLowerCase();
+                if (hold) {
+                    System.out.print("Name: ");
+                    name = scanner.nextLine().toLowerCase();
 
-                System.out.print("Password: ");
-                String password = scanner.nextLine();
-
+                    System.out.print("Password: ");
+                    password = scanner.nextLine();
+                }
+                else {
+                     name = username;
+                     password = passwordOne;
+                }
                 if (c.login(name, password) ){
                     System.out.println("Welcome " + name + "!");
                     List l = new ArrayList();
                     while(true){
 
-                        System.out.print("Search (s) or play (p) or logout (l)");
+                        System.out.print("Search (s) or play (p) or logout (l) ");
                         String action = scanner.nextLine();
-                        System.out.println(action);
                         if (action.equalsIgnoreCase("l") || action.equalsIgnoreCase("logout")){
                             System.out.print("Do you want to sign in to different account (y) or (n)");
                             String signInAgain = scanner.nextLine();
                             if (signInAgain.equalsIgnoreCase("y")||signInAgain.equalsIgnoreCase("yes")){
+                                hold = true;
                                 break;
                             }
                             else {
@@ -53,9 +68,12 @@ public class View {
                             if (songOrArtist.equalsIgnoreCase("s") || songOrArtist.equalsIgnoreCase("song")){
                                 System.out.print("Song name: ");
                                 String song = scanner.nextLine();
+                                int count = 1;
                                 l = c.searchSongName(song);
                                 for (Object s: l){
+                                    System.out.print(" (" + count + ") ");
                                     System.out.println((Song) s);
+                                    count += 1;
                                 }
                             }
                             else if (songOrArtist.equalsIgnoreCase("a") ||songOrArtist.equalsIgnoreCase("artist")){
@@ -63,8 +81,11 @@ public class View {
                                 System.out.print("Artist name: ");
                                 String artist = scanner.nextLine();
                                 l = c.searchArtistName(artist);
+                                int count = 1;
                                 for (Object s: l){
+                                    System.out.print(" (" + count + ") ");
                                     System.out.println((Song) s);
+                                    count += 1;
                                 }
 
                             }
@@ -97,20 +118,24 @@ public class View {
             if( choice.equalsIgnoreCase("c") ) {
                 //Getting new username
                 System.out.print("Username: ");
-                String username = scanner.nextLine();
+                username = scanner.nextLine();
 
                 //Getting Password
                 System.out.print("Password: ");
-                String passwordOne = scanner.nextLine();
+                passwordOne = scanner.nextLine();
                 System.out.print("Re-type password: ");
                 String passwordTwo = scanner.nextLine();
 
                 if ( passwordOne.equals(passwordTwo) ){
                     if (c.createUser(username, passwordOne) ){
                         System.out.print("Congrats! " + username + " Your account has been created!\n");
+                        hold = false;
                     }
-                } else{
-                    System.out.print("Oops, looks like you already have a profile");
+                }
+                else if (!passwordOne.equals(passwordTwo)){
+                    System.out.println("Oops, passwords don't match, try again");
+                }else{
+                    System.out.println("Oops, looks like you already have a profile");
                 }
             }
         }
