@@ -37,7 +37,7 @@ public class View {
                         System.out.print("Search (s) or play (p) or logout (l)");
                         String action = scanner.nextLine();
                         System.out.println(action);
-                        if (action.equalsIgnoreCase("l") || action.equalsIgnoreCase("lower")){
+                        if (action.equalsIgnoreCase("l") || action.equalsIgnoreCase("logout")){
                             System.out.print("Do you want to sign in to different account (y) or (n)");
                             String signInAgain = scanner.nextLine();
                             if (signInAgain.equalsIgnoreCase("y")||signInAgain.equalsIgnoreCase("yes")){

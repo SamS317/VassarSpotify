@@ -11,7 +11,6 @@ public class Controller{
     List a = new ArrayList();
     public Boolean login(String usernameInput, String password){
         for (Profile p: pd.getProfiles()){
-            System.out.println(p.username);
             if (p.username.equalsIgnoreCase(usernameInput)){
                 return p.checkLogin(usernameInput, password);
             }
