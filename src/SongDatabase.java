@@ -22,6 +22,7 @@ public class SongDatabase {
 
     }
     public List<String> searchSong(String song){
+        this.songListReturn.clear();
         for (Song s: this.songList){
             if (s.songName.toUpperCase().equals(song.toUpperCase())){
                 this.songListReturn.add(s);
@@ -30,6 +31,7 @@ public class SongDatabase {
         return this.songListReturn;
     }
     public List<String> searchArtist(String artist){
+        this.songListReturn.clear();
         for (Song s: this.songList){
             if (s.artist.toUpperCase().equals(artist.toUpperCase())){
                 this.songListReturn.add(s);

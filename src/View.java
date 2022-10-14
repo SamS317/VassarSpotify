@@ -15,6 +15,7 @@ public class View {
         String passwordOne = "";
         String name = "";
         String password = "";
+        String name_original = "";
         while(true){
             if (!hold){
                 choice = "l";
@@ -34,25 +35,27 @@ public class View {
 
             if( choice.equalsIgnoreCase("l") || choice.equalsIgnoreCase("login")){
                 if (hold) {
-                    System.out.print("Name: ");
-                    name = scanner.nextLine().toLowerCase();
+                    System.out.print("Enter Username: ");
+                    name_original = scanner.nextLine();
+                    name = name_original.toLowerCase();
 
-                    System.out.print("Password: ");
+                    System.out.print("Enter Password: ");
                     password = scanner.nextLine();
                 }
                 else {
                      name = username;
+                     name_original = name;
                      password = passwordOne;
                 }
                 if (c.login(name, password) ){
-                    System.out.println("Welcome " + name + "!");
+                    System.out.println("Welcome " + name_original + "!");
                     List l = new ArrayList();
                     while(true){
-
-                        System.out.print("Search (s) or play (p) or logout (l) ");
+                        int count = 1;
+                        System.out.print("Search for a song (s) or play a song (p) or logout (l) ");
                         String action = scanner.nextLine();
                         if (action.equalsIgnoreCase("l") || action.equalsIgnoreCase("logout")){
-                            System.out.print("Do you want to sign in to different account (y) or (n)");
+                            System.out.print("Do you want to sign in to different account (y) or (n) ");
                             String signInAgain = scanner.nextLine();
                             if (signInAgain.equalsIgnoreCase("y")||signInAgain.equalsIgnoreCase("yes")){
                                 hold = true;
@@ -63,12 +66,12 @@ public class View {
                             }
                         }
                         else if (action.equalsIgnoreCase("s") || action.equalsIgnoreCase("song")) {
-                            System.out.print("Do you want to search for song (s) or artist (a): ");
+                            System.out.print("Do you want to search for song by song title (s) or by artist (a): ");
                             String songOrArtist = scanner.nextLine();
                             if (songOrArtist.equalsIgnoreCase("s") || songOrArtist.equalsIgnoreCase("song")){
                                 System.out.print("Song name: ");
                                 String song = scanner.nextLine();
-                                int count = 1;
+                                count = 1;
                                 l = c.searchSongName(song);
                                 for (Object s: l){
                                     System.out.print(" (" + count + ") ");
@@ -81,7 +84,7 @@ public class View {
                                 System.out.print("Artist name: ");
                                 String artist = scanner.nextLine();
                                 l = c.searchArtistName(artist);
-                                int count = 1;
+                                count = 1;
                                 for (Object s: l){
                                     System.out.print(" (" + count + ") ");
                                     System.out.println((Song) s);
@@ -96,13 +99,20 @@ public class View {
                                 System.out.println("You got to search for a song first");
                             }
                             else {
-                                System.out.print("Which song do you want (Number of song from top)");
+
+                                System.out.print("Which song do you want (Number of song from top) ");
                                 int songNum = scanner.nextInt() - 1;
                                 scanner.nextLine();
-                                Boolean b = c.playSong((Song)l.get(songNum));
-                                if (b){
-                                    System.out.println("Playing...");
-                                    System.out.println(l.get(songNum));
+                                if (songNum <= count) {
+                                    Boolean b = c.playSong((Song) l.get(songNum));
+
+                                    if (b) {
+                                        System.out.println("Playing...");
+                                        System.out.println(l.get(songNum));
+                                    }
+                                }
+                                else{
+                                    System.out.println("Number not in list try search for a song again");
                                 }
                                 l.clear();
                             }

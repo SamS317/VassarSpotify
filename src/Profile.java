@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Profile {
     String username;
     String password;
@@ -10,7 +12,7 @@ public class Profile {
     }
     public Boolean checkLogin(String username, String password){
 
-        return this.username.toLowerCase().equals(username) && this.password.equals(password) ;
+        return this.username.toLowerCase().equals(username.toLowerCase()) && this.password.equals(password) ;
 
     }
 
