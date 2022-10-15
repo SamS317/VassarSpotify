@@ -140,11 +140,14 @@ public class View {
                     if (c.createUser(username, passwordOne) ){
                         System.out.print("Congrats! " + username + " Your account has been created!\n");
                         hold = false;
+
+
                     }
                 }
                 else if (!passwordOne.equals(passwordTwo)){
                     System.out.println("Oops, passwords don't match, try again");
                 }else{
+
                     System.out.println("Oops, looks like you already have a profile");
                 }
             }
