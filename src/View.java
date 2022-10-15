@@ -125,7 +125,7 @@ public class View {
             }
 
             //Creating a new profile
-            if( choice.equalsIgnoreCase("c") ) {
+            if( choice.equalsIgnoreCase("c") || choice.equalsIgnoreCase("create") ) {
                 //Getting new username
                 System.out.print("Username: ");
                 username = scanner.nextLine();
