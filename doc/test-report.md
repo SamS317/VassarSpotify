@@ -10,7 +10,7 @@
     - If user searches then user is asked to search for a song by either title (s) or artist (a)
       - if search for s then asks for song name and then filters all the songs from SongDatabase.java by artist and prints out
         - Then asks user again if they want to search play or logout
-        - ![](../../../../../../var/folders/83/06c534fn271_8fgls3h66p5h0000gn/T/TemporaryItems/NSIRD_screencaptureui_J9CRXg/Screen Shot 2022-10-14 at 11.22.33 PM.png)
+        - ![](/Users/samshurin/Desktop/VassarSpotify/cmpu203-team-d/doc/markdown-images/test-report-pic1.png)
       - if search for artist then asks for artist name and then filters all the songs from SongDatabase.java by artist and prints out
         - Then asks user again if they want to search play or logout
         - ![](../../../../../../var/folders/83/06c534fn271_8fgls3h66p5h0000gn/T/TemporaryItems/NSIRD_screencaptureui_WfaRg7/Screen Shot 2022-10-14 at 11.24.21 PM.png)
