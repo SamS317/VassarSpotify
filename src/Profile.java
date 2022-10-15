@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Profile {
     String username;
     String password;
@@ -9,15 +11,11 @@ public class Profile {
 
     }
     public Boolean checkLogin(String username, String password){
-        return this.username.equals(username) && this.password.equals(password) ;
+
+        return this.username.toLowerCase().equals(username.toLowerCase()) && this.password.equals(password) ;
 
     }
-    public Boolean createUserAccount(String username, String password){
-        return true;
-    }
+
 }
 
-//this is in the model thing
-//the profile has the fields username and passwords
-//THE LOGIC OF LOGIN SHOULD BE DONE HERE
-//DOES THIS USERNAME AND PASSWORD WORK TOGETHER
+

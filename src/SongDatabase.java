@@ -13,16 +13,16 @@ public class SongDatabase {
         songList.add(new Song("Over", "Drake"));
         songList.add(new Song("Billie Jean", "Michael Jackson"));
         songList.add(new Song("Locked Out of Heaven", "Bruno Mars"));
-        songList.add(new Song("STRONGER", "Kanye West"));
         songList.add(new Song("Despacito", "Luis Fonsi & Daddy Yankee"));
         songList.add(new Song("Talking to the Moon", "Bruno Mars"));
         songList.add(new Song("Hello", "Adele"));
-        songList.add(new Song("Hello", "Enimem"));
+        songList.add(new Song("Hello", "Eminem"));
         songList.add(new Song("Hello", "Beyonce"));
         songList.add(new Song("Can't Tell Me Nothing", "Kanye West"));
 
     }
     public List<String> searchSong(String song){
+        this.songListReturn.clear();
         for (Song s: this.songList){
             if (s.songName.toUpperCase().equals(song.toUpperCase())){
                 this.songListReturn.add(s);
@@ -31,6 +31,7 @@ public class SongDatabase {
         return this.songListReturn;
     }
     public List<String> searchArtist(String artist){
+        this.songListReturn.clear();
         for (Song s: this.songList){
             if (s.artist.toUpperCase().equals(artist.toUpperCase())){
                 this.songListReturn.add(s);
