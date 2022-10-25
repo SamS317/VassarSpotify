@@ -90,13 +90,17 @@
 >> (6) System shares the song with the preferred method
 
 
-### Upload song
-  - Upload your personal song to your profile
-  - Happy path: 
-    - User goes to profile and presses upload button
-    - System opens page which gives options of which method of upload the user wants to use
-    - User chooses option and chooses file
-    - System uploads song to database and displays it in users profile under updated songs
+### Upload so
+> Upload your personal song to your profile 
+> 
+> Happy path:
+>> (1) User goes to profile and presses upload button 
+>> 
+>> (2) System opens page which gives options of which method of upload the user wants to use
+>> 
+>> (3) User chooses option and chooses file
+>> 
+>> (4) System uploads song to database and displays it in users profile under updated songs
 
 
 ### View Profile
