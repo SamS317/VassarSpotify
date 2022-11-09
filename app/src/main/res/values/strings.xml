@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Vassar Spotify</string>
-    <string name="search_song_or_artist">Search song or artist</string>
-    <string name="textView">votify</string>
+    <string name="search_hint">Search</string>
+    <string name="search_label">Search for song or artist</string>
+    <string name="search_image">Search</string>
+    <string name="radio_button1">Song</string>
+    <string name="radio_button2">Artist</string>
 
 </resources>
