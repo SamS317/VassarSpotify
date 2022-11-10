@@ -54,7 +54,7 @@ public class search_fragment extends Fragment implements IAddItemsView{
                 boolean artistChoiceBool = search_fragment.this.binding.artistChoiceButtonId.isChecked();
 
                 //delegate this to controller
-                search_fragment.this.listener.searchAdded(searchText, songChoiceBool, artistChoiceBool);
+                search_fragment.this.listener.searchAdded(searchText, songChoiceBool, artistChoiceBool, search_fragment.this);
 
                 //clears search
                 searchTextE.clear();
@@ -66,13 +66,13 @@ public class search_fragment extends Fragment implements IAddItemsView{
     @Override
     public void updateSearchDisplay(List<Song> sList) {
         this.binding.searchText.setText(sList.toString());
-        for (Song x: sList){
+       // for (Song x: sList){
 //            TableRow tableRow = new TableRow(this.tableLayout.getContext());
 //            TextView textView = new TextView(tableRow.getContext());
 //            textView.setText(x.toString());
 //            tableRow.addView(textView);
 //            tableLayout.addView(tableRow);
 //            this.binding.searchResultTable.addView(tableRow);
-        }
+        //}
     }
 }

@@ -10,14 +10,16 @@ import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 import edu.vassar.cmpu203.vassarspotify.view.IAddItemsView;
 import edu.vassar.cmpu203.vassarspotify.view.IMainView;
+import edu.vassar.cmpu203.vassarspotify.view.Isearch_fragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
 import edu.vassar.cmpu203.vassarspotify.view.search_fragment;
 
 
-public class MainActivity extends AppCompatActivity implements  IAddItemsView.Listener{
+public class MainActivity extends AppCompatActivity implements  IAddItemsView.Listener, Isearch_fragment.Listener  {
 
     SongDatabase currentSearch = new SongDatabase();
     IAddItemsView addItemsView;
+    //search_fragment sfragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +27,13 @@ public class MainActivity extends AppCompatActivity implements  IAddItemsView.Li
 
         IMainView mainView = new MainView(this);
         mainView.displayFragment(new search_fragment(this),true, "add items");
-        //this.addItemsView = new AddItemsView(getApplicationContext(), this);
+//        this.addItemsView = new AddItemsView(getApplicationContext(), this);
 
         setContentView(mainView.getRootView());
     }
 
     @Override
-    public void searchAdded(String searchText, boolean songCheck, boolean artistCheck) {
+    public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, search_fragment sfragment) {
         List<Song> returnList;
         if (songCheck) {
             returnList = this.currentSearch.searchSong(searchText);
@@ -43,8 +45,11 @@ public class MainActivity extends AppCompatActivity implements  IAddItemsView.Li
             returnList = this.currentSearch.searchSong(searchText); //change later for search of both artist and name
         }
 
-        this.addItemsView.updateSearchDisplay(returnList);
+        sfragment.updateSearchDisplay(returnList);
+
     }
+
+
 
     @Override
     public void onLogin() {
