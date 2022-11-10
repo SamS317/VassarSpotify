@@ -12,7 +12,7 @@ import edu.vassar.cmpu203.vassarspotify.view.IAddItemsView;
 import edu.vassar.cmpu203.vassarspotify.view.IMainView;
 import edu.vassar.cmpu203.vassarspotify.view.Isearch_fragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
-import edu.vassar.cmpu203.vassarspotify.view.search_fragment;
+import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
 public class MainActivity extends AppCompatActivity implements  IAddItemsView.Listener, Isearch_fragment.Listener  {
@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity implements  IAddItemsView.Li
 
 
         IMainView mainView = new MainView(this);
-        mainView.displayFragment(new search_fragment(this),true, "add items");
+        mainView.displayFragment(new SearchFragment(this),true, "add items");
 //        this.addItemsView = new AddItemsView(getApplicationContext(), this);
 
         setContentView(mainView.getRootView());
     }
 
     @Override
-    public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, search_fragment sfragment) {
+    public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
         List<Song> returnList;
         if (songCheck) {
             returnList = this.currentSearch.searchSong(searchText);

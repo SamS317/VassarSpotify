@@ -10,20 +10,23 @@ import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.List;
 
-import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentSearchFragmentBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
-public class search_fragment extends Fragment implements IAddItemsView{
+public class SearchFragment extends Fragment implements IAddItemsView{
 
     FragmentSearchFragmentBinding binding;
     Listener listener;
 
-    public search_fragment(Listener listener) {
+    public SearchFragment(Listener listener) {
         this.listener = listener;
     }
 
@@ -44,17 +47,17 @@ public class search_fragment extends Fragment implements IAddItemsView{
             public void onClick(View view) {
 
                 //extract searchText
-                Editable searchTextE = search_fragment.this.binding.searchText.getText();
+                Editable searchTextE = SearchFragment.this.binding.searchText.getText();
                 String searchText = searchTextE.toString();
 
 
 
                 //extract radio buttons checked
-                boolean songChoiceBool = search_fragment.this.binding.songChoiceButtonId.isChecked();
-                boolean artistChoiceBool = search_fragment.this.binding.artistChoiceButtonId.isChecked();
+                boolean songChoiceBool = SearchFragment.this.binding.songChoiceButtonId.isChecked();
+                boolean artistChoiceBool = SearchFragment.this.binding.artistChoiceButtonId.isChecked();
 
                 //delegate this to controller
-                search_fragment.this.listener.searchAdded(searchText, songChoiceBool, artistChoiceBool, search_fragment.this);
+                SearchFragment.this.listener.searchAdded(searchText, songChoiceBool, artistChoiceBool, SearchFragment.this);
 
                 //clears search
                 searchTextE.clear();
@@ -66,13 +69,34 @@ public class search_fragment extends Fragment implements IAddItemsView{
     @Override
     public void updateSearchDisplay(List<Song> sList) {
         this.binding.searchText.setText(sList.toString());
-       // for (Song x: sList){
+        TableLayout tl = SearchFragment.this.binding.searchResultTable;
+        for (Song x: sList){
+            TableRow row = new TableRow(SearchFragment.this.getContext());
+            TextView tv1 = new TextView(SearchFragment.this.getContext());
+            TextView tv2 = new TextView(SearchFragment.this.getContext());
+//            TextView tv3 = new TextView(SearchFragment.this.getContext());
+//            TextView tv4 = new TextView(SearchFragment.this.getContext());
+//            TextView tv5 = new TextView(SearchFragment.this.getContext());
+            Button play = new Button(SearchFragment.this.getContext());
+            Button queue = new Button(SearchFragment.this.getContext());
+            Button playlist = new Button(SearchFragment.this.getContext());
+
+            tv1.setText(x.getSongName());
+            tv2.setText(x.getArtist());
+
+            row.addView(tv1);
+            row.addView(tv2);
+            row.addView(play);
+            row.addView(queue);
+            row.addView(playlist);
+            tl.addView(row);
+
 //            TableRow tableRow = new TableRow(this.tableLayout.getContext());
 //            TextView textView = new TextView(tableRow.getContext());
 //            textView.setText(x.toString());
 //            tableRow.addView(textView);
 //            tableLayout.addView(tableRow);
 //            this.binding.searchResultTable.addView(tableRow);
-        //}
+        }
     }
 }

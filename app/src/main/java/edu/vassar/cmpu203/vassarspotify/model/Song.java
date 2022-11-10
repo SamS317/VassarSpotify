@@ -8,6 +8,13 @@ public class Song {
         this.songName = songName;
         this.artist = artist;
     }
+    public String getSongName (){
+        return this.songName;
+    }
+
+    public String getArtist(){
+        return this.artist;
+    }
 
     @Override
     public String toString() {
