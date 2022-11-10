@@ -23,7 +23,7 @@ public class SongDatabase {
         songList.add(new Song("Can't Tell Me Nothing", "Kanye West"));
 
     }
-    public List<String> searchSong(String song){
+    public List<Song> searchSong(String song){
         this.songListReturn.clear();
         for (Song s: this.songList){
             if (s.songName.toUpperCase().equals(song.toUpperCase())){
@@ -32,7 +32,7 @@ public class SongDatabase {
         }
         return this.songListReturn;
     }
-    public List<String> searchArtist(String artist){
+    public List<Song> searchArtist(String artist){
         this.songListReturn.clear();
         for (Song s: this.songList){
             if (s.artist.toUpperCase().equals(artist.toUpperCase())){
