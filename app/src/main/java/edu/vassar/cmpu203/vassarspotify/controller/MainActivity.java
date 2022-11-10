@@ -1,4 +1,4 @@
-package edu.vassar.cmpu203.vassarspotify;
+package edu.vassar.cmpu203.vassarspotify.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
