@@ -8,8 +8,11 @@ import java.util.List;
 
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
-import edu.vassar.cmpu203.vassarspotify.view.AddItemsView;
 import edu.vassar.cmpu203.vassarspotify.view.IAddItemsView;
+import edu.vassar.cmpu203.vassarspotify.view.IMainView;
+import edu.vassar.cmpu203.vassarspotify.view.MainView;
+import edu.vassar.cmpu203.vassarspotify.view.search_fragment;
+
 
 public class MainActivity extends AppCompatActivity implements  IAddItemsView.Listener{
 
@@ -19,9 +22,12 @@ public class MainActivity extends AppCompatActivity implements  IAddItemsView.Li
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addItemsView = new AddItemsView(getApplicationContext(), this);
 
-        setContentView(addItemsView.getRootView());
+        IMainView mainView = new MainView(this);
+        mainView.displayFragment(new search_fragment(this),true, "add items");
+        //this.addItemsView = new AddItemsView(getApplicationContext(), this);
+
+        setContentView(mainView.getRootView());
     }
 
     @Override
@@ -36,9 +42,12 @@ public class MainActivity extends AppCompatActivity implements  IAddItemsView.Li
         else{
             returnList = this.currentSearch.searchSong(searchText); //change later for search of both artist and name
         }
-        for (Song x: returnList){
 
-        }
-        this.addItemsView.updateSearchDisplay(this.currentSearch);
+        this.addItemsView.updateSearchDisplay(returnList);
+    }
+
+    @Override
+    public void onLogin() {
+
     }
 }
