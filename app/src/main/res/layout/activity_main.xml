@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Login_fragment">
+    tools:context=".view.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -20,7 +20,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="edu.vassar.cmpu203.vassarspotify.view.Login_fragment"
+        android:name="edu.vassar.cmpu203.vassarspotify.view.LoginFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

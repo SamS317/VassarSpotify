@@ -21,7 +21,7 @@ import edu.vassar.cmpu203.vassarspotify.databinding.FragmentSearchFragmentBindin
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
-public class SearchFragment extends Fragment implements IAddItemsView{
+public class SearchFragment extends Fragment implements ISearchFragment{
 
     FragmentSearchFragmentBinding binding;
     Listener listener;
@@ -65,6 +65,13 @@ public class SearchFragment extends Fragment implements IAddItemsView{
             }
         });
     }
+
+    @Override
+    public View getRootView() {
+        return this.binding.getRoot();
+    }
+
+
 
     @Override
     public void updateSearchDisplay(List<Song> sList) {

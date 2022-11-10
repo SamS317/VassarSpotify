@@ -8,10 +8,9 @@ import java.util.List;
 
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
-public interface Isearch_fragment {
+public interface ISearchFragment {
     public View getRootView();
 
-    public void displayFragment(Fragment fragment, boolean allowBack, String name, SearchFragment sfragment);
 
     public void updateSearchDisplay(List<Song> sList);
     interface  Listener{

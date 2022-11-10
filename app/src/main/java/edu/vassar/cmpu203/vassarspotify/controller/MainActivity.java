@@ -6,16 +6,20 @@ import android.os.Bundle;
 
 import java.util.List;
 
+import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 import edu.vassar.cmpu203.vassarspotify.view.IAddItemsView;
 import edu.vassar.cmpu203.vassarspotify.view.IMainView;
-import edu.vassar.cmpu203.vassarspotify.view.Isearch_fragment;
+import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
 import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
-public class MainActivity extends AppCompatActivity implements  IAddItemsView.Listener, Isearch_fragment.Listener  {
+public class MainActivity extends AppCompatActivity implements  IAddItemsView.Listener, ISearchFragment.Listener  {
+
+    Profile Connor = new Profile("Connor", "Genius");
+    Profile Pf = new Profile();
 
     SongDatabase currentSearch = new SongDatabase();
     IAddItemsView addItemsView;
@@ -49,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements  IAddItemsView.Li
 
     }
 
+    public void LogIn(String username, String password){
+
+    }
+    public void CreateUser(String username, String password){
+
+    }
 
 
     @Override
