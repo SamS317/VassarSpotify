@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentLoginFragmentBinding;
 
@@ -61,9 +63,11 @@ public class LoginFragment extends Fragment implements ILoginFragment {
     }
 
     public void successfullyLoggedIn(boolean worked){
-        if (worked) {
+        if (!worked) {
+            Snackbar.make(getView(), "Login incorrect", Snackbar.LENGTH_INDEFINITE).show();
         //MainView.displayFragment(new SearchFragment(this),true, "search");
         }
+
     }
     @Override
     public View getRootView() {

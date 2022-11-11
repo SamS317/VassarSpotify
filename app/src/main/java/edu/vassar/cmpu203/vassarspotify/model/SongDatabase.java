@@ -41,6 +41,20 @@ public class SongDatabase {
         }
         return this.songListReturn;
     }
+    public List<Song> searchSongandArtist(String str){
+        this.songListReturn.clear();
+        for (Song s: this.songList){
+            if (s.artist.toUpperCase().contains(str.toUpperCase())){
+                this.songListReturn.add(s);
+            }
+        }
+        for (Song s: this.songList){
+            if (s.songName.toUpperCase().contains(str.toUpperCase())){
+                this.songListReturn.add(s);
+            }
+        }
+        return this.songListReturn;
+    }
     public Boolean play(Song song){
         for (Song s : this.songList){
             if (s.songName.toUpperCase().equals(song.songName.toUpperCase()) && (s.artist.toUpperCase().equals(song.artist.toUpperCase()))){

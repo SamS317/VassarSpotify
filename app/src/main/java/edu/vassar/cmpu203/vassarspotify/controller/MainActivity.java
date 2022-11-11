@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
@@ -43,8 +46,9 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
-        List<Song> returnList;
+        List<Song> returnList = null;
         List<Song> returnList2;
+        List<Song> returnList3;
         if (songCheck && !artistCheck) {
             returnList = this.currentSearch.searchSong(searchText);
         }
@@ -52,9 +56,11 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             returnList = this.currentSearch.searchArtist(searchText);
         }
         else{
-            returnList = this.currentSearch.searchSong(searchText);
-            returnList2 = this.currentSearch.searchArtist(searchText);
-            returnList.addAll(returnList2);
+            returnList = this.currentSearch.searchSongandArtist(searchText);
+
+
+
+            //returnList.addAll(returnList2);
         }
 
         sfragment.updateSearchDisplay(returnList);
@@ -75,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         if (hold){
             this.mainView.displayFragment(new SearchFragment(this),true, "search");
         }
+
         lfragment.successfullyLoggedIn(hold);
 
     }

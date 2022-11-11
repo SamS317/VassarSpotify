@@ -15,6 +15,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentSearchFragmentBinding;
@@ -37,6 +39,7 @@ public class SearchFragment extends Fragment implements ISearchFragment{
         // Inflate the layout for this fragment
         this.binding = FragmentSearchFragmentBinding.inflate(inflater);
         return this.binding.getRoot();
+
     }
 
     @Override
@@ -75,6 +78,8 @@ public class SearchFragment extends Fragment implements ISearchFragment{
 
     @Override
     public void updateSearchDisplay(List<Song> sList) {
+        Snackbar.make(getView(), "Log incorrect", Snackbar.LENGTH_INDEFINITE).dismiss();
+
 //        this.binding.searchText.setText(sList.toString());
         TableLayout tl = SearchFragment.this.binding.searchResultTable;
         tl.removeAllViews();
