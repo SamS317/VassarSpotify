@@ -89,6 +89,9 @@ public class SearchFragment extends Fragment implements ISearchFragment{
             Button queue = new Button(SearchFragment.this.getContext());
             Button playlist = new Button(SearchFragment.this.getContext());
 
+            play.setText("play");
+            queue.setText("Queue");
+            playlist.setText("Playlist");
             tv1.setText(x.getSongName());
             tv2.setText(x.getArtist());
 

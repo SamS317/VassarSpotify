@@ -44,15 +44,17 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     @Override
     public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
         List<Song> returnList;
-        if (songCheck) {
+        List<Song> returnList2;
+        if (songCheck && !artistCheck) {
             returnList = this.currentSearch.searchSong(searchText);
         }
-        else if (artistCheck){
+        else if (artistCheck && !songCheck){
             returnList = this.currentSearch.searchArtist(searchText);
         }
         else{
             returnList = this.currentSearch.searchSong(searchText);
-            returnList.addAll(this.currentSearch.searchArtist(searchText));
+            returnList2 = this.currentSearch.searchArtist(searchText);
+            returnList.addAll(returnList2);
         }
 
         sfragment.updateSearchDisplay(returnList);
