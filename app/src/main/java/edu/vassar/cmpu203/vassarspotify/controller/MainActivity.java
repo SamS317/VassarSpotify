@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             returnList = this.currentSearch.searchArtist(searchText);
         }
         else{
-            returnList = this.currentSearch.searchSong(searchText); //change later for search of both artist and name
+            returnList = this.currentSearch.searchSong(searchText);
+            returnList.addAll(this.currentSearch.searchArtist(searchText));
         }
 
         sfragment.updateSearchDisplay(returnList);
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         Profile p = new Profile(username, password);
         pd.addProfile(p);
         lfragment.successfullyLoggedIn(true);
-
+        this.mainView.displayFragment(new SearchFragment(this),true, "search");
     }
 
 

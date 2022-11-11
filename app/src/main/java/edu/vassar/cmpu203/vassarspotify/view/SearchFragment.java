@@ -77,6 +77,7 @@ public class SearchFragment extends Fragment implements ISearchFragment{
     public void updateSearchDisplay(List<Song> sList) {
 //        this.binding.searchText.setText(sList.toString());
         TableLayout tl = SearchFragment.this.binding.searchResultTable;
+        tl.removeAllViews();
         for (Song x: sList){
             TableRow row = new TableRow(SearchFragment.this.getContext());
             TextView tv1 = new TextView(SearchFragment.this.getContext());
