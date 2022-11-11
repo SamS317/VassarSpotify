@@ -10,7 +10,10 @@ public class Profile {
     public  Profile (){
 
     }
-    public Boolean checkLogin(String username, String password){
+    public String getUsername(){
+        return this.username;
+    }
+    public boolean checkLogin(String username, String password){
 
         return this.username.toLowerCase().equals(username.toLowerCase()) && this.password.equals(password) ;
 

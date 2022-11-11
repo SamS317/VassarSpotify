@@ -4,9 +4,9 @@ import android.view.View;
 
 public interface ILoginFragment {
     public View getRootView();
-
+    public void successfullyLoggedIn(boolean worked);
     interface Listener{
-        void LogIn(String usernname, String password);
-        void CreateUser(String usernname, String password);
+        void LogIn(String username, String password, LoginFragment lfragment);
+        void CreateUser(String username, String password, LoginFragment lfragment);
     }
 }

@@ -26,6 +26,14 @@ public class LoginFragment extends Fragment implements ILoginFragment {
 
 
     @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        this.binding = FragmentLoginFragmentBinding.inflate(inflater);
+        return this.binding.getRoot();
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.logInButton.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +44,7 @@ public class LoginFragment extends Fragment implements ILoginFragment {
                 Editable passwordE = LoginFragment.this.binding.password.getText();
                 String password = passwordE.toString();
 
-                LoginFragment.this.listener.LogIn(username, password);
+                LoginFragment.this.listener.LogIn(username, password, LoginFragment.this);
             }
         });
         this.binding.createButton.setOnClickListener(new View.OnClickListener() {
@@ -47,13 +55,15 @@ public class LoginFragment extends Fragment implements ILoginFragment {
                 Editable passwordE = LoginFragment.this.binding.password.getText();
                 String password = passwordE.toString();
 
-                LoginFragment.this.listener.CreateUser(username, password);
+                LoginFragment.this.listener.CreateUser(username, password, LoginFragment.this);
             }
         });
     }
 
-    public void successfullLoggedIn(){
-
+    public void successfullyLoggedIn(boolean worked){
+        if (worked) {
+        //MainView.displayFragment(new SearchFragment(this),true, "search");
+        }
     }
     @Override
     public View getRootView() {

@@ -7,30 +7,35 @@ import android.os.Bundle;
 import java.util.List;
 
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
+import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
-import edu.vassar.cmpu203.vassarspotify.view.IAddItemsView;
+import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.IMainView;
 import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
+import edu.vassar.cmpu203.vassarspotify.view.LoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
 import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
-public class MainActivity extends AppCompatActivity implements  IAddItemsView.Listener, ISearchFragment.Listener  {
+public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener {
 
+    ProfileDatabase pd = new ProfileDatabase();
     Profile Connor = new Profile("Connor", "Genius");
-    Profile Pf = new Profile();
 
     SongDatabase currentSearch = new SongDatabase();
-    IAddItemsView addItemsView;
+    private MainView mainView;
+
     //search_fragment sfragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        pd.addProfile(Connor);
         super.onCreate(savedInstanceState);
 
 
-        IMainView mainView = new MainView(this);
-        mainView.displayFragment(new SearchFragment(this),true, "add items");
+        mainView = new MainView(this);
+        mainView.displayFragment(new LoginFragment(this), false, "login");
+//        mainView.displayFragment(new SearchFragment(this),true, "search");
 //        this.addItemsView = new AddItemsView(getApplicationContext(), this);
 
         setContentView(mainView.getRootView());
@@ -53,16 +58,32 @@ public class MainActivity extends AppCompatActivity implements  IAddItemsView.Li
 
     }
 
-    public void LogIn(String username, String password){
+    @Override
+    public void LogIn(String username, String password, LoginFragment lfragment) {
+        boolean hold = false;
+        for (Profile p: pd.getProfiles()){
+            if (p.getUsername().equalsIgnoreCase(username)){
+                 if (p.checkLogin(username, password)){
+                     hold = true;
+                }
+            }
+
+        }
+        if (hold){
+            this.mainView.displayFragment(new SearchFragment(this),true, "search");
+        }
+        lfragment.successfullyLoggedIn(hold);
 
     }
-    public void CreateUser(String username, String password){
-
-    }
-
 
     @Override
-    public void onLogin() {
+    public void CreateUser(String username, String password, LoginFragment lfragment) {
+        Profile p = new Profile(username, password);
+        pd.addProfile(p);
+        lfragment.successfullyLoggedIn(true);
 
     }
+
+
+
 }

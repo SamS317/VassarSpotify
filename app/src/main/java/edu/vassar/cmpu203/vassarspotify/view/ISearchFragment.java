@@ -15,6 +15,5 @@ public interface ISearchFragment {
     public void updateSearchDisplay(List<Song> sList);
     interface  Listener{
         void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment);
-        void onLogin();
     }
 }
