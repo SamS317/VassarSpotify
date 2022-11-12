@@ -1,20 +1,70 @@
-# Search 
+# Use Case Name: Search
 
-Legend: song/playlist/profile = SPP
+### Scope
+> Vassar Spotify Android Based Application
 
-- Search
-- Vassar Spotify
-- User Goal: search for an SPP, and get back results
-- User
-- User wants to look up an SPP in order to perform any number of operations on it
-- Able to type into search box, there is a search box
-- List of songs, playlists, and/or profiles must show up under search bar
-- User looks up SPP and the closest output is shown under search box
-    - Closest output being an SPP that closely resembles the search query
-- List of songs shows up artist name and song name, as well a button on the side that allows you to perform more operations (...)
-    - Other operations might include add to playlist, add to queue of currently playing songs, share song, like song, and block song
-- If they search up something that doesn't resemble a song (i.e. iuasdklvjbaiusfgv), a text shows that says "Bro, that ain't a song mate"
-- The songs that show up should be top hits, BUT they might be from other artists just as Bob from Wisconsin
-- Input should always be the same (i.e. a string), output can be playlists, songs, or profiles
-- Decently often
-- If nothing is typed into the search bar, the list of songs should be recent songs searched, or recommended songs if former is empty as well
+### Level
+> User goal
+>> Users goal is to search for a song or artist
+
+### Primary Actor
+> User
+>> The user will be inputting the text into the search field
+
+### Stakeholders and interests
+> User
+>> Wants to be able to look up a song or artist
+>>
+>> Wants the system to give more options such as play, add to queue, or add to playlist
+>>
+>> Wants the system to show up with either
+>>> (1) What the user was looking up
+>>>
+>>> (2) A song or artist that best matches the search field
+
+
+>
+> System
+>> Wants the user to input a song that is in the database or a reasonable search query
+
+### Preconditions
+> None
+
+### Postconditions (Success variation)
+> Table-layout is filled with dynamically generated rows
+>> Each row contains the song, the artists name, and three buttons to play, add to queue, and add to playlist
+
+### Postconditions (Non-success scenario)
+> A song can't be found in the database
+>
+> Songs that partially match will show up in the dynamically created table
+
+### Main success scenario
+> (1.a) User inputs text into the search box
+>
+> (1.b) User selects button marked "song" and/or "artist"
+>
+> (1.c) User clicks search button
+>
+> (2.a) System gathers boolean values associated with the "song" and "artist" buttons
+>
+> (2.b) System gathers input text from the search input box
+>
+> (2.c) System looks up song in database and gathers all songs that match search key and boolean values
+>
+> (2.d) System dynamically creates table with the list of songs
+>
+> (3) User can now select a song that they want
+
+
+### Extensions
+> 2.c.a => System can't find any song in audio database with given search query and boolean values
+>> 2.c.a.a System tries to take a partial string from given input text and retries song database search
+>>
+>> 2.c.a.b System has list of recently played songs and will fill table with those songs
+>>
+>> 2.c.a.c System has list of songs (sort of an "if all else fails" list) that will dynamically fill
+>>> System then outputs message (somewhere on screen) that the song couldn't be found and list was filled with top hits
+
+### Special requirements
+> Application must be used on an android device
