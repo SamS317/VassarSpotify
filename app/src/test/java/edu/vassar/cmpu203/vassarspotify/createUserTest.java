@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 
-public class createUser {
+public class createUserTest {
     Profile p = new Profile("username123","password123");
 
     @Test

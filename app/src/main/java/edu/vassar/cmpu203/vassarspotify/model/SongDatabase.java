@@ -1,6 +1,5 @@
 package edu.vassar.cmpu203.vassarspotify.model;
 
-
 import java.util.*;
 public class SongDatabase {
 
@@ -21,6 +20,7 @@ public class SongDatabase {
         songList.add(new Song("Hello", "Eminem"));
         songList.add(new Song("Hello", "Beyonce"));
         songList.add(new Song("Can't Tell Me Nothing", "Kanye West"));
+        songList.add(new Song("Leaving West Virginia", "Kathy Mattea"));
 
     }
     public List<Song> searchSong(String song){
