@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             returnList = this.currentSearch.searchArtist(searchText);
         }
         else{
-            returnList = this.currentSearch.searchSongandArtist(searchText);
+            returnList = this.currentSearch.searchSongAndArtist(searchText);
 
 
 

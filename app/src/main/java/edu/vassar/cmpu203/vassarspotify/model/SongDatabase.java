@@ -41,7 +41,7 @@ public class SongDatabase {
         }
         return this.songListReturn;
     }
-    public List<Song> searchSongandArtist(String str){
+    public List<Song> searchSongAndArtist(String str){
         this.songListReturn.clear();
         for (Song s: this.songList){
             if (s.artist.toUpperCase().contains(str.toUpperCase())){

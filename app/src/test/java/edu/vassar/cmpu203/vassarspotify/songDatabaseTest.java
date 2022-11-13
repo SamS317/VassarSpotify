@@ -24,8 +24,8 @@ public class songDatabaseTest {
     @Test
     void testSearchSongandArtistName(){
         //This test shows that we can search for both an artist and a song with one search
-        assertEquals("Stronger", sb.searchSongandArtist("West").get(0).getSongName() );
-        assertEquals("Leaving West Virginia", sb.searchSongandArtist("West").get(2).getSongName() );
+        assertEquals("Stronger", sb.searchSongAndArtist("West").get(0).getSongName() );
+        assertEquals("Leaving West Virginia", sb.searchSongAndArtist("West").get(2).getSongName() );
     }
 
     @Test
