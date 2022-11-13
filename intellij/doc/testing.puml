@@ -77,51 +77,83 @@ View -> User: Plays song
 
 @startuml
 '''Class diagram
-'''All the classes that were going to have
-'''View, Controller, ProfileDatabase, Profile, SongDatabase (should have search method), Song (play song method should be here)
 hide empty methods
 hide empty attributes
 
-
-class View{
-    {method} main
+class MainActivity{
+    {method} onCreate
+    {method} searchAdded
+    {method} Login
+    {method} CreateUser
+    {field} currentSearch
+    {field} mainView
 }
 
-class Controller{
-    {method} login
-    {method} createUser
-    {method} searchSongName
-    {method} searchArtistName
-    {method} playSong
+class ProfileDatabase{
+    {method} addProfile
+    {method} getProfiles
+    {field} profiles
 }
 
-class profileDatabase{
-    {method}
+class SearchFragment{
+    {method} onCreateView
+    {method} onViewCreated
+    {method} getRootView
+    {method} updateSearchDisplay
 }
 
 class Profile{
+    {method} getUsername
+    {method} checkLogin
     {field} username
     {field} password
-    {method} checkLogin
-    {method} createUserAccount
 }
 
 class Song{
     {field} songName
     {field} artist
+    {method} getSongName
+    {method} getArtist
     {method} toString
 }
 
 class SongDatabase{
+    {field} songListReturn
+    {field} songList
     {method} searchSong
     {method} searchArtist
+    {method} searchSongandArtist
     {method} play
 }
 
-View --> Controller
-Controller --> profileDatabase
-Controller --> SongDatabase
-profileDatabase --> Profile
+class LoginFragment{
+    {method} onCreateView
+    {method} onViewCreated
+    {method} successfullyLoggedIn
+    {method} getRootView
+    {field} binding
+    {field} listener
+}
+
+class MainView{
+    {field} fmanager
+    {field} binding
+    {method} getRootView
+    {method} displayFragment
+}
+
+
+MainActivity --> ProfileDatabase
+MainActivity --> SongDatabase
+
+SearchFragment -->  MainActivity
+
+LoginFragment -->  MainActivity
+
+MainView --> MainActivity
+
+
+ProfileDatabase --> Profile
 SongDatabase --> Song
 
 @enduml
