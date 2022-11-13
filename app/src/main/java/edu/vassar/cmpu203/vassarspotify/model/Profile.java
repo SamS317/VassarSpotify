@@ -19,6 +19,10 @@ public class Profile {
 
     }
 
+    public String toString(){
+        return "" + this.username;
+    }
+
 }
 
 
