@@ -2,7 +2,10 @@ package edu.vassar.cmpu203.vassarspotify.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -48,6 +51,14 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
+
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+
         if (songCheck && !artistCheck) {
             sfragment.updateSearchDisplay(this.sd.searchSong(searchText));
         }
