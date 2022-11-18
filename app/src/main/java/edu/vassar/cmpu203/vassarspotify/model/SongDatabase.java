@@ -51,5 +51,14 @@ public class SongDatabase {
         }
         return false;
     }
+
+    public Song getSong(String songName, String artistName){
+        for(Song s: this.songList){
+            if (s.songName.toUpperCase().equals(songName.toUpperCase()) && (s.artist.toUpperCase().equals(artistName.toUpperCase()))){
+                return s;
+            }
+        }
+        return new Song("Take my breath away", "Berlin");
+    }
 }
 

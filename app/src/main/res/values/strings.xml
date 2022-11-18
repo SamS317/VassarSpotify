@@ -21,5 +21,6 @@
     <string name="replay">Replay</string>
     <string name="songtitle">songTitle</string>
     <string name="artisttitle">artistTitle</string>
+    <string name="song_name_PS">songTitle</string>
 
 </resources>

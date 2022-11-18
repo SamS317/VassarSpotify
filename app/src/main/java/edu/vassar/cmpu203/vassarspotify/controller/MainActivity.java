@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 //        mainView.displayFragment(new SearchFragment(this),true, "search");
 //        this.addItemsView = new AddItemsView(getApplicationContext(), this);
 
+
         setContentView(mainView.getRootView());
     }
 
@@ -59,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         }
 
 
+    }
+
+    public Song getSongFromModel(String songName, String artistName){
+        return currentSearch.getSong(songName, artistName);
     }
 
     @Override
