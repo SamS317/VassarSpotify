@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             List<Song> tempList = this.sd.searchArtist(searchText);
             tempList.addAll(sd.searchSong(searchText));
 
-            Set<Song> songSet = new HashSet<Song>(tempList);
-            List<Song> returnList = new ArrayList<Song>(songSet);
+            Set<Song> songSet = new <Song> HashSet<Song>(tempList);
+            List<Song> returnList = new <Song> ArrayList<Song>(songSet);
 
             sfragment.updateSearchDisplay(returnList);
         }

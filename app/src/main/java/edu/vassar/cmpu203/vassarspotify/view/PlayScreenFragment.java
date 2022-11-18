@@ -6,14 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentPlayScreenBinding;
-import edu.vassar.cmpu203.vassarspotify.databinding.FragmentSearchFragmentBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
