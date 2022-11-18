@@ -15,13 +15,15 @@ import edu.vassar.cmpu203.vassarspotify.model.Queue;
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
+import edu.vassar.cmpu203.vassarspotify.view.IPlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
 import edu.vassar.cmpu203.vassarspotify.view.LoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
+import edu.vassar.cmpu203.vassarspotify.view.PlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
-public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener {
+public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener {
 
     ProfileDatabase pd = new ProfileDatabase();
 
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         mainView.displayFragment(new LoginFragment(this), false, "login");
 //        mainView.displayFragment(new SearchFragment(this),true, "search");
 //        this.addItemsView = new AddItemsView(getApplicationContext(), this);
-
+        //mainView.displayFragment(new PlayScreenFragment(this), false, "play");
 
         setContentView(mainView.getRootView());
     }

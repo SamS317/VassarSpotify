@@ -52,7 +52,13 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
         this.binding.playbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Song s = getSongFromScreen();
+                Editable songNameText = (Editable) PlayScreenFragment.this.binding.songNamePS.getText();
+                String songNameString = songNameText.toString();
+
+                Editable artistNameText = (Editable) PlayScreenFragment.this.binding.artistNamePS.getText();
+                String artistNameString = artistNameText.toString();
+                Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+
                 PlayScreenFragment.this.listener.playMusic(s);
             }
         });
@@ -61,7 +67,13 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
         this.binding.replayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Song s = getSongFromScreen();
+                Editable songNameText = (Editable) PlayScreenFragment.this.binding.songNamePS.getText();
+                String songNameString = songNameText.toString();
+
+                Editable artistNameText = (Editable) PlayScreenFragment.this.binding.artistNamePS.getText();
+                String artistNameString = artistNameText.toString();
+                Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+
                 PlayScreenFragment.this.listener.previousSong(s);
             }
         });
@@ -70,7 +82,13 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
         this.binding.skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Song s = getSongFromScreen();
+                Editable songNameText = (Editable) PlayScreenFragment.this.binding.songNamePS.getText();
+                String songNameString = songNameText.toString();
+
+                Editable artistNameText = (Editable) PlayScreenFragment.this.binding.artistNamePS.getText();
+                String artistNameString = artistNameText.toString();
+                Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+
                 PlayScreenFragment.this.listener.nextSong(s);
             }
         });

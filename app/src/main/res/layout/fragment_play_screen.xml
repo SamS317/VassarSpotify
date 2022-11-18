@@ -8,7 +8,7 @@
     tools:context=".view.PlayScreenFragment">
 
     <Button
-        android:id="@+id/playback_button"
+        android:id="@+id/playbackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/play"
@@ -19,24 +19,24 @@
         app:layout_constraintVertical_bias="0.88" />
 
     <Button
-        android:id="@+id/skip_button"
+        android:id="@+id/skipButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="@string/skip"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/playback_button"
+        app:layout_constraintStart_toEndOf="@+id/playbackButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.88" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/replayButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="@string/replay"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/playback_button"
+        app:layout_constraintEnd_toStartOf="@+id/playbackButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.88" />
 
@@ -61,7 +61,7 @@
         android:text="@string/artisttitle"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/playback_button"
+        app:layout_constraintBottom_toTopOf="@+id/playbackButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -75,5 +75,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playback_button" />
+        app:layout_constraintTop_toBottomOf="@+id/playbackButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
