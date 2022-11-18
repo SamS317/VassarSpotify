@@ -3,8 +3,8 @@ package edu.vassar.cmpu203.vassarspotify.model;
 import java.util.*;
 public class SongDatabase {
 
-    List songListReturn = new ArrayList();
-    List <Song> songList = new <Song> ArrayList();
+    List<Song> songListReturn = new <Song> ArrayList<Song>();
+    List <Song> songList = new <Song> ArrayList<Song>();
     public SongDatabase(){
         songListReturn.clear();
         songList.clear();
@@ -21,40 +21,28 @@ public class SongDatabase {
         songList.add(new Song("Hello", "Beyonce"));
         songList.add(new Song("Can't Tell Me Nothing", "Kanye West"));
         songList.add(new Song("Leaving West Virginia", "Kathy Mattea"));
+        songList.add(new Song("Nez", "Nez"));
 
     }
     public List<Song> searchSong(String song){
-        this.songListReturn.clear();
+        List <Song> songList = new <Song> ArrayList<Song>();
         for (Song s: this.songList){
             if (s.songName.toUpperCase().contains(song.toUpperCase())){
-                this.songListReturn.add(s);
+                songList.add(s);
             }
         }
-        return this.songListReturn;
+        return songList;
     }
     public List<Song> searchArtist(String artist){
-        this.songListReturn.clear();
+        List <Song> songList = new <Song> ArrayList<Song>();
         for (Song s: this.songList){
             if (s.artist.toUpperCase().contains(artist.toUpperCase())){
-                this.songListReturn.add(s);
+                songList.add(s);
             }
         }
-        return this.songListReturn;
+        return songList;
     }
-    public List<Song> searchSongAndArtist(String str){
-        this.songListReturn.clear();
-        for (Song s: this.songList){
-            if (s.artist.toUpperCase().contains(str.toUpperCase())){
-                this.songListReturn.add(s);
-            }
-        }
-        for (Song s: this.songList){
-            if (s.songName.toUpperCase().contains(str.toUpperCase())){
-                this.songListReturn.add(s);
-            }
-        }
-        return this.songListReturn;
-    }
+
     public Boolean play(Song song){
         for (Song s : this.songList){
             if (s.songName.toUpperCase().equals(song.songName.toUpperCase()) && (s.artist.toUpperCase().equals(song.artist.toUpperCase()))){

@@ -4,17 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
-import edu.vassar.cmpu203.vassarspotify.view.IMainView;
 import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
 import edu.vassar.cmpu203.vassarspotify.view.LoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
@@ -24,15 +23,12 @@ import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener {
 
     ProfileDatabase pd = new ProfileDatabase();
-    Profile Connor = new Profile("Connor", "Genius");
 
     SongDatabase currentSearch = new SongDatabase();
     private MainView mainView;
 
-    //search_fragment sfragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        pd.addProfile(Connor);
         super.onCreate(savedInstanceState);
 
 
@@ -46,24 +42,22 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
-        List<Song> returnList = null;
-        List<Song> returnList2;
-        List<Song> returnList3;
         if (songCheck && !artistCheck) {
-            returnList = this.currentSearch.searchSong(searchText);
+            sfragment.updateSearchDisplay(this.currentSearch.searchSong(searchText));
         }
         else if (artistCheck && !songCheck){
-            returnList = this.currentSearch.searchArtist(searchText);
+            sfragment.updateSearchDisplay(this.currentSearch.searchArtist(searchText));
         }
         else{
-            returnList = this.currentSearch.searchSongAndArtist(searchText);
+            List<Song> tempList = this.currentSearch.searchArtist(searchText);
+            tempList.addAll(currentSearch.searchSong(searchText));
 
+            Set<Song> songSet = new HashSet<Song>(tempList);
+            List<Song> returnList = new ArrayList<Song>(songSet);
 
-
-            //returnList.addAll(returnList2);
+            sfragment.updateSearchDisplay(returnList);
         }
 
-        sfragment.updateSearchDisplay(returnList);
 
     }
 
@@ -93,7 +87,4 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         lfragment.successfullyLoggedIn(true);
         this.mainView.displayFragment(new SearchFragment(this),true, "search");
     }
-
-
-
 }

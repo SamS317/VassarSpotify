@@ -3,10 +3,12 @@ package edu.vassar.cmpu203.vassarspotify.model;
 import java.util.*;
 
 public class ProfileDatabase {
-    List profiles = new ArrayList();
+    List<Profile> profiles = new <Profile> ArrayList<Profile>();
 
     public ProfileDatabase(){
+        profiles.add(new Profile("Connor","Genius") );
     }
+
     public boolean addProfile (Profile p){
         profiles.add(p);
         return true;
@@ -17,4 +19,3 @@ public class ProfileDatabase {
 
 
 }
-
