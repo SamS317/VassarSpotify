@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import edu.vassar.cmpu203.vassarspotify.model.History;
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Queue;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     private MainView mainView;
 
     Queue q = new Queue();
+    History h = new History();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
