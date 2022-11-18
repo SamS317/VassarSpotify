@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.vassar.cmpu203.vassarspotify.R;
-import edu.vassar.cmpu203.vassarspotify.controller.MainActivity;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentPlayScreenBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
@@ -92,7 +91,5 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 PlayScreenFragment.this.listener.nextSong(s);
             }
         });
-
-
     }
 }

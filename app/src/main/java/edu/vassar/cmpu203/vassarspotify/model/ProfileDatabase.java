@@ -16,6 +16,4 @@ public class ProfileDatabase {
     public List<Profile> getProfiles (){
         return profiles;
     }
-
-
 }

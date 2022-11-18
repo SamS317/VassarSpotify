@@ -61,4 +61,3 @@ public class SongDatabase {
         return new Song("Take my breath away", "Berlin");
     }
 }
-

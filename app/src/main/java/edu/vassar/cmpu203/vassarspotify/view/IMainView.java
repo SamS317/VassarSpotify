@@ -8,6 +8,4 @@ public interface IMainView {
     public View getRootView();
 
     public void displayFragment(Fragment fragment, boolean allowBack, String name);
-
-
 }

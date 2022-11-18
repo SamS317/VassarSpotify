@@ -1,5 +1,7 @@
 package edu.vassar.cmpu203.vassarspotify.model;
 
+import androidx.annotation.NonNull;
+
 public class Profile {
     String username;
     String password;
@@ -19,11 +21,8 @@ public class Profile {
 
     }
 
+    @NonNull
     public String toString(){
         return "" + this.username;
     }
-
 }
-
-
-
