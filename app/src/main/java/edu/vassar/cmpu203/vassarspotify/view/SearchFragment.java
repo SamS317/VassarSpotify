@@ -85,8 +85,8 @@ public class SearchFragment extends Fragment implements ISearchFragment{
         tl.removeAllViews();
         for (Song x: sList){
             TableRow row = new TableRow(SearchFragment.this.getContext());
-            TextView tv1 = new TextView(SearchFragment.this.getContext());
-            TextView tv2 = new TextView(SearchFragment.this.getContext());
+            //TextView tv1 = new TextView(SearchFragment.this.getContext());
+            //TextView tv2 = new TextView(SearchFragment.this.getContext());
 //            TextView tv3 = new TextView(SearchFragment.this.getContext());
 //            TextView tv4 = new TextView(SearchFragment.this.getContext());
 //            TextView tv5 = new TextView(SearchFragment.this.getContext());
@@ -94,14 +94,14 @@ public class SearchFragment extends Fragment implements ISearchFragment{
             Button queue = new Button(SearchFragment.this.getContext());
             Button playlist = new Button(SearchFragment.this.getContext());
 
-            play.setText("play");
+            play.setText(String.format("%s\n%s", x.getSongName(), x.getArtist()));
             queue.setText("Queue");
             playlist.setText("Playlist");
-            tv1.setText(x.getSongName());
-            tv2.setText(x.getArtist());
+            //tv1.setText(x.getSongName());
+            //tv2.setText(x.getArtist());
 
-            row.addView(tv1);
-            row.addView(tv2);
+            //row.addView(tv1);
+           // row.addView(tv2);
             row.addView(play);
             row.addView(queue);
             row.addView(playlist);
