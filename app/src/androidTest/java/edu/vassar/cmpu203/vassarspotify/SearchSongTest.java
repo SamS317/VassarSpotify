@@ -16,7 +16,7 @@ import edu.vassar.cmpu203.vassarspotify.controller.MainActivity;
 
 
 @RunWith(AndroidJUnit4.class)
-public class searchSongTest {
+public class SearchSongTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
