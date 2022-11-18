@@ -47,20 +47,16 @@
 >
 > (1) User presses button marked "play" next to a song in the list of songs
 >
-> (2.a) System gets song id from button
+> (2) System plays songs audio
 >
-> (2.b) System finds audio file in database
->
-> (2.c) System plays audio
->
-> (2.d) System opens up "play" screen
+> (3) System opens up "play" screen
 >> Play screen will have other features such as skip, like, or add to playlist
 >
-> (3) User enjoys the music and has a pleasant day
+> (4) User enjoys the music and has a pleasant day
 
 
 ### Extensions
-> 2.b.a => System can't find song in audio database
+> 2.a => System can't find song in audio database
 >> System outputs an error message to the screen
 
 ### Special requirements
