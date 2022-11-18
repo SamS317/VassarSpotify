@@ -70,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
 
+    @Override
+    public void changePlayScreenWSong(Song s, SearchFragment searchFragment) {
+        q.addSong(s);
+        mainView.displayFragment(new PlayScreenFragment(this), false, "play");
+    }
+
     public Song getSongFromModel(String songName, String artistName){
         return sd.getSong(songName, artistName);
     }

@@ -11,10 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentPlayScreenBinding;
+import edu.vassar.cmpu203.vassarspotify.model.Queue;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
 public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
+
+    Queue q = new Queue();
 
     FragmentPlayScreenBinding binding;
     Listener listener;
@@ -41,10 +44,17 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
     }
 
 
+    public void changeTextValues(Song s){
+        PlayScreenFragment.this.binding.songNamePS.setText(s.getSongName());
+        PlayScreenFragment.this.binding.artistNamePS.setText(s.getArtist());
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
 
         //Play and pause button
         this.binding.playbackButton.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +64,8 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 String artistNameString = (PlayScreenFragment.this.binding.artistNamePS.getText()).toString();
 
                 Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+
+                changeTextValues(s);
 
                 PlayScreenFragment.this.listener.playMusic(s);
             }

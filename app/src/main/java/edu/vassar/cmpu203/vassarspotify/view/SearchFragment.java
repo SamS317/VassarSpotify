@@ -25,6 +25,7 @@ import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 public class SearchFragment extends Fragment implements ISearchFragment{
 
+    PlayScreenFragment PSFragment;
     FragmentSearchFragmentBinding binding;
     Listener listener;
 
@@ -113,6 +114,13 @@ public class SearchFragment extends Fragment implements ISearchFragment{
             row.addView(playlist);
 
             tl.addView(row);
+
+            play.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SearchFragment.this.listener.changePlayScreenWSong(x, SearchFragment.this);
+                }
+            });
 
 //            TableRow tableRow = new TableRow(this.tableLayout.getContext());
 //            TextView textView = new TextView(tableRow.getContext());
