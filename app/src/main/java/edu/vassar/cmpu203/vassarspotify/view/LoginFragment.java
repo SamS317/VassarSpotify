@@ -63,7 +63,8 @@ public class LoginFragment extends Fragment implements ILoginFragment {
 
     public void successfullyLoggedIn(boolean worked){
         if (!worked) {
-            Snackbar.make(getView(), "Login incorrect", Snackbar.LENGTH_INDEFINITE).show();
+            LoginFragment.this.binding.logInGate.setText("Incorrect password or username");
+            //Snackbar.make(getView(), "Login incorrect", Snackbar.LENGTH_INDEFINITE).show();
         //MainView.displayFragment(new SearchFragment(this),true, "search");
         }
 
