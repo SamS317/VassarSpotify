@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Queue {
     List<Song> queue = new <Song>ArrayList<Song>();
-    int counter = 0;
 
     public Queue(){}
 

@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     @Override
     public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
 
+        //Gets rid of the keyboard after a song is searched
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
