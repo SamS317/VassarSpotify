@@ -93,7 +93,10 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
                 Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
 
-                PlayScreenFragment.this.listener.nextSong(s);
+                Song sNext = PlayScreenFragment.this.listener.nextSong(s);
+
+                PlayScreenFragment.this.binding.songNamePS.setText(sNext.getSongName());
+                PlayScreenFragment.this.binding.artistNamePS.setText(sNext.getArtist());
             }
         });
 

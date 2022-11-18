@@ -122,6 +122,13 @@ public class SearchFragment extends Fragment implements ISearchFragment{
                 }
             });
 
+            queue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SearchFragment.this.listener.addSongToQueue(x);
+                }
+            });
+
 //            TableRow tableRow = new TableRow(this.tableLayout.getContext());
 //            TextView textView = new TextView(tableRow.getContext());
 //            textView.setText(x.toString());

@@ -17,5 +17,6 @@ public interface ISearchFragment {
         void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment);
         void changePlayScreen(SearchFragment searchFragment);
         void changePlayScreenWSong(Song s, SearchFragment searchFragment);
+        boolean addSongToQueue(Song s);
     }
 }

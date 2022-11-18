@@ -15,7 +15,9 @@ public class Queue {
 
     public Song getNext(Song s){
         try{
-            return queue.get( queue.indexOf(s) + 1);
+            Song returnSong = queue.get( queue.indexOf(s) + 1);
+            removeFromQueue(s);
+            return returnSong;
         } catch(Exception e){
             return s;
         }
@@ -35,10 +37,15 @@ public class Queue {
         }catch(Exception e){
             return (new Song("Take my breath away","Berlin"));
         }
-
     }
 
     public void clearQueue(){
         queue.clear();
+    }
+
+    public void removeFromQueue(Song s){
+        try{
+            queue.remove( queue.get( queue.indexOf(s)) );
+        } catch(Exception ignored){}
     }
 }

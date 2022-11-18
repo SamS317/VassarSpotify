@@ -116,17 +116,13 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         return q.getCurrentSong();
     }
 
-    public boolean playMusic(Song s){
-        return sd.play(s);
-    }
+    public boolean playMusic(Song s){ return sd.play(s); }
 
-    public Song nextSong(Song s){
-        return q.getNext(s);
-    }
+    public Song nextSong(Song s){ return q.getNext(s); }
 
-    public Song previousSong(Song s){
-        return q.getPrevious(s);
-    }
+    public Song previousSong(Song s){ return q.getPrevious(s); }
+
+    public boolean addSongToQueue(Song s){ return q.addSong(s); }
 
     @Override
     public void changeToSearchScreen(PlayScreenFragment PSFragment) {
