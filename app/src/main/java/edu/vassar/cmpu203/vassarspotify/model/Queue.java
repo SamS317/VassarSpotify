@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Queue {
     List<Song> queue = new <Song>ArrayList<Song>();
+    int counter = 0;
 
     public Queue(){}
 
@@ -27,5 +28,18 @@ public class Queue {
         } catch(Exception e){
             return s;
         }
+    }
+
+    public Song getCurrentSong(){
+        try{
+            return queue.get(0);
+        }catch(Exception e){
+            return (new Song("Take my breath away","Berlin"));
+        }
+
+    }
+
+    public void clearQueue(){
+        queue.clear();
     }
 }

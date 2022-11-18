@@ -17,8 +17,6 @@ import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
-    Queue q = new Queue();
-
     FragmentPlayScreenBinding binding;
     Listener listener;
 
@@ -54,7 +52,9 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        Song s = PlayScreenFragment.this.listener.getCurrentSong();
+        PlayScreenFragment.this.binding.songNamePS.setText(s.getSongName());
+        PlayScreenFragment.this.binding.artistNamePS.setText(s.getArtist());
 
         //Play and pause button
         this.binding.playbackButton.setOnClickListener(new View.OnClickListener() {

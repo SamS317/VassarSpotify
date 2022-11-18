@@ -9,7 +9,7 @@ public interface IPlayScreenFragment {
         Song nextSong(Song s);
         Song previousSong(Song s);
         void changeToSearchScreen(PlayScreenFragment PSFragment);
-
+        Song getCurrentSong();
     }
     void changeTextValues(Song s);
 }

@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void changePlayScreenWSong(Song s, SearchFragment searchFragment) {
+        q.clearQueue();
         q.addSong(s);
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
@@ -97,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
         lfragment.successfullyLoggedIn(hold);
 
+    }
+
+    public Song getCurrentSong(){
+        return q.getCurrentSong();
     }
 
     public boolean playMusic(Song s){
