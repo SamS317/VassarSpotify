@@ -19,6 +19,7 @@ import edu.vassar.cmpu203.vassarspotify.view.IPlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
 import edu.vassar.cmpu203.vassarspotify.view.LoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
+import edu.vassar.cmpu203.vassarspotify.view.PlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
@@ -64,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         }
     }
 
+    @Override
+    public void changePlayScreen(SearchFragment searchFragment) {
+        mainView.displayFragment(new PlayScreenFragment(this), false, "play");
+    }
+
     public Song getSongFromModel(String songName, String artistName){
         return sd.getSong(songName, artistName);
     }
@@ -97,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     public Song previousSong(Song s){
         return q.getPrevious(s);
+    }
+
+    @Override
+    public void changeToSearchScreen(PlayScreenFragment PSFragment) {
+        mainView.displayFragment(new SearchFragment(this), false, "play");
     }
 
     @Override

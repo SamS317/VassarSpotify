@@ -48,12 +48,9 @@ public class SearchFragment extends Fragment implements ISearchFragment{
         this.binding.searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //extract searchText
                 Editable searchTextE = SearchFragment.this.binding.searchText.getText();
                 String searchText = searchTextE.toString();
-
-
 
                 //extract radio buttons checked
                 boolean songChoiceBool = SearchFragment.this.binding.songChoiceButtonId.isChecked();
@@ -67,6 +64,15 @@ public class SearchFragment extends Fragment implements ISearchFragment{
 
             }
         });
+
+        this.binding.changeToPlayScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //delegate this to controller
+                SearchFragment.this.listener.changePlayScreen(SearchFragment.this);
+            }
+        });
+
     }
 
     @Override

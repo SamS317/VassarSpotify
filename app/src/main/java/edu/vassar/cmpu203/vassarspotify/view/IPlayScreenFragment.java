@@ -8,5 +8,6 @@ public interface IPlayScreenFragment {
         boolean playMusic(Song s);
         Song nextSong(Song s);
         Song previousSong(Song s);
+        void changeToSearchScreen(PlayScreenFragment PSFragment);
     }
 }
