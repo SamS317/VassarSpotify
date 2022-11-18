@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 
-public class profileDatabaseTest {
+public class ProfileDatabaseTest {
     ProfileDatabase pd = new ProfileDatabase();
 
     @Test

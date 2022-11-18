@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
-public class songTest {
+public class SongTest {
     Song s = new Song("Dream On", "Aerosmith");
 
     @Test
