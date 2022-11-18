@@ -11,6 +11,7 @@ import java.util.Set;
 
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
+import edu.vassar.cmpu203.vassarspotify.model.Queue;
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
@@ -24,8 +25,10 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     ProfileDatabase pd = new ProfileDatabase();
 
-    SongDatabase currentSearch = new SongDatabase();
+    SongDatabase sd = new SongDatabase();
     private MainView mainView;
+
+    Queue q = new Queue();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +47,14 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     @Override
     public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
         if (songCheck && !artistCheck) {
-            sfragment.updateSearchDisplay(this.currentSearch.searchSong(searchText));
+            sfragment.updateSearchDisplay(this.sd.searchSong(searchText));
         }
         else if (artistCheck && !songCheck){
-            sfragment.updateSearchDisplay(this.currentSearch.searchArtist(searchText));
+            sfragment.updateSearchDisplay(this.sd.searchArtist(searchText));
         }
         else{
-            List<Song> tempList = this.currentSearch.searchArtist(searchText);
-            tempList.addAll(currentSearch.searchSong(searchText));
+            List<Song> tempList = this.sd.searchArtist(searchText);
+            tempList.addAll(sd.searchSong(searchText));
 
             Set<Song> songSet = new HashSet<Song>(tempList);
             List<Song> returnList = new ArrayList<Song>(songSet);
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     }
 
     public Song getSongFromModel(String songName, String artistName){
-        return currentSearch.getSong(songName, artistName);
+        return sd.getSong(songName, artistName);
     }
 
     @Override
@@ -83,6 +86,18 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
         lfragment.successfullyLoggedIn(hold);
 
+    }
+
+    public boolean playMusic(Song s){
+        return sd.play(s);
+    }
+
+    public Song nextSong(Song s){
+        return q.getNext(s);
+    }
+
+    public Song previousSong(Song s){
+        return q.getPrevious(s);
     }
 
     @Override

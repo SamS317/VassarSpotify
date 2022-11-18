@@ -53,6 +53,7 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
             @Override
             public void onClick(View v) {
                 Song s = getSongFromScreen();
+                PlayScreenFragment.this.listener.playMusic(s);
             }
         });
 
@@ -60,7 +61,8 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
         this.binding.replayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Song s = getSongFromScreen();
+                PlayScreenFragment.this.listener.previousSong(s);
             }
         });
 
@@ -68,7 +70,8 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
         this.binding.skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Song s = getSongFromScreen();
+                PlayScreenFragment.this.listener.nextSong(s);
             }
         });
 
