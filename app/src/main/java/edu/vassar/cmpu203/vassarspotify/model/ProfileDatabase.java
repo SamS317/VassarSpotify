@@ -10,6 +10,13 @@ public class ProfileDatabase {
     }
 
     public boolean addProfile (Profile p){
+        /**
+         * Adds a profile to the current profile database
+         * @param p The profile wanting to be added to the profile database
+         * @return  Returns true no matter what
+         *          (Once database is added we will have to update this
+         *          code in order to check if it was really added to the database)
+         */
         profiles.add(p);
         return true;
     }

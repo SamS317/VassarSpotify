@@ -18,6 +18,7 @@ import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Queue;
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
+import edu.vassar.cmpu203.vassarspotify.view.IHomeFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.IPlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
@@ -27,8 +28,10 @@ import edu.vassar.cmpu203.vassarspotify.view.PlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
-public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener {
-
+public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener, IHomeFragment.Listener {
+    /***
+     * The "Controller" class in our Model-View-Controller program
+     */
     ProfileDatabase pd = new ProfileDatabase();
 
     SongDatabase sd = new SongDatabase();
