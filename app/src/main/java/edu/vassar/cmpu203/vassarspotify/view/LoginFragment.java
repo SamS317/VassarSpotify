@@ -54,6 +54,13 @@ public class LoginFragment extends Fragment implements ILoginFragment {
         });
     }
 
+    /**
+     * Provides a way to show the user if their password didn't match the username
+     *
+     * If "worked" is false the user will see a message above the username input
+     * that says "Incorrect password or username"
+     * @param worked True if the password matches the username
+     */
     public void successfullyLoggedIn(boolean worked){
         if (!worked) {
             LoginFragment.this.binding.logInGate.setText("Incorrect password or username");
