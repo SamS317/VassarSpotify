@@ -24,17 +24,8 @@ public class SearchSongTest {
     @Test
     public void searchSongAndResultsTest(){
         //Logs in first
-        // SIDE NOTE -> I tried forever to make the logging in part a method as i knew I would be testing this a lot
-        ViewInteraction usernameVI = Espresso.onView(ViewMatchers.withId(R.id.username));
-        usernameVI.perform(ViewActions.typeText("Connor"));
-
-        ViewInteraction passwordVI = Espresso.onView(ViewMatchers.withId(R.id.password));
-        passwordVI.perform(ViewActions.typeText("Genius"));
-
-        Espresso.closeSoftKeyboard();
-
-        ViewInteraction loginButtonVI = Espresso.onView(ViewMatchers.withId(R.id.logInButton));
-        loginButtonVI.perform(ViewActions.click());
+        LoginTest lg = new LoginTest();
+        lg.logIn("Connor","Genius");
 
 
         //Checks searching for a song gives results
@@ -43,8 +34,6 @@ public class SearchSongTest {
 
         searchText.perform(ViewActions.typeText("Over"));
 
-        searchText.check(ViewAssertions.matches(ViewMatchers.withText("Over")));
-
         //Only look up songs
         ViewInteraction songChoiceButtonVI = Espresso.onView(ViewMatchers.withId(R.id.songChoiceButtonId));
         songChoiceButtonVI.perform(ViewActions.click());
@@ -52,8 +41,13 @@ public class SearchSongTest {
         ViewInteraction searchSongButtonVI = Espresso.onView(ViewMatchers.withId(R.id.search_button));
         searchSongButtonVI.perform(ViewActions.click());
 
+        //Clicks the first song to bring us to the play screen
+        ViewInteraction playButton = Espresso.onView(ViewMatchers.withText("Over\nDrake"));
+        playButton.perform(ViewActions.click());
+
         //If button isn't clickable then there isn't a button and therefore the search result didn't work
-        Espresso.onView(ViewMatchers.withText("play")).check(ViewAssertions.matches(ViewMatchers.isClickable()));
+        ViewInteraction checkSongTitle = Espresso.onView(ViewMatchers.withId(R.id.song_name_PS));
+        checkSongTitle.check(ViewAssertions.matches(ViewMatchers.withText("Over")));
     }
 
 }
