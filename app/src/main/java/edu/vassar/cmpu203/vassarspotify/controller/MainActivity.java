@@ -129,8 +129,6 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         return q.getCurrentSong();
     }
 
-    public boolean playMusic(Song s){ return sd.play(s); }
-
     public Song nextSong(Song s){ return q.getNext(s); }
 
     public Song previousSong(Song s){ return q.getPrevious(s); }

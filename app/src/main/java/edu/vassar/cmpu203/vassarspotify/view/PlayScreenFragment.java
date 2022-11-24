@@ -73,8 +73,6 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                     PlayScreenFragment.this.binding.playbackButton.setText("Play");
                 }
 
-
-                PlayScreenFragment.this.listener.playMusic(s);
             }
         });
 

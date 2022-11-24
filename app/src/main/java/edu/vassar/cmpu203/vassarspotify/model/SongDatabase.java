@@ -43,15 +43,6 @@ public class SongDatabase {
         return songList;
     }
 
-    public Boolean play(Song song){
-        for (Song s : this.songList){
-            if (s.songName.toUpperCase().equals(song.songName.toUpperCase()) && (s.artist.toUpperCase().equals(song.artist.toUpperCase()))){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public Song getSong(String songName, String artistName){
         for(Song s: this.songList){
             if (s.songName.toUpperCase().equals(songName.toUpperCase()) && (s.artist.toUpperCase().equals(artistName.toUpperCase()))){
