@@ -11,10 +11,6 @@ public class Profile {
     }
     public  Profile (){}
 
-    public String getUsername(){
-        return this.username;
-    }
-
     /**
      * Provides a method of checking if the username and password matches profiles username and password
      * @param username The usernames' name to be checked against the profiles username
