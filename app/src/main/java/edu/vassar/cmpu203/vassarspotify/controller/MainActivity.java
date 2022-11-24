@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     }
 
     @Override
-    public void changePlayScreen(SearchFragment searchFragment) {
+    public void changeFromSearchToPlay(SearchFragment searchFragment) {
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
 

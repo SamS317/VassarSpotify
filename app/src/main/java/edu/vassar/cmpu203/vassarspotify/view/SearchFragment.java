@@ -67,7 +67,7 @@ public class SearchFragment extends Fragment implements ISearchFragment{
             @Override
             public void onClick(View view) {
                 //Delegate this to controller
-                SearchFragment.this.listener.changePlayScreen(SearchFragment.this);
+                SearchFragment.this.listener.changeFromSearchToPlay(SearchFragment.this);
             }
         });
 

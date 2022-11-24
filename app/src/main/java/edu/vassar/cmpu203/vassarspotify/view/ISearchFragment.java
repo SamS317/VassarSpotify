@@ -15,7 +15,7 @@ public interface ISearchFragment {
     public void updateSearchDisplay(List<Song> sList);
     interface  Listener{
         void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment);
-        void changePlayScreen(SearchFragment searchFragment);
+        void changeFromSearchToPlay(SearchFragment searchFragment);
         void changePlayScreenWSong(Song s, SearchFragment searchFragment);
         boolean addSongToQueue(Song s);
     }
