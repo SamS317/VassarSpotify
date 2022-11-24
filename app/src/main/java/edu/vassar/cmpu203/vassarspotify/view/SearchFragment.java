@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -69,7 +66,7 @@ public class SearchFragment extends Fragment implements ISearchFragment{
         this.binding.changeToPlayScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //delegate this to controller
+                //Delegate this to controller
                 SearchFragment.this.listener.changePlayScreen(SearchFragment.this);
             }
         });
@@ -82,59 +79,34 @@ public class SearchFragment extends Fragment implements ISearchFragment{
     }
 
 
-
     @Override
     public void updateSearchDisplay(List<Song> sList) {
-        Snackbar.make(getView(), "Log incorrect", Snackbar.LENGTH_INDEFINITE).dismiss();
-
-//        this.binding.searchText.setText(sList.toString());
         TableLayout tl = SearchFragment.this.binding.searchResultTable;
         tl.removeAllViews();
         for (Song x: sList){
             TableRow row = new TableRow(SearchFragment.this.getContext());
-            //TextView tv1 = new TextView(SearchFragment.this.getContext());
-            //TextView tv2 = new TextView(SearchFragment.this.getContext());
-//            TextView tv3 = new TextView(SearchFragment.this.getContext());
-//            TextView tv4 = new TextView(SearchFragment.this.getContext());
-//            TextView tv5 = new TextView(SearchFragment.this.getContext());
             Button play = new Button(SearchFragment.this.getContext());
             Button queue = new Button(SearchFragment.this.getContext());
             Button playlist = new Button(SearchFragment.this.getContext());
 
             play.setText(String.format("%s\n%s", x.getSongName(), x.getArtist()));
-            queue.setText("Queue");
-            playlist.setText("Playlist");
-            //tv1.setText(x.getSongName());
-            //tv2.setText(x.getArtist());
+            queue.setText("Add to\nQueue");
+            playlist.setText("Add to\nPlaylist");
 
-            //row.addView(tv1);
-           // row.addView(tv2);
             row.addView(play);
             row.addView(queue);
             row.addView(playlist);
 
             tl.addView(row);
 
-            play.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SearchFragment.this.listener.changePlayScreenWSong(x, SearchFragment.this);
-                }
-            });
+            //Adds listener to Play button
+            play.setOnClickListener(v -> SearchFragment.this.listener.changePlayScreenWSong(x, SearchFragment.this));
 
-            queue.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SearchFragment.this.listener.addSongToQueue(x);
-                }
-            });
+            //Adds listener to Queue button
+            queue.setOnClickListener(v -> SearchFragment.this.listener.addSongToQueue(x));
 
-//            TableRow tableRow = new TableRow(this.tableLayout.getContext());
-//            TextView textView = new TextView(tableRow.getContext());
-//            textView.setText(x.toString());
-//            tableRow.addView(textView);
-//            tableLayout.addView(tableRow);
-//            this.binding.searchResultTable.addView(tableRow);
+            //Adds listener to Playlist button (implement later)
+            //queue.setOnClickListener(v -> SearchFragment.this.listener.addSongToPlaylist(x));
         }
     }
 }
