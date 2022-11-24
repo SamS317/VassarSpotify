@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentLoginFragmentBinding;
 
 
@@ -24,7 +22,6 @@ public class LoginFragment extends Fragment implements ILoginFragment {
     public LoginFragment(Listener listener){
         this.listener = listener;
     }
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -41,22 +38,18 @@ public class LoginFragment extends Fragment implements ILoginFragment {
             @Override
             public void onClick(View view) {
                 Editable usernameE = LoginFragment.this.binding.username.getText();
-                String username = usernameE.toString();
                 Editable passwordE = LoginFragment.this.binding.password.getText();
-                String password = passwordE.toString();
 
-                LoginFragment.this.listener.LogIn(username, password, LoginFragment.this);
+                LoginFragment.this.listener.LogIn(usernameE.toString(), passwordE.toString(), LoginFragment.this);
             }
         });
         this.binding.createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Editable usernameE = LoginFragment.this.binding.username.getText();
-                String username = usernameE.toString();
                 Editable passwordE = LoginFragment.this.binding.password.getText();
-                String password = passwordE.toString();
 
-                LoginFragment.this.listener.CreateUser(username, password, LoginFragment.this);
+                LoginFragment.this.listener.CreateUser(usernameE.toString(), passwordE.toString(), LoginFragment.this);
             }
         });
     }
@@ -64,10 +57,7 @@ public class LoginFragment extends Fragment implements ILoginFragment {
     public void successfullyLoggedIn(boolean worked){
         if (!worked) {
             LoginFragment.this.binding.logInGate.setText("Incorrect password or username");
-            //Snackbar.make(getView(), "Login incorrect", Snackbar.LENGTH_INDEFINITE).show();
-        //MainView.displayFragment(new SearchFragment(this),true, "search");
         }
-
     }
     @Override
     public View getRootView() {
