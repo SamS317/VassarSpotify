@@ -34,10 +34,18 @@ import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener, IHomeFragment.Listener {
     /***
      * The "Controller" class in our Model-View-Controller program
+     *
+     * pd        => The profile database where all of the profiles are stored
+     * MPCreated => A gate that shows if a media player has been created
+     * mp        => Our current media player
+     * currSong  => The current song that is playing through media player
+     * sd        => The current song database where all the songs are stored
+     * mainView  => NOTE SAM WHAT THE HECK IS THIS NOTE
+     * q         => The queue class that holds the songs to be played next
+     * h         => The history class that holds all the songs that have been played
      */
     ProfileDatabase pd = new ProfileDatabase();
 
-    //Media player stuff
     public boolean MPCreated = false;
     MediaPlayer mp;
     Song currSong;
@@ -52,12 +60,8 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         mainView = new MainView(this);
         mainView.displayFragment(new LoginFragment(this), false, "login");
-//        mainView.displayFragment(new SearchFragment(this),true, "search");
-//        this.addItemsView = new AddItemsView(getApplicationContext(), this);
-        //mainView.displayFragment(new PlayScreenFragment(this), false, "play");
 
         setContentView(mainView.getRootView());
     }
