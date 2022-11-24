@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
 
-    public Song getSongFromModel(String songName, String artistName){
+    public Song getSongFromSongDatabase(String songName, String artistName){
         return sd.getSong(songName, artistName);
     }
 

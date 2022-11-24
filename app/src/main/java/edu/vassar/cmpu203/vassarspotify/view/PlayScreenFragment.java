@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentPlayScreenBinding;
-import edu.vassar.cmpu203.vassarspotify.model.Queue;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
@@ -33,12 +32,11 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
     }
 
 
-
     public Song getSongFromScreen(){
         String songNameString  = (PlayScreenFragment.this.binding.songNamePS.getText()).toString();
         String artistNameString = (PlayScreenFragment.this.binding.artistNamePS.getText()).toString();
 
-        return PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+        return PlayScreenFragment.this.listener.getSongFromSongDatabase(songNameString, artistNameString);
     }
 
 
@@ -63,7 +61,7 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 String songNameString  = (PlayScreenFragment.this.binding.songNamePS.getText()).toString();
                 String artistNameString = (PlayScreenFragment.this.binding.artistNamePS.getText()).toString();
 
-                Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+                Song s = PlayScreenFragment.this.listener.getSongFromSongDatabase(songNameString, artistNameString);
 
                 changeTextValues(s);
 
@@ -78,7 +76,7 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 String songNameString  = (PlayScreenFragment.this.binding.songNamePS.getText()).toString();
                 String artistNameString = (PlayScreenFragment.this.binding.artistNamePS.getText()).toString();
 
-                Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+                Song s = PlayScreenFragment.this.listener.getSongFromSongDatabase(songNameString, artistNameString);
 
                 PlayScreenFragment.this.listener.previousSong(s);
             }
@@ -91,7 +89,7 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 String songNameString  = (PlayScreenFragment.this.binding.songNamePS.getText()).toString();
                 String artistNameString = (PlayScreenFragment.this.binding.artistNamePS.getText()).toString();
 
-                Song s = PlayScreenFragment.this.listener.getSongFromModel(songNameString, artistNameString);
+                Song s = PlayScreenFragment.this.listener.getSongFromSongDatabase(songNameString, artistNameString);
 
                 Song sNext = PlayScreenFragment.this.listener.nextSong(s);
 
