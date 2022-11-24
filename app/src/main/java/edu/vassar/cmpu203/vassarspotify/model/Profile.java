@@ -2,13 +2,26 @@ package edu.vassar.cmpu203.vassarspotify.model;
 
 import androidx.annotation.NonNull;
 
+/**
+ * Provides a way to represent a user through a profile
+ */
 public class Profile {
     String username;
     String password;
+
+    /**
+     * Provides a way to make a profile with all contained information
+     * @param username The name the user wants the profile to have
+     * @param password The password the user wants the profile to have
+     */
     public Profile (String username, String password){
         this.username = username;
         this.password = password;
     }
+
+    /**
+     * Constructor of Profile
+     */
     public  Profile (){}
 
     /**
@@ -18,9 +31,7 @@ public class Profile {
      * @return boolean
      */
     public boolean checkLogin(String username, String password){
-
         return this.username.equalsIgnoreCase(username) && this.password.equals(password) ;
-
     }
 
     /**
