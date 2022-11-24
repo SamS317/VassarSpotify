@@ -26,6 +26,6 @@ public class ProfileDatabaseTest {
 
         List<Profile> profiles = pd.getProfiles();
 
-        assertEquals(profiles.get(1).getUsername(), "Sam");
+        assertEquals(profiles.get(1).toString(), "Sam");
     }
 }

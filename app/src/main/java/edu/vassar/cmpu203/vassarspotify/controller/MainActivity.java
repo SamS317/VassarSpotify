@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     public void LogIn(String username, String password, LoginFragment lfragment) {
         boolean hold = false;
         for (Profile p: pd.getProfiles()){
-            if (p.getUsername().equalsIgnoreCase(username)){
+            if (p.toString().equalsIgnoreCase(username)){
                  if (p.checkLogin(username, password)){
                      hold = true;
                 }

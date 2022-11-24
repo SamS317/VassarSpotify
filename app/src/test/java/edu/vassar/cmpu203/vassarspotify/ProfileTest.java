@@ -7,11 +7,6 @@ public class ProfileTest {
     Profile p = new Profile("username123","password123");
 
     @Test
-    void testUsername(){
-        assertEquals("username123", p.getUsername());
-    }
-
-    @Test
     void testLoggingIn(){
         assertTrue(p.checkLogin("username123", "password123"));
     }
