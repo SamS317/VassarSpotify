@@ -63,7 +63,16 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
                 Song s = PlayScreenFragment.this.listener.getSongFromSongDatabase(songNameString, artistNameString);
 
+                PlayScreenFragment.this.listener.playPauseGivenSong(PlayScreenFragment.this.getContext(), s);
+
                 changeTextValues(s);
+
+                if( PlayScreenFragment.this.listener.isSongPlaying() ){
+                    PlayScreenFragment.this.binding.playbackButton.setText("Pause");
+                }else{
+                    PlayScreenFragment.this.binding.playbackButton.setText("Play");
+                }
+
 
                 PlayScreenFragment.this.listener.playMusic(s);
             }

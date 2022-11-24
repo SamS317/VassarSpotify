@@ -1,8 +1,10 @@
 package edu.vassar.cmpu203.vassarspotify.controller;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -12,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.model.History;
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
@@ -33,6 +36,11 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
      * The "Controller" class in our Model-View-Controller program
      */
     ProfileDatabase pd = new ProfileDatabase();
+
+    //Media player stuff
+    public boolean MPCreated = false;
+    MediaPlayer mp;
+    Song currSong;
 
     SongDatabase sd = new SongDatabase();
     private MainView mainView;
@@ -132,6 +140,38 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     @Override
     public void changeToSearchScreen(PlayScreenFragment PSFragment) {
         mainView.displayFragment(new SearchFragment(this), false, "play");
+    }
+
+
+    public void playPauseGivenSong(Context context, @NonNull Song s){
+        //If we play a different song than currently playing
+        //Change currSong to new input song
+        //Reset media player has been created flag
+        //Stop current audio if there is a current audio to stop
+        if(! s.equals(currSong)){
+            currSong = s;
+            if (MPCreated){
+                mp.stop();
+            }
+            MPCreated = false;
+        }
+
+        //If the song hasn't created a media
+        if(MPCreated) {
+            if (mp.isPlaying()) {
+                mp.pause();
+            } else {
+                mp.start();
+            }
+        }else{
+            mp = MediaPlayer.create(context, R.raw.od);
+            mp.start();
+            MPCreated = true;
+        }
+    }
+
+    public boolean isSongPlaying(){
+        return mp.isPlaying();
     }
 
     @Override
