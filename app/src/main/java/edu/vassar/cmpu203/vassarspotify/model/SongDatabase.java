@@ -1,6 +1,13 @@
 package edu.vassar.cmpu203.vassarspotify.model;
 
 import java.util.*;
+
+/**
+ * Provides a method to contain all songs
+ *
+ * Later implementations will be able to communicate with a database
+ * Later implementations will not have a constructor with pre made songs
+ */
 public class SongDatabase {
 
     List<Song> songListReturn = new <Song> ArrayList<Song>();
@@ -24,6 +31,16 @@ public class SongDatabase {
         songList.add(new Song("Nez", "Nez"));
 
     }
+
+    /**
+     * Provides a way to search for a song in the current song database
+     *
+     * This method only returns the songs that match the song title with the input string best
+     *
+     * Later implementation should possibly combine searchSong and searchArtist
+     * @param song The string that will be used to search the database
+     * @return Returns a list of songs that matches the input string
+     */
     public List<Song> searchSong(String song){
         List <Song> songList = new <Song> ArrayList<Song>();
         for (Song s: this.songList){
