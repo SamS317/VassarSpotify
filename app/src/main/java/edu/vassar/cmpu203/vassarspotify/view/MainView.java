@@ -78,11 +78,11 @@ public class MainView extends Fragment implements IMainView{
     public void ignoreButtons(){
         this.binding.playButtonHome.setVisibility(View.INVISIBLE);
         this.binding.homeButton.setVisibility(View.INVISIBLE);
-        this.binding.playButtonHome.setVisibility(View.INVISIBLE);
+        this.binding.searchButton.setVisibility(View.INVISIBLE);
     }
     public void showButtons(){
         this.binding.playButtonHome.setVisibility(View.VISIBLE);
         this.binding.homeButton.setVisibility(View.VISIBLE);
-        this.binding.playButtonHome.setVisibility(View.VISIBLE);
+        this.binding.searchButton.setVisibility(View.VISIBLE);
     }
 }

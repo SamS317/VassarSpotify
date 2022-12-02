@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
         mainView = new MainView(this);
 
-//        mainView.ignoreButton();
+        mainView.ignoreButtons();
 
         mainView.displayFragment(new LoginFragment(this), false, "login");
 
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void LogIn(String username, String password, LoginFragment lfragment) {
-//        mainView.showButtons();
+        mainView.showButtons();
 
         boolean hold = false;
         for (Profile p: pd.getProfiles()){
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void CreateUser(String username, String password, LoginFragment lfragment) {
-//        mainView.showButtons();
+        mainView.showButtons();
 
         Profile p = new Profile(username, password);
         pd.addProfile(p);
