@@ -68,4 +68,8 @@ public class SongDatabase {
         }
         return new Song("Take my breath away", "Berlin");
     }
+
+    public Song getRandomSong(){
+        return new Song("Over","Drake");
+    }
 }
