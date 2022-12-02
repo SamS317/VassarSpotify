@@ -26,7 +26,6 @@ abcdaj
 Where j is the new song added
 Notice the deletion of b in the history
 
-
 */
 
 public class History {

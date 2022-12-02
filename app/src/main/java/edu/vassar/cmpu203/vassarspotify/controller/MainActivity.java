@@ -21,6 +21,7 @@ import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Queue;
 import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
+import edu.vassar.cmpu203.vassarspotify.view.HomeFragment;
 import edu.vassar.cmpu203.vassarspotify.view.IHomeFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.IPlayScreenFragment;
@@ -61,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         super.onCreate(savedInstanceState);
 
         mainView = new MainView(this);
+
+//        mainView.ignoreButton();
+
         mainView.displayFragment(new LoginFragment(this), false, "login");
 
         setContentView(mainView.getRootView());
@@ -94,6 +98,20 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         }
     }
 
+    public void displaySearchFragment(){
+        mainView.displayFragment(new SearchFragment(this), false, "play");
+    }
+
+//    public void displayHomeFragment(){
+//        mainView.displayFragment(new HomeFragment(this), false, "play");
+//    }
+
+    public void displayPlayFragment(){
+        mainView.displayFragment(new PlayScreenFragment(this), false, "play");
+    }
+
+
+
     @Override
     public void changeFromSearchToPlay(SearchFragment searchFragment) {
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
@@ -112,6 +130,8 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void LogIn(String username, String password, LoginFragment lfragment) {
+//        mainView.showButtons();
+
         boolean hold = false;
         for (Profile p: pd.getProfiles()){
             if (p.toString().equalsIgnoreCase(username)){
@@ -137,7 +157,11 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     public Song previousSong(Song s){ return q.getPrevious(s); }
 
-    public boolean addSongToQueue(Song s){ return q.addSong(s); }
+    public boolean addSongToQueue(Song s){
+
+        return q.addSong(s);
+
+    }
 
     @Override
     public void changeToSearchScreen(PlayScreenFragment PSFragment) {
@@ -178,6 +202,8 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void CreateUser(String username, String password, LoginFragment lfragment) {
+//        mainView.showButtons();
+
         Profile p = new Profile(username, password);
         pd.addProfile(p);
         lfragment.successfullyLoggedIn(true);
