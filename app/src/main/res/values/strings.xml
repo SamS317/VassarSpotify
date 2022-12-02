@@ -22,5 +22,8 @@
     <string name="songtitle">songTitle</string>
     <string name="artisttitle">artistTitle</string>
     <string name="song_name_PS">songTitle</string>
+    <string name="home">Home</string>
+    <string name="search2">search</string>
+    <string name="play2">play</string>
 
 </resources>
