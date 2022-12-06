@@ -122,12 +122,5 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
             }
         });
 
-        //to search screen button
-        this.binding.toSearchScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PlayScreenFragment.this.listener.changeToSearchScreen(PlayScreenFragment.this);
-            }
-        });
     }
 }
