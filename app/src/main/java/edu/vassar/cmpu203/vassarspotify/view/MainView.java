@@ -21,11 +21,33 @@ public class MainView extends Fragment implements IMainView{
     FragmentManager fmanager;
 
     ActivityMainBinding binding;
+    MainActivity mainActivity;
     Listener listener;
 
-    public MainView(FragmentActivity activity){
+    public MainView(FragmentActivity activity, MainActivity mainActivity){
         this.fmanager = activity.getSupportFragmentManager();
         this.binding = ActivityMainBinding.inflate(activity.getLayoutInflater());
+        this.mainActivity = mainActivity;
+
+
+        this.binding.searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainView.this.mainActivity.displaySearchFragment();
+            }
+        });
+        this.binding.homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainView.this.mainActivity.displayHomeFragment();
+            }
+        });
+        this.binding.playButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainView.this.mainActivity.displayPlayFragment();
+            }
+        });
 
     }
     @Override
@@ -39,24 +61,6 @@ public class MainView extends Fragment implements IMainView{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.binding.searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainView.this.listener.displaySearchFragment();
-            }
-        });
-        this.binding.homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainView.this.listener.displayHomeFragment();
-            }
-        });
-        this.binding.playButtonHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainView.this.listener.displayPlayFragment();
-            }
-        });
 
     }
 

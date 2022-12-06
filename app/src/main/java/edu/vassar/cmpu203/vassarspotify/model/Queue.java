@@ -16,7 +16,7 @@ public class Queue {
     public Song getNext(Song s){
         try{
             Song returnSong = queue.get( queue.indexOf(s) + 1);
-            removeFromQueue(s);
+            //removeFromQueue(s);
             return returnSong;
         } catch(Exception e){
             return s;
@@ -25,7 +25,9 @@ public class Queue {
 
     public Song getPrevious(Song s){
         try{
-            return queue.get( queue.indexOf(s) - 1);
+            Song returnSong = queue.get( queue.indexOf(s) - 1);
+            //removeFromQueue(s);
+            return returnSong;
         } catch(Exception e){
             return s;
         }

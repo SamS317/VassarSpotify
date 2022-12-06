@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import edu.vassar.cmpu203.vassarspotify.R;
@@ -24,6 +25,7 @@ import edu.vassar.cmpu203.vassarspotify.model.Song;
 import edu.vassar.cmpu203.vassarspotify.view.HomeFragment;
 import edu.vassar.cmpu203.vassarspotify.view.IHomeFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
+import edu.vassar.cmpu203.vassarspotify.view.IMainView;
 import edu.vassar.cmpu203.vassarspotify.view.IPlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
 import edu.vassar.cmpu203.vassarspotify.view.LoginFragment;
@@ -32,7 +34,7 @@ import edu.vassar.cmpu203.vassarspotify.view.PlayScreenFragment;
 import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
-public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener, IHomeFragment.Listener {
+public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener, IHomeFragment.Listener, IMainView.Listener {
     /***
      * The "Controller" class in our Model-View-Controller program
      *
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mainView = new MainView(this);
+        mainView = new MainView(this, this);
 
         mainView.ignoreButtons();
 
@@ -98,16 +100,19 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         }
     }
 
+    @Override
     public void displaySearchFragment(){
-        mainView.displayFragment(new SearchFragment(this), false, "play");
+        mainView.displayFragment(new SearchFragment(this), false, "search");
     }
 
-//    public void displayHomeFragment(){
-//        mainView.displayFragment(new HomeFragment(this), false, "play");
-//    }
+    @Override
+    public void displayHomeFragment(){
+        mainView.displayFragment(new SearchFragment(this), false, "home");
+    }
 
+    @Override
     public void displayPlayFragment(){
-        mainView.displayFragment(new PlayScreenFragment(this), false, "play");
+        mainView.displayFragment(new PlayScreenFragment(this), false, "play2");
     }
 
 
@@ -190,7 +195,12 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
                 mp.start();
             }
         }else{
-            mp = MediaPlayer.create(context, R.raw.overdrake);
+            if(Objects.equals(s.getSongName(), "Hello")){
+                mp = MediaPlayer.create(context, R.raw.helloadele);
+            }else{
+                mp = MediaPlayer.create(context, R.raw.overdrake);
+            }
+
             mp.start();
             MPCreated = true;
         }

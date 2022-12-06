@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import java.util.Objects;
+
+import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentPlayScreenBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
@@ -18,6 +22,10 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
     FragmentPlayScreenBinding binding;
     Listener listener;
+    ImageView albumCover;
+    //ImageView albumCover = new ImageView(PlayScreenFragment.this.getContext());
+
+
 
     public PlayScreenFragment(Listener listener) {
         this.listener = listener;
@@ -85,7 +93,13 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
                 Song s = PlayScreenFragment.this.listener.getSongFromSongDatabase(songNameString, artistNameString);
 
-                PlayScreenFragment.this.listener.previousSong(s);
+                Song prevSong = PlayScreenFragment.this.listener.previousSong(s);
+
+                albumCover = requireView().findViewById(R.id.imageView);
+                albumCover.setImageResource(R.drawable.overdrake);
+
+                PlayScreenFragment.this.binding.songNamePS.setText(prevSong.getSongName());
+                PlayScreenFragment.this.binding.artistNamePS.setText(prevSong.getArtist());
             }
         });
 
@@ -100,12 +114,15 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
                 Song sNext = PlayScreenFragment.this.listener.nextSong(s);
 
+                albumCover = requireView().findViewById(R.id.imageView);
+                albumCover.setImageResource(R.drawable.helloadele);
+
                 PlayScreenFragment.this.binding.songNamePS.setText(sNext.getSongName());
                 PlayScreenFragment.this.binding.artistNamePS.setText(sNext.getArtist());
             }
         });
 
-        //Skip song button
+        //to search screen button
         this.binding.toSearchScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
