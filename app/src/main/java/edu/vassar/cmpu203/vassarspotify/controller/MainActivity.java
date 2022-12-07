@@ -17,6 +17,7 @@ import java.util.Set;
 
 import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.model.History;
+import edu.vassar.cmpu203.vassarspotify.model.Playlist;
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Queue;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     Queue q = new Queue();
     History h = new History();
+    Playlist p = new Playlist();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +142,9 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
         return q.addSong(s);
 
+    }
+    public boolean addSongToPlaylist(Song s){
+        return p.addSong(s);
     }
 
 

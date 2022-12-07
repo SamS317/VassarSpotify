@@ -96,8 +96,8 @@ public class SearchFragment extends Fragment implements ISearchFragment{
             //Adds listener to Queue button
             queue.setOnClickListener(v -> SearchFragment.this.listener.addSongToQueue(x));
 
-            //Adds listener to Playlist button (implement later)
-            //playlist.setOnClickListener(v -> SearchFragment.this.listener.addSongToPlaylist(x));
+            //Adds listener to Playlist button
+            playlist.setOnClickListener(v -> SearchFragment.this.listener.addSongToPlaylist(x));
         }
     }
 }
