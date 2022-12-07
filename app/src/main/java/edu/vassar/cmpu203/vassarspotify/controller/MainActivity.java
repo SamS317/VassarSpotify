@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
      * mp        => Our current media player
      * currSong  => The current song that is playing through media player
      * sd        => The current song database where all the songs are stored
-     * mainView  => NOTE SAM WHAT THE HECK IS THIS NOTE
+     * mainView  => Main activity view class
      * q         => The queue class that holds the songs to be played next
      * h         => The history class that holds all the songs that have been played
      */
@@ -195,9 +195,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         if (hold){
             this.mainView.displayFragment(new SearchFragment(this),true, "search");
         }
-
         lfragment.successfullyLoggedIn(hold);
-
     }
 
     @Override
