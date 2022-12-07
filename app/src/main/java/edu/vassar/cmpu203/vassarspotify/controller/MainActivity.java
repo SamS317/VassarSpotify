@@ -116,12 +116,6 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     }
 
 
-
-    @Override
-    public void changeFromSearchToPlay(SearchFragment searchFragment) {
-        mainView.displayFragment(new PlayScreenFragment(this), false, "play");
-    }
-
     @Override
     public void changePlayScreenWSong(Song s, SearchFragment searchFragment) {
         q.clearQueue();
@@ -133,26 +127,6 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         return sd.getSong(songName, artistName);
     }
 
-    @Override
-    public void LogIn(String username, String password, LoginFragment lfragment) {
-        mainView.showButtons();
-
-        boolean hold = false;
-        for (Profile p: pd.getProfiles()){
-            if (p.toString().equalsIgnoreCase(username)){
-                 if (p.checkLogin(username, password)){
-                     hold = true;
-                }
-            }
-
-        }
-        if (hold){
-            this.mainView.displayFragment(new SearchFragment(this),true, "search");
-        }
-
-        lfragment.successfullyLoggedIn(hold);
-
-    }
 
     public Song getCurrentSong(){
         return q.getCurrentSong();
@@ -166,11 +140,6 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
         return q.addSong(s);
 
-    }
-
-    @Override
-    public void changeToSearchScreen(PlayScreenFragment PSFragment) {
-        mainView.displayFragment(new SearchFragment(this), false, "play");
     }
 
 
@@ -208,6 +177,27 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     public boolean isSongPlaying(){
         return mp.isPlaying();
+    }
+
+    @Override
+    public void LogIn(String username, String password, LoginFragment lfragment) {
+        mainView.showButtons();
+
+        boolean hold = false;
+        for (Profile p: pd.getProfiles()){
+            if (p.toString().equalsIgnoreCase(username)){
+                if (p.checkLogin(username, password)){
+                    hold = true;
+                }
+            }
+
+        }
+        if (hold){
+            this.mainView.displayFragment(new SearchFragment(this),true, "search");
+        }
+
+        lfragment.successfullyLoggedIn(hold);
+
     }
 
     @Override

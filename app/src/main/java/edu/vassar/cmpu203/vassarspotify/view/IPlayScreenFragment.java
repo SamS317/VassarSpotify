@@ -9,7 +9,6 @@ public interface IPlayScreenFragment {
         Song getSongFromSongDatabase(String songName, String artistName);
         Song nextSong(Song s);
         Song previousSong(Song s);
-        void changeToSearchScreen(PlayScreenFragment PSFragment);
         Song getCurrentSong();
         void playPauseGivenSong(Context context, Song s);
         boolean isSongPlaying();

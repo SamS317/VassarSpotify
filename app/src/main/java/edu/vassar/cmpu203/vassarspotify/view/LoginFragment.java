@@ -46,10 +46,17 @@ public class LoginFragment extends Fragment implements ILoginFragment {
         this.binding.createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Editable usernameE = LoginFragment.this.binding.username.getText();
-                Editable passwordE = LoginFragment.this.binding.password.getText();
+                String usernameE = LoginFragment.this.binding.username.getText().toString();
+                String passwordE = LoginFragment.this.binding.password.getText().toString();
 
-                LoginFragment.this.listener.CreateUser(usernameE.toString(), passwordE.toString(), LoginFragment.this);
+//                if( usernameE.length() <= 3 || passwordE.length() <= 3 ){
+//                    LoginFragment.this.binding.logInGate.setText("Please input a username and password...and maybe get a brain for christmas");
+//                    LoginFragment.this.binding.logInGate.setTextSize(40);
+//                } else{
+//                    LoginFragment.this.listener.CreateUser(usernameE, passwordE, LoginFragment.this);
+//                }
+
+                LoginFragment.this.listener.CreateUser(usernameE, passwordE, LoginFragment.this);
             }
         });
     }
