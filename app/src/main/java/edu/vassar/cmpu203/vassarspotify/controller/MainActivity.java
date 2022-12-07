@@ -26,17 +26,21 @@ import edu.vassar.cmpu203.vassarspotify.model.SongDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 import edu.vassar.cmpu203.vassarspotify.view.HomeFragment;
 import edu.vassar.cmpu203.vassarspotify.view.IHomeFragment;
+import edu.vassar.cmpu203.vassarspotify.view.IListPlaylistFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ILoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.IMainView;
 import edu.vassar.cmpu203.vassarspotify.view.IPlayScreenFragment;
+import edu.vassar.cmpu203.vassarspotify.view.IPlaylistFragment;
 import edu.vassar.cmpu203.vassarspotify.view.ISearchFragment;
+import edu.vassar.cmpu203.vassarspotify.view.ListPlaylistFragment;
 import edu.vassar.cmpu203.vassarspotify.view.LoginFragment;
 import edu.vassar.cmpu203.vassarspotify.view.MainView;
 import edu.vassar.cmpu203.vassarspotify.view.PlayScreenFragment;
+import edu.vassar.cmpu203.vassarspotify.view.PlaylistFragment;
 import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 
 
-public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener, IHomeFragment.Listener, IMainView.Listener {
+public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener, IHomeFragment.Listener, IMainView.Listener, IPlaylistFragment.Listener, IListPlaylistFragment.Listener {
     /***
      * The "Controller" class in our Model-View-Controller program
      *
@@ -128,6 +132,13 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
 
+    @Override
+    public void changePlayScreenWSong(Song s, PlaylistFragment playlistFragment) {
+        q.clearQueue();
+        q.addSong(s);
+        mainView.displayFragment(new PlayScreenFragment(this), false, "play");
+    }
+
     public Song getSongFromSongDatabase(String songName, String artistName){
         return sd.getSong(songName, artistName);
     }
@@ -147,8 +158,14 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     }
 
-    public boolean addSongToPlaylist(Song s){
-        return p.addSong(s);
+    @Override
+    public boolean deleteSong(Song s) {
+        return false;
+    }
+
+    public void addSongToPlaylistHelper(Song s){
+
+        mainView.displayFragment(new ListPlaylistFragment(this, s), false, "play");;
     }
 
     @Override
@@ -156,16 +173,44 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         return pf.getUsernameText();
     }
 
+    public String getPlaylistName2(Playlist playlist){
+        return playlist.getName();
+    }
+    public List<Song> getCurrentPlaylist(String name){
+        List<Playlist> temp = pl.getPlaylists();
+        for (Playlist plist: temp){
+            if (plist.getName() == name){
+                return plist.getPlaylist();
+            }
+        }
+        return null;
+    }
     public boolean addPlaylist(String s) {
         return pl.addPlaylist(new Playlist(s));
     }
     public List<Playlist> getPlaylists(){
         return pl.getPlaylists();
     }
+
+    @Override
+    public void addToPlaylist(Playlist playlist, Song s) {
+        playlist.addSong(s);
+    }
+
     public String getPlaylistName(Playlist playlist){
         return p.getPlaylistName(playlist);
     }
+    public void displayPlaylistFragment(String name){
+        List<Playlist> temp = pl.getPlaylists();
+        Playlist p1 = null;
+        for (Playlist plist: temp){
+            if (plist.getName() == name){
+                p1 = plist;
+            }
+        }
+        mainView.displayFragment(new PlaylistFragment(this, p1), false, "play");
 
+    }
 
     public void playPauseGivenSong(Context context, @NonNull Song s){
         //If we play a different song than currently playing

@@ -28,5 +28,8 @@
     <string name="name">NAME</string>
     <string name="addplaylist">addPlaylist</string>
     <string name="playlistname">playListName</string>
+    <string name="edit">edit</string>
+    <string name="playlistname2">playListname2</string>
+    <string name="choose_a_playlist">Choose A Playlist</string>
 
 </resources>

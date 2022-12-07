@@ -10,5 +10,6 @@ public interface IHomeFragment {
         boolean addPlaylist(String s);
         List<Playlist> getPlaylists();
         String getPlaylistName(Playlist playlist);
+        void displayPlaylistFragment(String name);
     }
 }

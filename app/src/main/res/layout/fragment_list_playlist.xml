@@ -2,31 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/playlistFragment"
+    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.PlaylistFragment" >
+    tools:context=".view.ListPlaylistFragment">
 
     <TextView
-        android:id="@+id/playlistName2"
+        android:id="@+id/chooseButtonlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/playlistname2"
+        android:text="@string/choose_a_playlist"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06999999" />
+        app:layout_constraintVertical_bias="0.16000003" />
 
     <TableLayout
-        android:id="@+id/playlistTable2"
-        android:layout_width="417dp"
-        android:layout_height="529dp"
+        android:id="@+id/listPlaylistTable"
+        android:layout_width="409dp"
+        android:layout_height="596dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playlistName2">
+        app:layout_constraintTop_toBottomOf="@+id/chooseButtonlist">
 
         <TableRow
             android:layout_width="match_parent"
@@ -44,15 +44,4 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </TableLayout>
-
-    <Button
-        android:id="@+id/editButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:text="@string/edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playlistTable2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

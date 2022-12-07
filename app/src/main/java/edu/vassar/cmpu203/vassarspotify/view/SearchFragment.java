@@ -22,9 +22,10 @@ import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 public class SearchFragment extends Fragment implements ISearchFragment{
 
-    PlayScreenFragment PSFragment;
+//    PlayScreenFragment PSFragment;
     FragmentSearchFragmentBinding binding;
     Listener listener;
+    ListPlaylistFragment listPlaylistFragment = new ListPlaylistFragment();
 
     public SearchFragment(Listener listener) {
         this.listener = listener;
@@ -97,7 +98,7 @@ public class SearchFragment extends Fragment implements ISearchFragment{
             queue.setOnClickListener(v -> SearchFragment.this.listener.addSongToQueue(x));
 
             //Adds listener to Playlist button
-            playlist.setOnClickListener(v -> SearchFragment.this.listener.addSongToPlaylist(x));
+            playlist.setOnClickListener(v -> SearchFragment.this.listener.addSongToPlaylistHelper(x));
         }
     }
 }

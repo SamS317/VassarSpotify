@@ -14,6 +14,11 @@ public class Playlist {
         playlist.add(s);
         return true;
     }
+
+    public String getName() {
+        return name;
+    }
+
     public Song getNext(Song s){
         try{
             Song returnSong = playlist.get( playlist.indexOf(s) + 1);
@@ -26,7 +31,6 @@ public class Playlist {
     public Song getPrevious(Song s){
         try{
             Song returnSong = playlist.get( playlist.indexOf(s) - 1);
-            //removeFromQueue(s);
             return returnSong;
         } catch(Exception e){
             return s;

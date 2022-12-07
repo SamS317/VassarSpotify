@@ -50,7 +50,8 @@ public class HomeFragment extends Fragment implements IHomeFragment{
 
             row.addView(playlistButton);
             t1.addView(row);
-
+            playlistButton.setOnClickListener(v -> HomeFragment.this.listener.displayPlaylistFragment(HomeFragment.this.listener.getPlaylistName(p)));
         }
+
     }
 }
