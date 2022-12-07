@@ -12,6 +12,7 @@ public interface IPlaylistFragment {
         void changePlayScreenWSong(Song s, PlaylistFragment playlistFragment);
         boolean addSongToQueue(Song s);
         boolean deleteSong(Song s);
+//        void refreshPlaylistFragment(Playlist playlist);
 
     }
 }

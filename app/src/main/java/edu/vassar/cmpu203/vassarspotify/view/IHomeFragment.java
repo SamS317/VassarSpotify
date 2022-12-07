@@ -11,5 +11,7 @@ public interface IHomeFragment {
         List<Playlist> getPlaylists();
         String getPlaylistName(Playlist playlist);
         void displayPlaylistFragment(String name);
+        void refreshPlaylistFragment();
+
     }
 }

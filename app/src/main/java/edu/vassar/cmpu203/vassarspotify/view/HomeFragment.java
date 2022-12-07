@@ -38,12 +38,15 @@ public class HomeFragment extends Fragment implements IHomeFragment{
             public void onClick(View view) {
                 String playlistName = HomeFragment.this.binding.playListName.getText().toString();
                 HomeFragment.this.listener.addPlaylist(playlistName);
+                HomeFragment.this.listener.refreshPlaylistFragment();
+
             }
         });
         this.binding.usernameHome.setText(HomeFragment.this.listener.getUsername());
         TableLayout t1 = HomeFragment.this.binding.playListTable;
         t1.removeAllViews();
         for (Playlist p: HomeFragment.this.listener.getPlaylists() ){
+
             TableRow row = new TableRow(HomeFragment.this.getContext());
             Button playlistButton = new Button(HomeFragment.this.getContext());
             playlistButton.setText(HomeFragment.this.listener.getPlaylistName(p));

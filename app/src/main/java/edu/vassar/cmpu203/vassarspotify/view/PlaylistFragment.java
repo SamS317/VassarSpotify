@@ -47,6 +47,7 @@ public class PlaylistFragment extends Fragment implements IPlaylistFragment {
         TableLayout t1 = PlaylistFragment.this.binding.playlistTable2;
         t1.removeAllViews();
         for (Song s: PlaylistFragment.this.listener.getCurrentPlaylist(PlaylistFragment.this.listener.getPlaylistName2(playlist))){
+//            PlaylistFragment.this.listener.refreshPlaylistFragment(playlist);
             TableRow row = new TableRow(PlaylistFragment.this.getContext());
             Button play = new Button(PlaylistFragment.this.getContext());
             Button delete = new Button(PlaylistFragment.this.getContext());
