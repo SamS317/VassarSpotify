@@ -25,5 +25,8 @@
     <string name="home">Home</string>
     <string name="search2">search</string>
     <string name="play2">play</string>
+    <string name="name">NAME</string>
+    <string name="addplaylist">addPlaylist</string>
+    <string name="playlistname">playListName</string>
 
 </resources>

@@ -18,6 +18,7 @@ import java.util.Set;
 import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.model.History;
 import edu.vassar.cmpu203.vassarspotify.model.Playlist;
+import edu.vassar.cmpu203.vassarspotify.model.PlaylistDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
 import edu.vassar.cmpu203.vassarspotify.model.ProfileDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Queue;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     Queue q = new Queue();
     History h = new History();
     Playlist p = new Playlist();
+    Profile pf = new Profile();
+    PlaylistDatabase pl = new PlaylistDatabase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void displayHomeFragment(){
-        mainView.displayFragment(new SearchFragment(this), false, "home");
+        mainView.displayFragment(new HomeFragment(this), false, "home");
     }
 
     @Override
@@ -143,8 +146,24 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         return q.addSong(s);
 
     }
+
     public boolean addSongToPlaylist(Song s){
         return p.addSong(s);
+    }
+
+    @Override
+    public String getUsername(){
+        return pf.getUsernameText();
+    }
+
+    public boolean addPlaylist(String s) {
+        return pl.addPlaylist(new Playlist(s));
+    }
+    public List<Playlist> getPlaylists(){
+        return pl.getPlaylists();
+    }
+    public String getPlaylistName(Playlist playlist){
+        return p.getPlaylistName(playlist);
     }
 
 
@@ -183,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     public boolean isSongPlaying(){
         return mp.isPlaying();
     }
-
+//    public List<Song> getPlaylists
     @Override
     public void LogIn(String username, String password, LoginFragment lfragment) {
         mainView.showButtons();
@@ -193,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             if (p.toString().equalsIgnoreCase(username)){
                 if (p.checkLogin(username, password)){
                     hold = true;
+                    pf = p;
                 }
             }
 

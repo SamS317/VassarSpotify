@@ -6,6 +6,8 @@ import java.util.List;
 public class Playlist {
     List<Song> playlist = new <Song>ArrayList<Song>();
 
+    String name;
+    public Playlist(String name){this.name = name;}
     public Playlist(){}
 
     public boolean addSong(Song s){
@@ -30,6 +32,9 @@ public class Playlist {
             return s;
         }
     }
+    public List<Song> getPlaylist(){
+        return this.playlist;
+    }
     public Song getCurrentSong(){
         try{
             return playlist.get(0);
@@ -39,6 +44,9 @@ public class Playlist {
     }
     public void clearPlaylist(){playlist.clear();}
 
+    public String getPlaylistName(Playlist playlist){
+        return playlist.name;
+    }
     public void removeFromPlaylist(Song s){
         try {
 //            playlist.remove(playlist.get(playlist.indexOf(s)));
