@@ -65,9 +65,11 @@ public class ListPlaylistFragment extends Fragment implements IListPlaylistFragm
                 public void onClick(View view) {
                     ListPlaylistFragment.this.listener.addToPlaylist(p, song);
                     hold = true;
+                    ListPlaylistFragment.this.listener.displaySearchFragment();
                 }
             });
             if (hold){
+
                 break;
             }
         }

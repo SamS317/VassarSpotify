@@ -10,6 +10,7 @@ public interface IListPlaylistFragment {
     interface Listener{
         List<Playlist> getPlaylists();
         void addToPlaylist(Playlist playlist, Song song);
+        void displaySearchFragment();
     }
 }
 

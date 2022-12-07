@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment implements IHomeFragment{
             public void onClick(View view) {
                 String playlistName = HomeFragment.this.binding.playListName.getText().toString();
                 HomeFragment.this.listener.addPlaylist(playlistName);
-                HomeFragment.this.listener.refreshPlaylistFragment();
+                HomeFragment.this.listener.displayHomeFragment();
 
             }
         });

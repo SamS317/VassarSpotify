@@ -163,11 +163,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         return false;
     }
 
-    @Override
-    public void refreshPlaylistFragment() {
-        mainView.displayFragment(new HomeFragment(this), false, "play");
 
-    }
 
     public void addSongToPlaylistHelper(Song s){
 
