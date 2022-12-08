@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "395125536342",
+    "project_id": "vassarspotify-e83ca",
+    "storage_bucket": "vassarspotify-e83ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395125536342:android:9ae6c62d60ee53908e2df7",
+        "android_client_info": {
+          "package_name": "edu.vassar.cmpu203.vassarspotify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395125536342-vl2c3caddlctgaf29vchd1s25af0fopc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqYnHnWF7qtlZPpM5zEkN1NWLRpD-lt0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395125536342-vl2c3caddlctgaf29vchd1s25af0fopc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
