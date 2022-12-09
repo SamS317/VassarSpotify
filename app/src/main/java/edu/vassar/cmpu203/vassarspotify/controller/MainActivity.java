@@ -186,6 +186,12 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     }
 
     @Override
+    public void logOut() {
+        mainView.displayFragment(new LoginFragment(this), false, "login");
+
+    }
+
+    @Override
     public void displayPlayFragment(){
         mainView.displayFragment(new PlayScreenFragment(this), false, "play2");
     }
@@ -276,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
                 p1 = plist;
             }
         }
-        mainView.displayFragment(new PlaylistFragment(this, p1), false, "play");
+        mainView.displayFragment(new PlaylistFragment(this, p1), false, "playlist");
 
     }
 

@@ -42,6 +42,12 @@ public class HomeFragment extends Fragment implements IHomeFragment{
 
             }
         });
+        this.binding.logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeFragment.this.listener.logOut();
+            }
+        });
         this.binding.usernameHome.setText(HomeFragment.this.listener.getUsername());
         TableLayout t1 = HomeFragment.this.binding.playListTable;
         t1.removeAllViews();

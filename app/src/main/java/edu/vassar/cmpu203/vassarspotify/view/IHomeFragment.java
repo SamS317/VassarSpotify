@@ -12,6 +12,7 @@ public interface IHomeFragment {
         String getPlaylistName(Playlist playlist);
         void displayPlaylistFragment(String name);
         void displayHomeFragment();
+        void logOut();
 
     }
 }

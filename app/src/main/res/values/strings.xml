@@ -31,5 +31,6 @@
     <string name="edit">edit</string>
     <string name="playlistname2">playListname2</string>
     <string name="choose_a_playlist">Choose A Playlist</string>
+    <string name="log_out">Log Out</string>
 
 </resources>
