@@ -6,12 +6,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -53,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
      * q         => The queue class that holds the songs to be played next
      * h         => The history class that holds all the songs that have been played
      */
-    ProfileDatabase pd = new ProfileDatabase();
+
 
     public boolean MPCreated = false;
     MediaPlayer mp;
@@ -64,13 +77,66 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     Queue q = new Queue();
     History h = new History();
+
     Playlist p = new Playlist();
-    Profile pf = new Profile();
     PlaylistDatabase pl = new PlaylistDatabase();
+
+    Profile pf = new Profile();
+    ProfileDatabase pd = new ProfileDatabase();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        Map<String, Object> user1Map = new HashMap<>();
+//
+//        //Test data
+//        user1Map.put("name", "Sam Shurin");
+//        user1Map.put("username", "sshurin");
+//        user1Map.put("password", "123456789");
+//        user1Map.put("birthYear", 1920);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        //CollectionReference colRef = db.collection("users");
+//        DocumentReference docRef = colRef.document("users1");
+//        docRef.set( user1Map, SetOptions.merge() );
+        //colRef.add(user1Map);
+
+
+        //Getting data
+//        DocumentReference profileData = db.document("users/users1");
+//        Task<DocumentSnapshot> docTask = profileData.get();
+//
+//        docTask.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot dSnap) {
+//                String name = (String) dSnap.get("name");
+//                String password = (String) dSnap.get("password");
+//
+//                Profile newP = new Profile(name, password);
+//                pd.addProfile(newP);
+//
+//                Log.i("VassarSpotify", "Name and passwords retrieved");
+//            }
+//        });
+
+        db.collection("users").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull QuerySnapshot QSnap) {
+                        for (DocumentSnapshot DSnap : QSnap) {
+                            String name = (String) DSnap.get("name");
+                            String password = (String) DSnap.get("password");
+                            String msg = String.format("%s profile added", name);
+                            Log.i("NextGenPos", msg);
+
+                            pd.addProfile( new Profile(name, password) );
+                        }
+                    }
+                });
+
+
 
         mainView = new MainView(this, this);
 
@@ -273,6 +339,21 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     @Override
     public void CreateUser(String username, String password, LoginFragment lfragment) {
         mainView.showButtons();
+
+        Map<String, Object> newUserMap = new HashMap<>();
+
+        //Test data
+        newUserMap.put("name", username);
+        newUserMap.put("password", password);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        CollectionReference colRef = db.collection("users");
+        DocumentReference docRef = colRef.document(username);
+
+        docRef.set( newUserMap, SetOptions.merge() );
+
+
 
         Profile p = new Profile(username, password);
         pd.addProfile(p);
