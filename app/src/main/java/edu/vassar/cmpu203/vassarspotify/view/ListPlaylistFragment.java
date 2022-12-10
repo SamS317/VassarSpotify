@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.util.Objects;
+
 import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentListPlaylistBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Playlist;
@@ -54,11 +56,13 @@ public class ListPlaylistFragment extends Fragment implements IListPlaylistFragm
         for (Playlist p: ListPlaylistFragment.this.listener.getPlaylists()){
             TableRow row = new TableRow(ListPlaylistFragment.this.getContext());
             Button playlistButton = new Button(ListPlaylistFragment.this.getContext());
-            playlistButton.setText(p.getName());
+            if (!Objects.equals(p.getName(), "")) {
+                playlistButton.setText(p.getName());
 
-            row.addView(playlistButton);
+                row.addView(playlistButton);
 
-            t1.addView(row);
+                t1.addView(row);
+            }
 
             playlistButton.setOnClickListener(new View.OnClickListener() {
                 @Override
