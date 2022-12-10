@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.List;
+import java.util.Objects;
+
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentHomeBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Playlist;
 
@@ -51,15 +54,18 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         this.binding.usernameHome.setText(HomeFragment.this.listener.getUsername());
         TableLayout t1 = HomeFragment.this.binding.playListTable;
         t1.removeAllViews();
+
         for (Playlist p: HomeFragment.this.listener.getPlaylists() ){
 
             TableRow row = new TableRow(HomeFragment.this.getContext());
             Button playlistButton = new Button(HomeFragment.this.getContext());
-            playlistButton.setText(HomeFragment.this.listener.getPlaylistName(p));
+            if (!Objects.equals(HomeFragment.this.listener.getPlaylistName(p), "")) {
+                playlistButton.setText(HomeFragment.this.listener.getPlaylistName(p));
 
-            row.addView(playlistButton);
-            t1.addView(row);
-            playlistButton.setOnClickListener(v -> HomeFragment.this.listener.displayPlaylistFragment(HomeFragment.this.listener.getPlaylistName(p)));
+                row.addView(playlistButton);
+                t1.addView(row);
+                playlistButton.setOnClickListener(v -> HomeFragment.this.listener.displayPlaylistFragment(HomeFragment.this.listener.getPlaylistName(p)));
+            }
         }
 
     }
