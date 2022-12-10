@@ -25,6 +25,7 @@
         android:id="@+id/addPlaylist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/addplaylist"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,8 +63,10 @@
 
     <EditText
         android:id="@+id/playListName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="219dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="48dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/playlistname"
         android:inputType="textPersonName"
@@ -72,7 +75,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playListTable"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/logOutButton"
