@@ -20,8 +20,8 @@
 
     <Button
         android:id="@+id/skipButton"
-        android:layout_width="84dp"
-        android:layout_height="42dp"
+        android:layout_width="86dp"
+        android:layout_height="48dp"
         android:text="@string/empty"
         app:icon="@android:drawable/ic_media_next"
         app:layout_constraintBottom_toBottomOf="parent"
