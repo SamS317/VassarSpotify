@@ -318,6 +318,10 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         }
     }
 
+    public List<Profile> getProfilesForCreateUser(){
+        return pd.getProfiles();
+    }
+
     public boolean isSongPlaying(){
         return mp.isPlaying();
     }
@@ -354,8 +358,12 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        CollectionReference colRef = db.collection("users");
-        DocumentReference docRef = colRef.document(username);
+        String newPath = "users/" + username;
+
+        DocumentReference docRef = db.document(newPath);
+
+//        CollectionReference colRef = db.collection("users");
+//        DocumentReference docRef = colRef.document(username);
 
         docRef.set( newUserMap, SetOptions.merge() );
 
