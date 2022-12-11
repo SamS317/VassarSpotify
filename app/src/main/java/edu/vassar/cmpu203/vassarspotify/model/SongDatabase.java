@@ -2,6 +2,8 @@ package edu.vassar.cmpu203.vassarspotify.model;
 
 import java.util.*;
 
+import edu.vassar.cmpu203.vassarspotify.R;
+
 /**
  * Provides a method to contain all songs
  *
@@ -12,6 +14,7 @@ public class SongDatabase {
 
     List<Song> songListReturn = new <Song> ArrayList<Song>();
     List <Song> songList = new <Song> ArrayList<Song>();
+    List<Object> songRList = new <Object> ArrayList<Object>();
     public SongDatabase(){
         songListReturn.clear();
         songList.clear();
@@ -28,7 +31,8 @@ public class SongDatabase {
         songList.add(new Song("Hello", "Beyonce"));
         songList.add(new Song("Can't Tell Me Nothing", "Kanye West"));
         songList.add(new Song("Leaving West Virginia", "Kathy Mattea"));
-        songList.add(new Song("Nez", "Nez"));
+
+        songRList.add(R.raw.kanyeweststronger);
 
     }
 
