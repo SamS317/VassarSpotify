@@ -24,15 +24,29 @@ public class SongDatabase {
         songList.add(new Song("Over", "Drake"));
         songList.add(new Song("Billie Jean", "Michael Jackson"));
         songList.add(new Song("Locked Out of Heaven", "Bruno Mars"));
-        songList.add(new Song("Despacito", "Luis Fonsi & Daddy Yankee"));
+        songList.add(new Song("Despacito", "Luis Fonsi and Daddy Yankee"));
         songList.add(new Song("Talking to the Moon", "Bruno Mars"));
         songList.add(new Song("Hello", "Adele"));
         songList.add(new Song("Hello", "Eminem"));
         songList.add(new Song("Hello", "Beyonce"));
-        songList.add(new Song("Can't Tell Me Nothing", "Kanye West"));
+        songList.add(new Song("Cant Tell Me Nothing", "Kanye West"));
         songList.add(new Song("Leaving West Virginia", "Kathy Mattea"));
 
         songRList.add(R.raw.kanyeweststronger);
+        songRList.add(R.raw.truthhurtslizzo);
+        songRList.add(R.raw.oldtownroadlilnasx);
+        songRList.add(R.raw.overdrake);
+        songRList.add(R.raw.billiejeanmichaeljackson);
+        songRList.add(R.raw.lockedoutofheavenbrunomars);
+        songRList.add(R.raw.despacitoluisfonsidaddyyankee);
+        songRList.add(R.raw.talkingtothemoonbrunomars);
+        songRList.add(R.raw.helloadele);
+        songRList.add(R.raw.hellobeyonce);
+        songRList.add(R.raw.helloeminem);
+        songRList.add(R.raw.canttellmeanythingkanyewest);
+        songRList.add(R.raw.leavingwestvirginialathymattea);
+
+
 
     }
 
@@ -64,6 +78,16 @@ public class SongDatabase {
         return songList;
     }
 
+    public Object getRaddress(String song, String artist){
+        for (Object o: this.songRList){
+            String ostring = o.toString();
+            if (ostring.contains(song) && ostring.contains(artist)){
+                return o;
+            }
+        }
+        return null;
+
+    }
     public Song getSong(String songName, String artistName){
         for(Song s: this.songList){
             if (s.songName.toUpperCase().equals(songName.toUpperCase()) && (s.artist.toUpperCase().equals(artistName.toUpperCase()))){
