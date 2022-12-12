@@ -283,6 +283,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     public String getGivenPlaylistName(Playlist playlist){ return playlist.getName(); }
 
+
     /**
      * Provides a way to do something? Confusing method
      * @param name Playlist name
