@@ -1,6 +1,6 @@
 package edu.vassar.cmpu203.vassarspotify.view;
 
-import android.graphics.drawable.Drawable;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,25 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.Objects;
-
 import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentPlayScreenBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
 public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
-
     FragmentPlayScreenBinding binding;
     Listener listener;
     ImageView albumCover;
-    //ImageView albumCover = new ImageView(PlayScreenFragment.this.getContext());
 
 
+    public PlayScreenFragment(Listener listener) { this.listener = listener; }
 
-    public PlayScreenFragment(Listener listener) {
-        this.listener = listener;
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -41,20 +35,11 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
     }
 
 
-    public Song getSongFromScreen(){
-        String songNameString  = (PlayScreenFragment.this.binding.songNamePS.getText()).toString();
-        String artistNameString = (PlayScreenFragment.this.binding.artistNamePS.getText()).toString();
-
-        return PlayScreenFragment.this.listener.getSongFromSongDatabase(songNameString, artistNameString);
-    }
-
-
-    public void changeTextValues(Song s){
-        PlayScreenFragment.this.binding.songNamePS.setText(s.getSongName());
-        PlayScreenFragment.this.binding.artistNamePS.setText(s.getArtist());
-    }
-
-
+    /**
+     * Contains listeners for play, replay, and skip buttons
+     * @param view Current View
+     * @param savedInstanceState Current savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -63,8 +48,10 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
         PlayScreenFragment.this.binding.songNamePS.setText(s.getSongName());
         PlayScreenFragment.this.binding.artistNamePS.setText(s.getArtist());
 
-        //Play and pause button
+
+        //Listener for the play/pause button on the play-screen
         this.binding.playbackButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 String songNameString  = (PlayScreenFragment.this.binding.songNamePS.getText()).toString();
@@ -74,7 +61,9 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
                 PlayScreenFragment.this.listener.playPauseGivenSong(PlayScreenFragment.this.getContext(), s);
 
-                changeTextValues(s);
+                PlayScreenFragment.this.binding.songNamePS.setText(s.getSongName());
+                PlayScreenFragment.this.binding.artistNamePS.setText(s.getArtist());
+
                 albumCover = requireView().findViewById(R.id.imageView);
                 albumCover.setImageResource((Integer) returnDrawableID(PlayScreenFragment.this.listener.getRightText(s.getSongName(), s.getArtist())));
                 if( PlayScreenFragment.this.listener.isSongPlaying() ){
@@ -86,7 +75,8 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
             }
         });
 
-        //Replay last played song button
+
+        //Listener for the replay song button on the play-screen
         this.binding.replayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +95,8 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
             }
         });
 
-        //Skip song button
+
+        //Listener for the skip song button on the play-screen
         this.binding.skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,51 +114,45 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 PlayScreenFragment.this.binding.artistNamePS.setText(sNext.getArtist());
             }
         });
-
     }
 
+
+    /**
+     * Provides a way to return the image directory in the current raw file
+     * This method will be replaced with database calls in one of the next iterations
+     * @param name The full name of the song and artist combo
+     * @return Returns the link to the picture located in the "drawable" resource file
+     */
     public Object returnDrawableID(String name){
-        if (name.equals("billiejeanmichaeljackson")){
-            return R.drawable.billiejeanmichaeljackson;
-        }
-        else if (name.equals("canttellmeanythingkanyewest")){
-            return R.drawable.canttellmeanythingkanyewest;
-        }
-        else if (name.equals("despacitoluisfonsidaddyyankee")){
-            return R.drawable.despacitoluisfonsidaddyyankee;
-        }
-        else if (name.equals("halobeyonce")){
-            return R.drawable.halobeyonce;
-        }
-        else if (name.equals("helloadele")){
-            return R.drawable.helloadele;
-        }
-        else if (name.equals("helloeminem")){
-            return R.drawable.helloeminem;
-        }
-        else if (name.equals("kanyeweststronger")){
-            return R.drawable.kanyeweststronger;
-        }
-        else if (name.equals("leavingwestvirginialathymattea")){
-            return R.drawable.leavingwestvirginialathymattea;
-        }
-        else if (name.equals("lockedoutofheavenbrunomars")){
-            return R.drawable.lockedoutofheavenbrunomars;
-        }
-        else if (name.equals("oldtownroadlilnasx")){
-            return R.drawable.oldtownroadlilnasx;
-        }
-        else if (name.equals("overdrake")){
-            return R.drawable.overdrake;
-        }
-        else if (name.equals("talkingtothemoonbrunomars")){
-            return R.drawable.talkingtothemoonbrunomars;
-        }
-        else if (name.equals("truthhurtslizzo")){
-            return R.drawable.truthhurtslizzo;
-        }
-        else{
-            return null;
+        switch (name) {
+            case "billiejeanmichaeljackson":
+                return R.drawable.billiejeanmichaeljackson;
+            case "canttellmeanythingkanyewest":
+                return R.drawable.canttellmeanythingkanyewest;
+            case "despacitoluisfonsidaddyyankee":
+                return R.drawable.despacitoluisfonsidaddyyankee;
+            case "halobeyonce":
+                return R.drawable.halobeyonce;
+            case "helloadele":
+                return R.drawable.helloadele;
+            case "helloeminem":
+                return R.drawable.helloeminem;
+            case "kanyeweststronger":
+                return R.drawable.kanyeweststronger;
+            case "leavingwestvirginialathymattea":
+                return R.drawable.leavingwestvirginialathymattea;
+            case "lockedoutofheavenbrunomars":
+                return R.drawable.lockedoutofheavenbrunomars;
+            case "oldtownroadlilnasx":
+                return R.drawable.oldtownroadlilnasx;
+            case "overdrake":
+                return R.drawable.overdrake;
+            case "talkingtothemoonbrunomars":
+                return R.drawable.talkingtothemoonbrunomars;
+            case "truthhurtslizzo":
+                return R.drawable.truthhurtslizzo;
+            default:
+                return null;
         }
     }
 }

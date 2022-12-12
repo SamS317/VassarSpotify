@@ -15,5 +15,4 @@ public interface IPlayScreenFragment {
         String getRightText(String name, String artist);
 
     }
-    void changeTextValues(Song s);
 }
