@@ -12,6 +12,7 @@ public interface IPlayScreenFragment {
         Song getCurrentSong();
         void playPauseGivenSong(Context context, Song s);
         boolean isSongPlaying();
+        String getRightText(String name, String artist);
 
     }
     void changeTextValues(Song s);

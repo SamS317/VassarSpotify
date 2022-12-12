@@ -324,7 +324,13 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     public boolean isSongPlaying(){
         return mp.isPlaying();
     }
-//    public List<Song> getPlaylists
+
+    @Override
+    public String getRightText(String name, String artist) {
+        return sd.getString(name, artist);
+    }
+
+    //    public List<Song> getPlaylists
     @Override
     public void LogIn(String username, String password, LoginFragment lfragment) {
         mainView.showButtons();

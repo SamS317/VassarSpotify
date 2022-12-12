@@ -75,7 +75,8 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 PlayScreenFragment.this.listener.playPauseGivenSong(PlayScreenFragment.this.getContext(), s);
 
                 changeTextValues(s);
-
+                albumCover = requireView().findViewById(R.id.imageView);
+                albumCover.setImageResource((Integer) returnDrawableID(PlayScreenFragment.this.listener.getRightText(s.getSongName(), s.getArtist())));
                 if( PlayScreenFragment.this.listener.isSongPlaying() ){
                     PlayScreenFragment.this.binding.playbackButton.setText("Pause");
                 }else{
@@ -97,7 +98,7 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 Song prevSong = PlayScreenFragment.this.listener.previousSong(s);
 
                 albumCover = requireView().findViewById(R.id.imageView);
-                albumCover.setImageResource(R.drawable.overdrake);
+                albumCover.setImageResource((Integer) returnDrawableID(PlayScreenFragment.this.listener.getRightText(prevSong.getSongName(), prevSong.getArtist())));
 
                 PlayScreenFragment.this.binding.songNamePS.setText(prevSong.getSongName());
                 PlayScreenFragment.this.binding.artistNamePS.setText(prevSong.getArtist());
@@ -116,12 +117,57 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
                 Song sNext = PlayScreenFragment.this.listener.nextSong(s);
 
                 albumCover = requireView().findViewById(R.id.imageView);
-                albumCover.setImageResource(R.drawable.helloadele);
+                albumCover.setImageResource((Integer) returnDrawableID(PlayScreenFragment.this.listener.getRightText(sNext.getSongName(), sNext.getArtist())));
 
                 PlayScreenFragment.this.binding.songNamePS.setText(sNext.getSongName());
                 PlayScreenFragment.this.binding.artistNamePS.setText(sNext.getArtist());
             }
         });
 
+    }
+
+    public Object returnDrawableID(String name){
+        if (name.equals("billiejeanmichaeljackson")){
+            return R.drawable.billiejeanmichaeljackson;
+        }
+        else if (name.equals("canttellmeanythingkanyewest")){
+            return R.drawable.canttellmeanythingkanyewest;
+        }
+        else if (name.equals("despacitoluisfonsidaddyyankee")){
+            return R.drawable.despacitoluisfonsidaddyyankee;
+        }
+        else if (name.equals("halobeyonce")){
+            return R.drawable.halobeyonce;
+        }
+        else if (name.equals("helloadele")){
+            return R.drawable.helloadele;
+        }
+        else if (name.equals("helloeminem")){
+            return R.drawable.helloeminem;
+        }
+        else if (name.equals("kanyeweststronger")){
+            return R.drawable.kanyeweststronger;
+        }
+        else if (name.equals("leavingwestvirginialathymattea")){
+            return R.drawable.leavingwestvirginialathymattea;
+        }
+        else if (name.equals("lockedoutofheavenbrunomars")){
+            return R.drawable.lockedoutofheavenbrunomars;
+        }
+        else if (name.equals("oldtownroadlilnasx")){
+            return R.drawable.oldtownroadlilnasx;
+        }
+        else if (name.equals("overdrake")){
+            return R.drawable.overdrake;
+        }
+        else if (name.equals("talkingtothemoonbrunomars")){
+            return R.drawable.talkingtothemoonbrunomars;
+        }
+        else if (name.equals("truthhurtslizzo")){
+            return R.drawable.truthhurtslizzo;
+        }
+        else{
+            return null;
+        }
     }
 }
