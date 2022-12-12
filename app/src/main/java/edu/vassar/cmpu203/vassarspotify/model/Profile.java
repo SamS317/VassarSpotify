@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 /**
  * Provides a way to represent a user through a profile
+ * Each profile will be constructed with a username and password
  */
 public class Profile {
     String username;
@@ -19,16 +20,30 @@ public class Profile {
         this.password = password;
     }
 
+
     /**
      * Constructor of Profile
      */
     public  Profile (){}
+
+
+    /**
+     * Provides a method to get the username of the current profile
+     * @return String Returns the string representation of the username
+     */
     public String getUsernameText(){
         return this.username;
     }
+
+
+    /**
+     * Provides a method to get the password of the current profile
+     * @return String Returns the string representation of the password
+     */
     public String getPassword(){
         return this.password;
     }
+
 
     /**
      * Provides a method of checking if the username and password matches profiles username and password
@@ -39,6 +54,7 @@ public class Profile {
     public boolean checkLogin(String username, String password){
         return this.username.equalsIgnoreCase(username) && this.password.equals(password) ;
     }
+
 
     /**
      * Provides a way to get the string representation of the username
