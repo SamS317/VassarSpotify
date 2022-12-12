@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import edu.vassar.cmpu203.vassarspotify.controller.MainActivity;
 import edu.vassar.cmpu203.vassarspotify.databinding.ActivityMainBinding;
-import edu.vassar.cmpu203.vassarspotify.databinding.FragmentLoginFragmentBinding;
 
 public class MainView extends Fragment implements IMainView{
 
@@ -22,7 +21,6 @@ public class MainView extends Fragment implements IMainView{
 
     ActivityMainBinding binding;
     MainActivity mainActivity;
-    Listener listener;
 
     public MainView(FragmentActivity activity, MainActivity mainActivity){
         this.fmanager = activity.getSupportFragmentManager();
@@ -30,18 +28,22 @@ public class MainView extends Fragment implements IMainView{
         this.mainActivity = mainActivity;
 
 
-        this.binding.searchButton.setOnClickListener(new View.OnClickListener() {
+        this.binding.displaySearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainView.this.mainActivity.displaySearchFragment();
             }
         });
+
+
         this.binding.homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainView.this.mainActivity.displayHomeFragment();
             }
         });
+
+
         this.binding.playButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,11 +84,11 @@ public class MainView extends Fragment implements IMainView{
     public void ignoreButtons(){
         this.binding.playButtonHome.setVisibility(View.INVISIBLE);
         this.binding.homeButton.setVisibility(View.INVISIBLE);
-        this.binding.searchButton.setVisibility(View.INVISIBLE);
+        this.binding.displaySearchButton.setVisibility(View.INVISIBLE);
     }
     public void showButtons(){
         this.binding.playButtonHome.setVisibility(View.VISIBLE);
         this.binding.homeButton.setVisibility(View.VISIBLE);
-        this.binding.searchButton.setVisibility(View.VISIBLE);
+        this.binding.displaySearchButton.setVisibility(View.VISIBLE);
     }
 }

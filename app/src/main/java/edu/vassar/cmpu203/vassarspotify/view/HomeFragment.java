@@ -36,10 +36,10 @@ public class HomeFragment extends Fragment implements IHomeFragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.binding.addPlaylist.setOnClickListener(new View.OnClickListener() {
+        this.binding.addPlaylistButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String playlistName = HomeFragment.this.binding.playListName.getText().toString();
+                String playlistName = HomeFragment.this.binding.playListTextInput.getText().toString();
                 HomeFragment.this.listener.addPlaylist(playlistName);
                 HomeFragment.this.listener.displayHomeFragment();
 

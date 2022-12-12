@@ -22,10 +22,12 @@ public class SearchSongTest {
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void searchSongAndResultsTest(){
+    public void testSearchSong() {
+        //Tests if we can search for songs
+
         //Logs in first
         FullLoginCreateAccountTest lg = new FullLoginCreateAccountTest();
-        lg.logIn("sam","Genius", true);
+        lg.logIn("sam", "Genius", true);
 
 
         //Checks searching for a song gives results
@@ -45,9 +47,27 @@ public class SearchSongTest {
         ViewInteraction playButton = Espresso.onView(ViewMatchers.withText("Over\nDrake"));
         playButton.perform(ViewActions.click());
 
-        //If button isn't clickable then there isn't a button and therefore the search result didn't work
-        ViewInteraction checkSongTitle = Espresso.onView(ViewMatchers.withId(R.id.song_name_PS));
-        checkSongTitle.check(ViewAssertions.matches(ViewMatchers.withText("Over")));
     }
 
+    @Test
+    public void testSearchForArtist() {
+        //Tests if we can search for artists
+
+        //Logs in first
+        FullLoginCreateAccountTest lg = new FullLoginCreateAccountTest();
+        lg.logIn("sam","Genius", true);
+
+        //Checks searching for a artist gives results
+        ViewInteraction searchText = Espresso.onView(ViewMatchers.withId(R.id.search_text));
+        searchText.check(ViewAssertions.matches(ViewMatchers.withText("")));
+
+        searchText.perform(ViewActions.typeText("Drake"));
+
+        //Only look up artists
+        ViewInteraction songChoiceButtonVI = Espresso.onView(ViewMatchers.withId(R.id.artistChoiceButtonId));
+        songChoiceButtonVI.perform(ViewActions.click());
+
+        ViewInteraction searchSongButtonVI = Espresso.onView(ViewMatchers.withId(R.id.search_button));
+        searchSongButtonVI.perform(ViewActions.click());
+    }
 }
