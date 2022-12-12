@@ -12,19 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.List;
 import java.util.Objects;
 
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentHomeBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Playlist;
 
-public class HomeFragment extends Fragment implements IHomeFragment{
 
-    HomeFragment HFragment;
+/**
+ * Provides an implementation of the home screen
+ * Contains Playlist functions, and logout button
+ */
+public class HomeFragment extends Fragment implements IHomeFragment{
     FragmentHomeBinding binding;
     Listener listener;
 
-    public HomeFragment(Listener listener){this.listener = listener;}
+
+    public HomeFragment(Listener listener){ this.listener = listener; }
+
 
     @Nullable
     @Override
@@ -33,24 +37,28 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         return this.binding.getRoot();
     }
 
+
+    /**
+     * Provides listeners to addPlaylistButton, logOutButton, and usernameHome buttons
+     * @param view The current view
+     * @param savedInstanceState The current savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.binding.addPlaylistButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String playlistName = HomeFragment.this.binding.playListTextInput.getText().toString();
-                HomeFragment.this.listener.addPlaylist(playlistName);
-                HomeFragment.this.listener.displayHomeFragment();
 
-            }
+
+        this.binding.addPlaylistButton.setOnClickListener(view1 -> {
+            String playlistName = HomeFragment.this.binding.playListTextInput.getText().toString();
+            HomeFragment.this.listener.addPlaylist(playlistName);
+            HomeFragment.this.listener.displayHomeFragment();
+
         });
-        this.binding.logOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HomeFragment.this.listener.logOut();
-            }
-        });
+
+
+        this.binding.logOutButton.setOnClickListener(view12 -> HomeFragment.this.listener.logOut());
+
+
         this.binding.usernameHome.setText(HomeFragment.this.listener.getUsername());
         TableLayout t1 = HomeFragment.this.binding.playListTable;
         t1.removeAllViews();
@@ -67,6 +75,5 @@ public class HomeFragment extends Fragment implements IHomeFragment{
                 playlistButton.setOnClickListener(v -> HomeFragment.this.listener.displayPlaylistFragment(HomeFragment.this.listener.getPlaylistName(p)));
             }
         }
-
     }
 }
