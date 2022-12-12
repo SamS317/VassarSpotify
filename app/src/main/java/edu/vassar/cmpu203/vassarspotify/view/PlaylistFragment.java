@@ -1,5 +1,6 @@
 package edu.vassar.cmpu203.vassarspotify.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class PlaylistFragment extends Fragment implements IPlaylistFragment {
         return this.binding.getRoot();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -43,11 +45,10 @@ public class PlaylistFragment extends Fragment implements IPlaylistFragment {
 
             }
         });
-        this.binding.playlistName2.setText(PlaylistFragment.this.listener.getPlaylistName2(playlist));
+        this.binding.playlistName2.setText(PlaylistFragment.this.listener.getGivenPlaylistName(playlist));
         TableLayout t1 = PlaylistFragment.this.binding.playlistTable2;
         t1.removeAllViews();
-        for (Song s: PlaylistFragment.this.listener.getCurrentPlaylist(PlaylistFragment.this.listener.getPlaylistName2(playlist))){
-//            PlaylistFragment.this.listener.refreshPlaylistFragment(playlist);
+        for (Song s: PlaylistFragment.this.listener.getCurrentPlaylist(PlaylistFragment.this.listener.getGivenPlaylistName(playlist))){
             TableRow row = new TableRow(PlaylistFragment.this.getContext());
             Button play = new Button(PlaylistFragment.this.getContext());
             Button delete = new Button(PlaylistFragment.this.getContext());
@@ -55,7 +56,7 @@ public class PlaylistFragment extends Fragment implements IPlaylistFragment {
 
             play.setText(String.format("%s\n%s", s.getSongName(), s.getArtist()));
             queue.setText("Add to\nQueue");
-            delete.setText("delete");
+            delete.setText("Delete");
 
             row.addView(play);
             row.addView(queue);

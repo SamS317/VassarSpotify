@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import edu.vassar.cmpu203.vassarspotify.model.Playlist;
@@ -56,7 +57,6 @@ import edu.vassar.cmpu203.vassarspotify.view.SearchFragment;
 public class MainActivity extends AppCompatActivity implements ISearchFragment.Listener, ILoginFragment.Listener, IPlayScreenFragment.Listener, IHomeFragment.Listener, IMainView.Listener, IPlaylistFragment.Listener, IListPlaylistFragment.Listener {
     /***
      * The "Controller" class in our Model-View-Controller program
-     *
      * pd        => The profile database where all of the profiles are stored
      * MPCreated => A gate that shows if a media player has been created
      * mp        => Our current media player
@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
      * q         => The queue class that holds the songs to be played next
      * h         => The history class that holds all the songs that have been played
      */
-
-
     public boolean MPCreated = false;
     MediaPlayer mp;
     Song currSong;
@@ -84,6 +82,12 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     ProfileDatabase pd = new ProfileDatabase();
 
 
+    /**
+     * Provides a way to start the app. Current iteration provides users to be immediately grabbed
+     * from database and put into app profile database. Next iteration will provide
+     * encryption, but as described in log in and create user methods encryption isn't working
+     * @param savedInstanceState Current Saved Instance
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,8 +104,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
                             pd.addProfile( new Profile(name, password) );
 
-                            String msg = String.format("%s profile added", name);
-                            Log.i("NextGenPos", msg);
+                            Log.i("NextGenPos", String.format("%s profile added", name) );
                         }
                     }
                 });
@@ -234,76 +237,85 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
 
-
+    /**
+     * Provides a way to get a song from the current database
+     * @param songName The song you want to look up
+     * @param artistName The artist you want to look up
+     * @return Returns the song that fits the criteria
+     */
     public Song getSongFromSongDatabase(String songName, String artistName){
         return sd.getSong(songName, artistName);
     }
 
 
-    public Song getCurrentSong(){
-        return q.getCurrentSong();
-    }
+    /**
+     * The next three methods get the current, next, and previous songs from the queue
+     * @return Returns the current, next, or previous song (respectively)
+     */
+    public Song getCurrentSong(){ return q.getCurrentSong(); }
 
-    public Song nextSong(Song s){
-
-        return q.getNext(s);
-    }
+    public Song nextSong(Song s){ return q.getNext(s); }
 
     public Song previousSong(Song s){ return q.getPrevious(s); }
 
-    public boolean addSongToQueue(Song s){
 
-        return q.addSong(s);
-
-    }
-
-    @Override
-    public boolean deleteSong(Song s) {
-        return false;
-    }
+    /**
+     * Adds a song to the current queue
+     * @param s The song to be added
+     * @return True if song was added, false otherwise
+     */
+    public boolean addSongToQueue(Song s){ return q.addSong(s); }
 
 
-
-    public void addSongToPlaylistHelper(Song s){
-
+    /**
+     * Provides a way to easily add a song to a playlist
+     * Changes the search screen to the playlist screen
+     * @param s Song to be added to the playlist of your choosing
+     */
+    public void displaySubPlaylistWithSong(Song s){
         mainView.displayFragment(new ListPlaylistFragment(this, s), false, "play");;
     }
 
-    @Override
-    public String getUsername(){
-        return pf.getUsernameText();
-    }
-    public String getPassword(){
-        return pf.getPassword();
-    }
 
-    public String getPlaylistName2(Playlist playlist){
-        return playlist.getName();
-    }
+    @Override
+    public String getUsername(){ return pf.getUsernameText(); }
+
+
+    public String getGivenPlaylistName(Playlist playlist){ return playlist.getName(); }
+
+    /**
+     * Provides a way to do something? Confusing method
+     * @param name Playlist name
+     * @return Returns the playlist
+     */
     public List<Song> getCurrentPlaylist(String name){
         List<Playlist> temp = pl.getPlaylists();
         for (Playlist plist: temp){
-            if (plist.getName() == name){
+            if (Objects.equals(plist.getName(), name)){
                 return plist.getPlaylist();
             }
         }
         return null;
     }
-    public boolean addPlaylist(String s) {
-        return pl.addPlaylist(new Playlist(s));
-    }
-    public List<Playlist> getPlaylists(){
-        return pl.getPlaylists();
-    }
+
+
+    public boolean addPlaylist(String s) { return pl.addPlaylist(new Playlist(s)); }
+
+
+    public List<Playlist> getPlaylists(){ return pl.getPlaylists(); }
+
 
     @Override
-    public void addToPlaylist(Playlist playlist, Song s) {
-        playlist.addSong(s);
-    }
+    public void addToPlaylist(Playlist playlist, Song s) { playlist.addSong(s); }
 
-    public String getPlaylistName(Playlist playlist){
-        return p.getPlaylistName(playlist);
-    }
+
+    public String getPlaylistName(Playlist playlist){ return p.getPlaylistName(playlist); }
+
+
+    /**
+     * Provides a way to display the playlist screen with the playlist selected
+     * @param name The playlist to display
+     */
     public void displayPlaylistFragment(String name){
         List<Playlist> temp = pl.getPlaylists();
         Playlist p1 = null;
@@ -313,17 +325,31 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             }
         }
         mainView.displayFragment(new PlaylistFragment(this, p1), false, "playlist");
-
     }
 
+
+    /**
+     * Provides a way to check if a song is playing
+     * @return True if a song is playing
+     */
+    public boolean isSongPlaying(){
+        return mp.isPlaying();
+    }
+
+
+    /**
+     * Provides a way to play/pause songs
+     * :Summary below:
+     *     If we play a different song than currently playing
+     *     Change currSong to new input song
+     *     Reset media player has been created flag
+     *     Stop current audio if there is a current audio to stop
+     * @param context The current context (Needed for MediaPlayer)
+     * @param s Song to be played
+     */
     public void playPauseGivenSong(Context context, @NonNull Song s){
-
-        //If we play a different song than currently playing
-        //Change currSong to new input song
-        //Reset media player has been created flag
-        //Stop current audio if there is a current audio to stop
+        //If we're getting a new song we need to reset flags and stop current song
         if(! s.equals(this.currSong)){
-
             this.currSong = s;
             if (MPCreated){
                 mp.stop();
@@ -331,37 +357,45 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             MPCreated = false;
         }
 
-        //If the song hasn't created a media
+        //If media player has been created either pause or play song
         if(MPCreated) {
-            if (mp.isPlaying()) {
+            if ( isSongPlaying() ) {
                 mp.pause();
             } else {
                 mp.start();
             }
+        //If media player hasn't been created start a new one with the given song
         }else{
             mp = MediaPlayer.create(context, (Integer) sd.getRaddress(this.currSong.getSongName(), this.currSong.getArtist()));
-
-
-
             mp.start();
             MPCreated = true;
         }
     }
 
+
     public List<Profile> getProfilesForCreateUser(){
         return pd.getProfiles();
     }
 
-    public boolean isSongPlaying(){
-        return mp.isPlaying();
-    }
 
     @Override
     public String getRightText(String name, String artist) {
         return sd.getString(name, artist);
     }
 
-    //    public List<Song> getPlaylists
+
+    /**
+     * Provides a way to log a user in
+     * Current iteration includes checking the current profile database
+     * to see if any of the usernames match, then proceeds to check the
+     * passwords to see if they match
+     *
+     * Tried implementing checking the encrypted profile database directly
+     * and failed drastically. Next iteration should have it working
+     * @param username Username to be logged in
+     * @param password Matching password to username
+     * @param lfragment The current LoginFragment
+     */
     @Override
     public void LogIn(String username, String password, LoginFragment lfragment) {
         mainView.showButtons();
@@ -382,13 +416,22 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         lfragment.successfullyLoggedIn(hold);
     }
 
+
+    /**
+     * Provides a way to create a user within the app
+     * Current iteration includes adding username and password to
+     * database. Just like log in method encryption was tried and
+     * was failed. Next iteration will have encryption
+     * @param username Username to be added to database
+     * @param password Matching password to username
+     * @param lfragment Log in fragment
+     */
     @Override
     public void CreateUser(String username, String password, LoginFragment lfragment) {
         mainView.showButtons();
 
         Map<String, Object> newUserMap = new HashMap<>();
 
-        //Test data
         newUserMap.put("name", username);
         newUserMap.put("password", password);
         newUserMap.put("currsong", null);
@@ -398,16 +441,9 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         String newPath = "users/" + username;
 
         DocumentReference docRef = db.document(newPath);
-
-//        CollectionReference colRef = db.collection("users");
-//        DocumentReference docRef = colRef.document(username);
-
         docRef.set( newUserMap, SetOptions.merge() );
 
-
-
-        Profile p = new Profile(username, password);
-        pd.addProfile(p);
+        pd.addProfile( new Profile(username, password) );
         lfragment.successfullyLoggedIn(true);
         this.mainView.displayFragment(new SearchFragment(this),true, "search");
     }
