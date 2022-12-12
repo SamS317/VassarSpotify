@@ -198,19 +198,25 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     /**
      * Specific change screen method
-     * This method provides a way to change between the search screen and the play screen while
+     * Provides a way to change between the search screen and the play screen while
      * changing the song on the play screen fragment
-     * @param s Song to be displayed
+     * @param s Song to be displayed on play screen
      */
     @Override
-    public void changePlayScreenWSong(Song s) {
+    public void displayPlayFromSearch(Song s) {
         q.clearQueue();
         q.addSong(s);
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
 
+
+    /**
+     * Specific change screen method
+     * Provides a way to change from Playlist screen to Play
+     * @param s Song to be displayed on play screen
+     */
     @Override
-    public void changePlayScreenWSong(Song s, PlaylistFragment playlistFragment) {
+    public void displayPlayFromPlaylist(Song s) {
         q.clearQueue();
         q.addSong(s);
         //save song
@@ -225,37 +231,9 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             e.printStackTrace();
         }
 
-//        Map<String, Object> newUserMap = new HashMap<>();
-//
-//        //Test data
-//        newUserMap.put("name", this.getUsername());
-//        newUserMap.put("password", this.getPassword());
-//        newUserMap.put("currsong", this.currSong);
-//
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//
-//        String newPath = "users/" + this.getUsername();
-//
-//        DocumentReference docRef = db.document(newPath);
-
-//        CollectionReference colRef = db.collection("users");
-//        DocumentReference docRef = colRef.document(username);
-
-//        docRef.set( newUserMap, SetOptions.merge() );
-//        Map<String, Object> user1Map = new HashMap<>();
-//        user1Map.put("name", this.getUsername());
-//        user1Map.put("username", this.getUsername());
-//        user1Map.put("password", this.getPassword());
-//        user1Map.put("currSong", this.currSong);
-//
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        CollectionReference colRef = db.collection("users");
-//
-//        DocumentReference docRef = colRef.document("users1");
-//        docRef.set( user1Map, SetOptions.merge() );
-//        colRef.add(user1Map);
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
+
 
     public Song getSongFromSongDatabase(String songName, String artistName){
         return sd.getSong(songName, artistName);

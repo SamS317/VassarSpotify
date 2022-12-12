@@ -63,7 +63,7 @@ public class PlaylistFragment extends Fragment implements IPlaylistFragment {
 
             t1.addView(row);
 
-            play.setOnClickListener(v -> PlaylistFragment.this.listener.changePlayScreenWSong(s, PlaylistFragment.this));
+            play.setOnClickListener(v -> PlaylistFragment.this.listener.displayPlayFromPlaylist(s));
 
             queue.setOnClickListener(v -> PlaylistFragment.this.listener.addSongToQueue(s));
 

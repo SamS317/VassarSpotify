@@ -9,7 +9,7 @@ public interface IPlaylistFragment {
     interface Listener{
         String getPlaylistName2(Playlist playlist);
         List<Song> getCurrentPlaylist(String name);
-        void changePlayScreenWSong(Song s, PlaylistFragment playlistFragment);
+        void displayPlayFromPlaylist(Song s);
         boolean addSongToQueue(Song s);
         boolean deleteSong(Song s);
 //        void refreshPlaylistFragment(Playlist playlist);

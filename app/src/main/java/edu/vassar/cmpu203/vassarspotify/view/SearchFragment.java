@@ -92,7 +92,7 @@ public class SearchFragment extends Fragment implements ISearchFragment{
             tl.addView(row);
 
             //Adds listener to Play button
-            play.setOnClickListener(v -> SearchFragment.this.listener.changePlayScreenWSong(x));
+            play.setOnClickListener(v -> SearchFragment.this.listener.displayPlayFromSearch(x));
 
             //Adds listener to Queue button
             queue.setOnClickListener(v -> SearchFragment.this.listener.addSongToQueue(x));
