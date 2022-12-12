@@ -5,16 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,11 +22,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
-import edu.vassar.cmpu203.vassarspotify.R;
-import edu.vassar.cmpu203.vassarspotify.model.History;
 import edu.vassar.cmpu203.vassarspotify.model.Playlist;
 import edu.vassar.cmpu203.vassarspotify.model.PlaylistDatabase;
 import edu.vassar.cmpu203.vassarspotify.model.Profile;
@@ -77,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     private MainView mainView;
 
     Queue q = new Queue();
-    History h = new History();
 
     Playlist p = new Playlist();
     PlaylistDatabase pl = new PlaylistDatabase();
