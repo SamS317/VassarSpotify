@@ -1,12 +1,8 @@
 package edu.vassar.cmpu203.vassarspotify.model;
-
-import static java.lang.Integer.parseInt;
-
-import android.util.Pair;
+import edu.vassar.cmpu203.vassarspotify.R;
 
 import java.util.*;
 
-import edu.vassar.cmpu203.vassarspotify.R;
 
 /**
  * Provides a method to contain all songs
@@ -35,7 +31,7 @@ public class SongDatabase {
         songList.add(new Song("Hello", "Eminem"));
         songList.add(new Song("Halo", "Beyonce"));
         songList.add(new Song("Cant Tell Me Nothing", "Kanye West"));
-        songList.add(new Song("Leaving West Virginia", "Lathy Mattea"));
+        songList.add(new Song("Leaving West Virginia", "Kathy Mattea"));
 
         songRList.add("R.raw.kanyeweststronger@@kanye west stronger");
         songRList.add("R.raw.truthhurtslizzo@@truth hurts lizzo");
@@ -49,17 +45,12 @@ public class SongDatabase {
         songRList.add("R.raw.hellobeyonce@@halo beyonce");
         songRList.add("R.raw.helloeminem@@hello eminem");
         songRList.add("R.raw.canttellmeanythingkanyewest@@cant tell me nothing kanye west");
-        songRList.add("R.raw.leavingwestvirginialathymattea@@leaving west virginia lathy mattea");
-
-
+        songRList.add("R.raw.leavingwestvirginiakathymattea@@leaving west virginia kathy mattea");
     }
 
     /**
      * Provides a way to search for a song in the current song database
-     * <p>
      * This method only returns the songs that match the song title with the input string best
-     * <p>
-     * Later implementation should possibly combine searchSong and searchArtist
      *
      * @param song The string that will be used to search the database
      * @return Returns a list of songs that matches the input string
@@ -84,21 +75,17 @@ public class SongDatabase {
         return songList;
     }
 
-    public Object getRaddress(String song, String artist) {
+    public Object getRAddress(String song, String artist) {
         for (String s : this.songRList) {
             String[] ssplit = s.split("@@");
-            String raddres = ssplit[0];
             String nameSong = ssplit[1].toLowerCase();
             String songLower = song.toLowerCase();
             String artistLower = artist.toLowerCase();
             if (nameSong.contains(songLower) && nameSong.contains(artistLower)) {
                 return getRData(nameSong);
             }
-
-
         }
         return null;
-
     }
 
     public Object getRData(String name) {
@@ -126,7 +113,7 @@ public class SongDatabase {
             return R.raw.helloeminem;
         } else if (Objects.equals(name, "cant tell me nothing kanye west")) {
             return R.raw.canttellmeanythingkanyewest;
-        } else if (Objects.equals(name, "leaving west virginia lathy mattea")) {
+        } else if (Objects.equals(name, "leaving west virginia kathy mattea")) {
             return R.raw.leavingwestvirginialathymattea;
         } else {
             return R.raw.leavingwestvirginialathymattea;
@@ -135,7 +122,7 @@ public class SongDatabase {
 
     public Song getSong(String songName, String artistName) {
         for (Song s : this.songList) {
-            if (s.songName.toUpperCase().equals(songName.toUpperCase()) && (s.artist.toUpperCase().equals(artistName.toUpperCase()))) {
+            if (s.songName.equalsIgnoreCase(songName) && (s.artist.equalsIgnoreCase(artistName))) {
                 return s;
             }
         }
@@ -183,8 +170,8 @@ public class SongDatabase {
         else if (name.equals("Cant Tell Me Nothing")&&artist.equals("Kanye West")){
             return "canttellmeanythingkanyewest";
         }
-        else if (name.equals("Leaving West Virginia")&&artist.equals("Lathy Mattea")){
-            return "R.raw.leavingwestvirginialathymattea";
+        else if (name.equals("Leaving West Virginia")&&artist.equals("Kathy Mattea")){
+            return "R.raw.leavingwestvirginiakathymattea";
         }
         else {
             return "truthhurtslizzo";

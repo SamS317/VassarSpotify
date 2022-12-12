@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             }
         //If media player hasn't been created start a new one with the given song
         }else{
-            mp = MediaPlayer.create(context, (Integer) sd.getRaddress(this.currSong.getSongName(), this.currSong.getArtist()));
+            mp = MediaPlayer.create(context, (Integer) sd.getRAddress(this.currSong.getSongName(), this.currSong.getArtist()));
             mp.start();
             MPCreated = true;
         }

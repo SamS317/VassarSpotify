@@ -25,12 +25,12 @@ public class SongDatabaseTest {
     }
 
     @Test
-    void testgetRaddress(){
+    void testGetRAddress(){
         //Tests if an inputted song points to the right place in memory
         //Disregards capitalization or missing letters
-        assertEquals(2131689483, sd.getRaddress("Over", "Drake"));
-        assertEquals(2131689483, sd.getRaddress("er", "drake"));
-        assertEquals(2131689483, sd.getRaddress("", "drake"));
+        assertEquals(2131689483, sd.getRAddress("Over", "Drake"));
+        assertEquals(2131689483, sd.getRAddress("er", "drake"));
+        assertEquals(2131689483, sd.getRAddress("", "drake"));
     }
 
     @Test
