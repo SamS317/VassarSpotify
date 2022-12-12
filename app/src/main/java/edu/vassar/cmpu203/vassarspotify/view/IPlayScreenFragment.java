@@ -10,8 +10,10 @@ public interface IPlayScreenFragment {
         Song nextSong(Song s);
         Song previousSong(Song s);
         Song getCurrentSong();
+
         void playPauseGivenSong(Context context, Song s);
         boolean isSongPlaying();
+
         String getRightText(String name, String artist);
 
     }

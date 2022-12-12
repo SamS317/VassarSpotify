@@ -5,11 +5,11 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 
 public interface IMainView {
-    public View getRootView();
+    View getRootView();
 
-    public void displayFragment(Fragment fragment, boolean allowBack, String name);
-    public void ignoreButtons();
-    public void showButtons();
+    void displayFragment(Fragment fragment, boolean allowBack, String name);
+    void ignoreButtons();
+    void showButtons();
     interface Listener{
         void displaySearchFragment();
         void displayPlayFragment();
