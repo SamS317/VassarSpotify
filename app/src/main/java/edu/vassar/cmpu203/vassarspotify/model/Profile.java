@@ -26,6 +26,9 @@ public class Profile {
     public String getUsernameText(){
         return this.username;
     }
+    public String getPassword(){
+        return this.password;
+    }
 
     /**
      * Provides a method of checking if the username and password matches profiles username and password

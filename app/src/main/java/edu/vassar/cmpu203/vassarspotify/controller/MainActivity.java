@@ -5,28 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 import edu.vassar.cmpu203.vassarspotify.R;
@@ -137,7 +139,18 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
                     }
                 });
 
+        //load song if one saved
+        File inFile = new File(this.getApplicationContext().getFilesDir(), "savedsongs2");
+        if(inFile.isFile()) {
+            try {
+                FileInputStream fis = new FileInputStream(inFile);
+                ObjectInputStream ois = new ObjectInputStream(fis);
 
+                this.currSong =  (Song) ois.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
         mainView = new MainView(this, this);
 
@@ -146,6 +159,16 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         mainView.displayFragment(new LoginFragment(this), false, "login");
 
         setContentView(mainView.getRootView());
+
+
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+
     }
 
     @Override
@@ -194,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
 
     @Override
     public void displayPlayFragment(){
+
         mainView.displayFragment(new PlayScreenFragment(this), false, "play2");
     }
 
@@ -209,6 +233,47 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     public void changePlayScreenWSong(Song s, PlaylistFragment playlistFragment) {
         q.clearQueue();
         q.addSong(s);
+        //save song
+        File outFile = new File(this.getApplicationContext().getFilesDir(), "savedsongs2");
+
+        try {
+            FileOutputStream fos = new FileOutputStream(outFile);
+            ObjectOutputStream ous = new ObjectOutputStream(fos);
+
+            ous.writeObject(this.currSong);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        Map<String, Object> newUserMap = new HashMap<>();
+//
+//        //Test data
+//        newUserMap.put("name", this.getUsername());
+//        newUserMap.put("password", this.getPassword());
+//        newUserMap.put("currsong", this.currSong);
+//
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//
+//        String newPath = "users/" + this.getUsername();
+//
+//        DocumentReference docRef = db.document(newPath);
+
+//        CollectionReference colRef = db.collection("users");
+//        DocumentReference docRef = colRef.document(username);
+
+//        docRef.set( newUserMap, SetOptions.merge() );
+//        Map<String, Object> user1Map = new HashMap<>();
+//        user1Map.put("name", this.getUsername());
+//        user1Map.put("username", this.getUsername());
+//        user1Map.put("password", this.getPassword());
+//        user1Map.put("currSong", this.currSong);
+//
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        CollectionReference colRef = db.collection("users");
+//
+//        DocumentReference docRef = colRef.document("users1");
+//        docRef.set( user1Map, SetOptions.merge() );
+//        colRef.add(user1Map);
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
     }
 
@@ -221,7 +286,10 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         return q.getCurrentSong();
     }
 
-    public Song nextSong(Song s){ return q.getNext(s); }
+    public Song nextSong(Song s){
+
+        return q.getNext(s);
+    }
 
     public Song previousSong(Song s){ return q.getPrevious(s); }
 
@@ -246,6 +314,9 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     @Override
     public String getUsername(){
         return pf.getUsernameText();
+    }
+    public String getPassword(){
+        return pf.getPassword();
     }
 
     public String getPlaylistName2(Playlist playlist){
@@ -288,12 +359,14 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     }
 
     public void playPauseGivenSong(Context context, @NonNull Song s){
+
         //If we play a different song than currently playing
         //Change currSong to new input song
         //Reset media player has been created flag
         //Stop current audio if there is a current audio to stop
-        if(! s.equals(currSong)){
-            currSong = s;
+        if(! s.equals(this.currSong)){
+
+            this.currSong = s;
             if (MPCreated){
                 mp.stop();
             }
@@ -308,7 +381,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
                 mp.start();
             }
         }else{
-            mp = MediaPlayer.create(context, (Integer) sd.getRaddress(s.getSongName(), s.getArtist()));
+            mp = MediaPlayer.create(context, (Integer) sd.getRaddress(this.currSong.getSongName(), this.currSong.getArtist()));
 
 
 
@@ -360,6 +433,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         //Test data
         newUserMap.put("name", username);
         newUserMap.put("password", password);
+        newUserMap.put("currsong", null);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
