@@ -2,9 +2,10 @@ package edu.vassar.cmpu203.vassarspotify.model;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Song {
+public class Song implements Serializable {
     public String songName;
     public String artist;
 

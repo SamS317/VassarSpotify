@@ -33,5 +33,6 @@
     <string name="choose_a_playlist">Choose A Playlist</string>
     <string name="log_out">Log Out</string>
     <string name="empty"></string>
+    <string name="songfilename">savedsongs</string>
 
 </resources>
