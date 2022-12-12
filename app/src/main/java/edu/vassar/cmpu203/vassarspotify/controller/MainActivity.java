@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -307,11 +308,9 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
                 mp.start();
             }
         }else{
-            if(Objects.equals(s.getSongName(), "Hello")){
-                mp = MediaPlayer.create(context, R.raw.helloadele);
-            }else{
-                mp = MediaPlayer.create(context, R.raw.overdrake);
-            }
+            mp = MediaPlayer.create(context, (Integer) sd.getRaddress(s.getSongName(), s.getArtist()));
+
+
 
             mp.start();
             MPCreated = true;

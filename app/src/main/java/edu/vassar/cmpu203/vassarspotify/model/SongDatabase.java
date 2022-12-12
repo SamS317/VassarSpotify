@@ -1,5 +1,9 @@
 package edu.vassar.cmpu203.vassarspotify.model;
 
+import static java.lang.Integer.parseInt;
+
+import android.util.Pair;
+
 import java.util.*;
 
 import edu.vassar.cmpu203.vassarspotify.R;
@@ -14,7 +18,7 @@ public class SongDatabase {
 
     List<Song> songListReturn = new <Song> ArrayList<Song>();
     List <Song> songList = new <Song> ArrayList<Song>();
-    List<Object> songRList = new <Object> ArrayList<Object>();
+    List <String> songRList = new <String> ArrayList<String>();
     public SongDatabase(){
         songListReturn.clear();
         songList.clear();
@@ -30,21 +34,21 @@ public class SongDatabase {
         songList.add(new Song("Hello", "Eminem"));
         songList.add(new Song("Hello", "Beyonce"));
         songList.add(new Song("Cant Tell Me Nothing", "Kanye West"));
-        songList.add(new Song("Leaving West Virginia", "Kathy Mattea"));
+        songList.add(new Song("Leaving West Virginia", "Lathy Mattea"));
 
-        songRList.add(R.raw.kanyeweststronger);
-        songRList.add(R.raw.truthhurtslizzo);
-        songRList.add(R.raw.oldtownroadlilnasx);
-        songRList.add(R.raw.overdrake);
-        songRList.add(R.raw.billiejeanmichaeljackson);
-        songRList.add(R.raw.lockedoutofheavenbrunomars);
-        songRList.add(R.raw.despacitoluisfonsidaddyyankee);
-        songRList.add(R.raw.talkingtothemoonbrunomars);
-        songRList.add(R.raw.helloadele);
-        songRList.add(R.raw.hellobeyonce);
-        songRList.add(R.raw.helloeminem);
-        songRList.add(R.raw.canttellmeanythingkanyewest);
-        songRList.add(R.raw.leavingwestvirginialathymattea);
+        songRList.add("R.raw.kanyeweststronger@@kanye west stronger");
+        songRList.add("R.raw.truthhurtslizzo@@truth hurts lizzo");
+        songRList.add("R.raw.oldtownroadlilnasx@@old town road lil nas x");
+        songRList.add("R.raw.overdrake@@over drake");
+        songRList.add("R.raw.billiejeanmichaeljackson@@billie jean michael jackson");
+        songRList.add("R.raw.lockedoutofheavenbrunomars@@locked out of heaven bruno mars");
+        songRList.add("R.raw.despacitoluisfonsidaddyyankee@@despacito luis fonsi and daddy yankee");
+        songRList.add("R.raw.talkingtothemoonbrunomars@@talking to the moon bruno mars");
+        songRList.add("R.raw.helloadele@@hello adele");
+        songRList.add("R.raw.hellobeyonce@@hello beyonce");
+        songRList.add("R.raw.helloeminem@@hello eminem");
+        songRList.add("R.raw.canttellmeanythingkanyewest@@cant tell me nothing kanye west");
+        songRList.add("R.raw.leavingwestvirginialathymattea@@leaving west virginia lathy mattea");
 
 
 
@@ -79,14 +83,64 @@ public class SongDatabase {
     }
 
     public Object getRaddress(String song, String artist){
-        for (Object o: this.songRList){
-            String ostring = o.toString();
-            if (ostring.contains(song) && ostring.contains(artist)){
-                return o;
+        for (String s : this.songRList){
+            String [] ssplit = s.split("@@");
+            String raddres = ssplit[0];
+            String nameSong = ssplit[1].toLowerCase();
+            String songLower = song.toLowerCase();
+            String artistLower = artist.toLowerCase();
+            if (nameSong.contains(songLower)&&nameSong.contains(artistLower)){
+                return getRData(nameSong);
             }
+
+
         }
         return null;
 
+    }
+    public Object getRData(String name){
+        if (Objects.equals(name, "kanye west stronger")){
+            return R.raw.kanyeweststronger;
+        }
+        else if (Objects.equals(name, "truth hurts lizzo")){
+            return R.raw.truthhurtslizzo;
+        }
+        else if (Objects.equals(name, "old town road lil nas x")){
+            return R.raw.oldtownroadlilnasx;
+        }
+        else if (Objects.equals(name, "over drake")){
+            return R.raw.overdrake;
+        }
+        else if (Objects.equals(name, "billie jean michael jackson")){
+            return R.raw.billiejeanmichaeljackson;
+        }
+        else if (Objects.equals(name, "locked out of heaven bruno mars")){
+            return R.raw.lockedoutofheavenbrunomars;
+        }
+        else if (Objects.equals(name, "despacito luis fonsi and daddy yankee")){
+            return R.raw.despacitoluisfonsidaddyyankee;
+        }
+        else if (Objects.equals(name, "talking to the moon bruno mars")){
+            return R.raw.talkingtothemoonbrunomars;
+        }
+        else if (Objects.equals(name, "hello adele")){
+            return R.raw.helloadele;
+        }
+        else if (Objects.equals(name, "hello beyonce")){
+            return R.raw.hellobeyonce;
+        }
+        else if (Objects.equals(name, "hello eminem")){
+            return R.raw.helloeminem;
+        }
+        else if (Objects.equals(name, "cant tell me nothing kanye west")){
+            return R.raw.canttellmeanythingkanyewest;
+        }
+        else if (Objects.equals(name, "leaving west virginia lathy mattea")){
+            return R.raw.leavingwestvirginialathymattea;
+        }
+        else {
+            return R.raw.leavingwestvirginialathymattea;
+        }
     }
     public Song getSong(String songName, String artistName){
         for(Song s: this.songList){
