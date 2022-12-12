@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         List<Playlist> temp = pl.getPlaylists();
         Playlist p1 = null;
         for (Playlist plist: temp){
-            if (plist.getName() == name){
+            if (plist.getName().equals(name)){
                 p1 = plist;
             }
         }
