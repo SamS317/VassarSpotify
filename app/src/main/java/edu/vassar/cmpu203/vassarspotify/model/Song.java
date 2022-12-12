@@ -5,27 +5,28 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 import java.util.Objects;
 
+
+/**
+ * Provides a centralized place to store a song's data
+ * Pretty obvious what all functions do
+ */
 public class Song implements Serializable {
     public String songName;
     public String artist;
+
 
     public Song(String songName, String artist) {
         this.songName = songName;
         this.artist = artist;
     }
-    public String getSongName (){
-        return this.songName;
-    }
 
-    public String getArtist(){
-        return this.artist;
-    }
+    public String getSongName (){ return this.songName; }
+
+    public String getArtist(){ return this.artist; }
 
     @NonNull
     @Override
-    public String toString() {
-        return this.songName + " by " + this.artist;
-    }
+    public String toString() { return this.songName + " by " + this.artist; }
 
     @Override
     public boolean equals(Object o){
