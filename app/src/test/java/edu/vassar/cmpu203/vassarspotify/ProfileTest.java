@@ -1,7 +1,8 @@
 package edu.vassar.cmpu203.vassarspotify;
+import edu.vassar.cmpu203.vassarspotify.model.Profile;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import edu.vassar.cmpu203.vassarspotify.model.Profile;
 
 public class ProfileTest {
     Profile p = new Profile("username123","password123");
@@ -10,6 +11,12 @@ public class ProfileTest {
     void testGetUsernameText(){
         //Tests the getUsernameText method returns the correct username
         assertEquals("username123", p.getUsernameText());
+    }
+
+    @Test
+    void testGetPassword(){
+        //Tests that the password was saved correctly
+        assertEquals("password123", p.getPassword());
     }
 
     @Test
