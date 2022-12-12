@@ -161,13 +161,20 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
             tempList.addAll(sd.searchSong(searchText));
 
             Set<Song> songSet = new <Song> HashSet<Song>(tempList);
-            List<Song> returnList = new <Song> ArrayList<Song>(songSet);
 
-            sfragment.updateSearchDisplay(returnList);
+            sfragment.updateSearchDisplay( new <Song> ArrayList<Song>(songSet) );
         }
     }
 
 
+    /**
+     * The following methods change to various screens
+     * In order:
+     * Displays Search Screen
+     * Displays Home Screen
+     * Displays Login Screen
+     * Displays Play Screen
+     */
     @Override
     public void displaySearchFragment(){
         mainView.displayFragment(new SearchFragment(this), false, "search");
@@ -189,8 +196,14 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     }
 
 
+    /**
+     * Specific change screen method
+     * This method provides a way to change between the search screen and the play screen while
+     * changing the song on the play screen fragment
+     * @param s Song to be displayed
+     */
     @Override
-    public void changePlayScreenWSong(Song s, SearchFragment searchFragment) {
+    public void changePlayScreenWSong(Song s) {
         q.clearQueue();
         q.addSong(s);
         mainView.displayFragment(new PlayScreenFragment(this), false, "play");
