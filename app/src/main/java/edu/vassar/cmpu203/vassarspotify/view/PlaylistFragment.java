@@ -18,16 +18,20 @@ import edu.vassar.cmpu203.vassarspotify.model.Playlist;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
+/**
+ * Provides an implementation that lets us hold playlists
+ */
 public class PlaylistFragment extends Fragment implements IPlaylistFragment {
-
     FragmentPlaylistBinding binding;
     Listener listener;
     Playlist playlist;
+
 
     public PlaylistFragment(Listener listener, Playlist playlist ){
         this.listener=listener;
         this.playlist = playlist;
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,16 +39,17 @@ public class PlaylistFragment extends Fragment implements IPlaylistFragment {
         return this.binding.getRoot();
     }
 
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.binding.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
+
+        //Implement at a later date
+        this.binding.editButton.setOnClickListener(view1 -> {});
+
+
         this.binding.playlistName2.setText(PlaylistFragment.this.listener.getGivenPlaylistName(playlist));
         TableLayout t1 = PlaylistFragment.this.binding.playlistTable2;
         t1.removeAllViews();
