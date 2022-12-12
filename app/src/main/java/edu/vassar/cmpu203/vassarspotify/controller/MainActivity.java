@@ -88,37 +88,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        Map<String, Object> user1Map = new HashMap<>();
-//
-//        //Test data
-//        user1Map.put("name", "Sam Shurin");
-//        user1Map.put("username", "sshurin");
-//        user1Map.put("password", "123456789");
-//        user1Map.put("birthYear", 1920);
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        //CollectionReference colRef = db.collection("users");
-//        DocumentReference docRef = colRef.document("users1");
-//        docRef.set( user1Map, SetOptions.merge() );
-        //colRef.add(user1Map);
-
-
-        //Getting data
-//        DocumentReference profileData = db.document("users/users1");
-//        Task<DocumentSnapshot> docTask = profileData.get();
-//
-//        docTask.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot dSnap) {
-//                String name = (String) dSnap.get("name");
-//                String password = (String) dSnap.get("password");
-//
-//                Profile newP = new Profile(name, password);
-//                pd.addProfile(newP);
-//
-//                Log.i("VassarSpotify", "Name and passwords retrieved");
-//            }
-//        });
 
         db.collection("users").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -127,13 +97,15 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
                         for (DocumentSnapshot DSnap : QSnap) {
                             String name = (String) DSnap.get("name");
                             String password = (String) DSnap.get("password");
-                            String msg = String.format("%s profile added", name);
-                            Log.i("NextGenPos", msg);
 
                             pd.addProfile( new Profile(name, password) );
+
+                            String msg = String.format("%s profile added", name);
+                            Log.i("NextGenPos", msg);
                         }
                     }
                 });
+
 
         //load song if one saved
         File inFile = new File(this.getApplicationContext().getFilesDir(), "savedsongs2");
@@ -155,28 +127,28 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         mainView.displayFragment(new LoginFragment(this), false, "login");
 
         setContentView(mainView.getRootView());
-
-
-
     }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-
-    }
 
     @Override
-    public void searchAdded(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) { super.onSaveInstanceState(outState); }
 
+
+    /**
+     * Provides a method to search for a song or artist
+     * @param searchText The text to be searched in the database
+     * @param songCheck True if the user wants search to include song names matching searchText
+     * @param artistCheck True if the user wants search to include artist names matching searchText
+     * @param sfragment The search fragment
+     */
+    @Override
+    public void searchSongDatabase(String searchText, boolean songCheck, boolean artistCheck, SearchFragment sfragment) {
         //Gets rid of the keyboard after a song is searched
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-
 
         if (songCheck && !artistCheck) {
             sfragment.updateSearchDisplay(this.sd.searchSong(searchText));
@@ -195,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         }
     }
 
+
     @Override
     public void displaySearchFragment(){
         mainView.displayFragment(new SearchFragment(this), false, "search");
@@ -208,12 +181,10 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
     @Override
     public void logOut() {
         mainView.displayFragment(new LoginFragment(this), false, "login");
-
     }
 
     @Override
     public void displayPlayFragment(){
-
         mainView.displayFragment(new PlayScreenFragment(this), false, "play2");
     }
 
@@ -450,3 +421,5 @@ public class MainActivity extends AppCompatActivity implements ISearchFragment.L
         this.mainView.displayFragment(new SearchFragment(this),true, "search");
     }
 }
+
+//452 lines before purge

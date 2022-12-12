@@ -56,7 +56,7 @@ public class SearchFragment extends Fragment implements ISearchFragment{
                 boolean artistChoiceBool = SearchFragment.this.binding.artistChoiceButtonId.isChecked();
 
                 //delegate this to controller
-                SearchFragment.this.listener.searchAdded(searchText, songChoiceBool, artistChoiceBool, SearchFragment.this);
+                SearchFragment.this.listener.searchSongDatabase(searchText, songChoiceBool, artistChoiceBool, SearchFragment.this);
 
                 //clears search
                 searchTextE.clear();
