@@ -24,8 +24,8 @@ public class SearchSongTest {
     @Test
     public void searchSongAndResultsTest(){
         //Logs in first
-        LoginTest lg = new LoginTest();
-        lg.logIn("Connor","Genius");
+        FullLoginCreateAccountTest lg = new FullLoginCreateAccountTest();
+        lg.logIn("sam","Genius", true);
 
 
         //Checks searching for a song gives results

@@ -51,10 +51,10 @@ public class LoginFragment extends Fragment implements ILoginFragment {
             String usernameE = LoginFragment.this.binding.username.getText().toString();
             String passwordE = LoginFragment.this.binding.password.getText().toString();
 
-            if( usernameE.length() <= 3){
-                LoginFragment.this.binding.logInGate.setText("Please input a username greater than 2 characters long "); //...and maybe get a brain for christmas");
+            if( usernameE.length() < 3){
+                LoginFragment.this.binding.logInGate.setText("Please input a username greater than 2 characters long"); //...and maybe get a brain for christmas");
             }else if (passwordE.length() <= 5){
-                LoginFragment.this.binding.logInGate.setText("Please input a password greater than 4 characters long ");
+                LoginFragment.this.binding.logInGate.setText("Please input a password greater than 4 characters long");
             }else{
                 //Now check if this username is already in the database
                 List<Profile> profiles = LoginFragment.this.listener.getProfilesForCreateUser();
