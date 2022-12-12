@@ -27,9 +27,7 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentPlayScreenBinding.inflate(inflater);
         return this.binding.getRoot();
     }
@@ -66,12 +64,12 @@ public class PlayScreenFragment extends Fragment implements IPlayScreenFragment{
 
                 albumCover = requireView().findViewById(R.id.imageView);
                 albumCover.setImageResource((Integer) returnDrawableID(PlayScreenFragment.this.listener.getRightText(s.getSongName(), s.getArtist())));
+
                 if( PlayScreenFragment.this.listener.isSongPlaying() ){
                     PlayScreenFragment.this.binding.playbackButton.setText("Pause");
                 }else{
                     PlayScreenFragment.this.binding.playbackButton.setText("Play");
                 }
-
             }
         });
 
