@@ -32,7 +32,7 @@ public class SongDatabase {
         songList.add(new Song("Talking to the Moon", "Bruno Mars"));
         songList.add(new Song("Hello", "Adele"));
         songList.add(new Song("Hello", "Eminem"));
-        songList.add(new Song("Hello", "Beyonce"));
+        songList.add(new Song("Halo", "Beyonce"));
         songList.add(new Song("Cant Tell Me Nothing", "Kanye West"));
         songList.add(new Song("Leaving West Virginia", "Lathy Mattea"));
 
@@ -45,7 +45,7 @@ public class SongDatabase {
         songRList.add("R.raw.despacitoluisfonsidaddyyankee@@despacito luis fonsi and daddy yankee");
         songRList.add("R.raw.talkingtothemoonbrunomars@@talking to the moon bruno mars");
         songRList.add("R.raw.helloadele@@hello adele");
-        songRList.add("R.raw.hellobeyonce@@hello beyonce");
+        songRList.add("R.raw.hellobeyonce@@halo beyonce");
         songRList.add("R.raw.helloeminem@@hello eminem");
         songRList.add("R.raw.canttellmeanythingkanyewest@@cant tell me nothing kanye west");
         songRList.add("R.raw.leavingwestvirginialathymattea@@leaving west virginia lathy mattea");
@@ -126,8 +126,8 @@ public class SongDatabase {
         else if (Objects.equals(name, "hello adele")){
             return R.raw.helloadele;
         }
-        else if (Objects.equals(name, "hello beyonce")){
-            return R.raw.hellobeyonce;
+        else if (Objects.equals(name, "halo beyonce")){
+            return R.raw.halobeyonce;
         }
         else if (Objects.equals(name, "hello eminem")){
             return R.raw.helloeminem;
