@@ -15,27 +15,30 @@ import android.widget.TableRow;
 
 import java.util.Objects;
 
-import edu.vassar.cmpu203.vassarspotify.R;
 import edu.vassar.cmpu203.vassarspotify.databinding.FragmentListPlaylistBinding;
 import edu.vassar.cmpu203.vassarspotify.model.Playlist;
 import edu.vassar.cmpu203.vassarspotify.model.Song;
 
 
+/**
+ * Provides an implementation for ListPlaylistFragment
+ */
 public class ListPlaylistFragment extends Fragment implements IListPlaylistFragment{
 
    FragmentListPlaylistBinding binding;
    Listener listener;
-    boolean hold = false;
-    Song song = null;
+   boolean hold = false;
+   Song song = null;
+
 
    public ListPlaylistFragment(Listener listener, Song s){
        this.listener=listener;
        this.song = s;
    }
 
-    public ListPlaylistFragment() {
 
-    }
+    public ListPlaylistFragment() {}
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,14 +46,15 @@ public class ListPlaylistFragment extends Fragment implements IListPlaylistFragm
         return this.binding.getRoot();
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         choosePlaylist();
-
     }
-    public void choosePlaylist(){
 
+
+    public void choosePlaylist(){
         TableLayout t1 = ListPlaylistFragment.this.binding.listPlaylistTable;
         t1.removeAllViews();
         for (Playlist p: ListPlaylistFragment.this.listener.getPlaylists()){
@@ -64,16 +68,12 @@ public class ListPlaylistFragment extends Fragment implements IListPlaylistFragm
                 t1.addView(row);
             }
 
-            playlistButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ListPlaylistFragment.this.listener.addToPlaylist(p, song);
-                    hold = true;
-                    ListPlaylistFragment.this.listener.displaySearchFragment();
-                }
+            playlistButton.setOnClickListener(view -> {
+                ListPlaylistFragment.this.listener.addToPlaylist(p, song);
+                hold = true;
+                ListPlaylistFragment.this.listener.displaySearchFragment();
             });
             if (hold){
-
                 break;
             }
         }
