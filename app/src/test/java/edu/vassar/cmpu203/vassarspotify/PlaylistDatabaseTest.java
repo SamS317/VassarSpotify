@@ -11,7 +11,7 @@ public class PlaylistDatabaseTest {
     Playlist p = new Playlist("TestPlaylist");
 
     @Test
-    void testaddPlaylist(){
+    void testAddPlaylist(){
         //Tests the addition of a playlist actually adds a playlist
         //Simultaneously tests getPlaylists method
         pd.addPlaylist(p);
